@@ -20,8 +20,7 @@ map('n', 't9', ':BufferGoto 9<CR>', opts)
 map('n', 't0', ':BufferLast<CR>', opts)
 -- Pin/unpin buffer
 map('n', '<A-p>', ':BufferPin<CR>', opts)
--- Close buffer
-map('n', '<A-c>', ':BufferClose<CR>', opts)
+-- Close buffemap('n', '<A-c>', ':BufferClose<CR>', opts)
 -- Wipeout buffer
 --                 :BufferWipeout<CR>
 -- Close commands
