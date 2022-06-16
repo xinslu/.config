@@ -146,6 +146,12 @@ _G.packer_plugins = {
     path = "/Users/kinshukphalke/.local/share/nvim/site/pack/packer/opt/cmp-path",
     url = "https://github.com/hrsh7th/cmp-path"
   },
+  ["committia.vim"] = {
+    loaded = false,
+    needs_bufread = false,
+    path = "/Users/kinshukphalke/.local/share/nvim/site/pack/packer/opt/committia.vim",
+    url = "https://github.com/rhysd/committia.vim"
+  },
   ["fzy-lua-native"] = {
     loaded = true,
     path = "/Users/kinshukphalke/.local/share/nvim/site/pack/packer/start/fzy-lua-native",
@@ -171,7 +177,7 @@ _G.packer_plugins = {
     url = "https://github.com/nvim-lualine/lualine.nvim"
   },
   ["nvim-cmp"] = {
-    after = { "cmp-emoji", "cmp-buffer", "cmp-omni", "cmp-nvim-lsp", "cmp-nvim-lua", "cmp-path", "cmp-nvim-ultisnips" },
+    after = { "cmp-buffer", "cmp-emoji", "cmp-nvim-ultisnips", "cmp-nvim-lua", "cmp-path", "cmp-omni", "cmp-nvim-lsp" },
     config = { "require('configs.cmp')" },
     load_after = {
       ["lspkind-nvim"] = true
@@ -182,6 +188,7 @@ _G.packer_plugins = {
     url = "https://github.com/hrsh7th/nvim-cmp"
   },
   ["nvim-lspconfig"] = {
+    config = { "require('configs.lsp')" },
     load_after = {
       ["cmp-nvim-lsp"] = true
     },
@@ -210,6 +217,11 @@ _G.packer_plugins = {
     path = "/Users/kinshukphalke/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
+  ["rust.vim"] = {
+    loaded = true,
+    path = "/Users/kinshukphalke/.local/share/nvim/site/pack/packer/start/rust.vim",
+    url = "https://github.com/rust-lang/rust.vim"
+  },
   ["telescope.nvim"] = {
     config = { "require('configs.telescope')" },
     loaded = true,
@@ -221,15 +233,36 @@ _G.packer_plugins = {
     path = "/Users/kinshukphalke/.local/share/nvim/site/pack/packer/start/ultisnips",
     url = "https://github.com/SirVer/ultisnips"
   },
+  ["vim-conflicted"] = {
+    commands = { "Conflicted" },
+    loaded = false,
+    needs_bufread = false,
+    only_cond = false,
+    path = "/Users/kinshukphalke/.local/share/nvim/site/pack/packer/opt/vim-conflicted",
+    url = "https://github.com/christoomey/vim-conflicted"
+  },
+  ["vim-flog"] = {
+    commands = { "Flog" },
+    loaded = false,
+    needs_bufread = true,
+    only_cond = false,
+    path = "/Users/kinshukphalke/.local/share/nvim/site/pack/packer/opt/vim-flog",
+    url = "https://github.com/rbong/vim-flog"
+  },
+  ["vim-fugitive"] = {
+    loaded = true,
+    path = "/Users/kinshukphalke/.local/share/nvim/site/pack/packer/start/vim-fugitive",
+    url = "https://github.com/tpope/vim-fugitive"
+  },
   ["vim-github-dark"] = {
     loaded = true,
     path = "/Users/kinshukphalke/.local/share/nvim/site/pack/packer/start/vim-github-dark",
     url = "https://github.com/wojciechkepka/vim-github-dark"
   },
-  ["vim-jsx-improve"] = {
+  ["vim-jsx-pretty"] = {
     loaded = true,
-    path = "/Users/kinshukphalke/.local/share/nvim/site/pack/packer/start/vim-jsx-improve",
-    url = "https://github.com/neoclide/vim-jsx-improve"
+    path = "/Users/kinshukphalke/.local/share/nvim/site/pack/packer/start/vim-jsx-pretty",
+    url = "https://github.com/maxmellon/vim-jsx-pretty"
   },
   ["vim-signify"] = {
     loaded = false,
@@ -248,6 +281,10 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Setup for: committia.vim
+time([[Setup for committia.vim]], true)
+vim.cmd('packadd committia.vim')
+time([[Setup for committia.vim]], false)
 -- Setup for: wilder.nvim
 time([[Setup for wilder.nvim]], true)
 vim.cmd('packadd wilder.nvim')
@@ -255,10 +292,6 @@ time([[Setup for wilder.nvim]], false)
 time([[packadd for wilder.nvim]], true)
 vim.cmd [[packadd wilder.nvim]]
 time([[packadd for wilder.nvim]], false)
--- Config for: barbar.nvim
-time([[Config for barbar.nvim]], true)
-require('configs.barbar')
-time([[Config for barbar.nvim]], false)
 -- Config for: telescope.nvim
 time([[Config for telescope.nvim]], true)
 require('configs.telescope')
@@ -267,6 +300,10 @@ time([[Config for telescope.nvim]], false)
 time([[Config for lualine.nvim]], true)
 require('configs.nvim-tree')
 time([[Config for lualine.nvim]], false)
+-- Config for: barbar.nvim
+time([[Config for barbar.nvim]], true)
+require('configs.barbar')
+time([[Config for barbar.nvim]], false)
 -- Config for: wilder.nvim
 time([[Config for wilder.nvim]], true)
 require('configs.wilder')
@@ -275,12 +312,19 @@ time([[Config for wilder.nvim]], false)
 time([[Sequenced loading]], true)
 vim.cmd [[ packadd ultisnips ]]
 time([[Sequenced loading]], false)
+
+-- Command lazy-loads
+time([[Defining lazy-load commands]], true)
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Flog lua require("packer.load")({'vim-flog'}, { cmd = "Flog", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Conflicted lua require("packer.load")({'vim-conflicted'}, { cmd = "Conflicted", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
+time([[Defining lazy-load commands]], false)
+
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
-vim.cmd [[au VimEnter * ++once lua require("packer.load")({'lspkind-nvim'}, { event = "VimEnter *" }, _G.packer_plugins)]]
 vim.cmd [[au BufEnter * ++once lua require("packer.load")({'vim-signify'}, { event = "BufEnter *" }, _G.packer_plugins)]]
+vim.cmd [[au VimEnter * ++once lua require("packer.load")({'lspkind-nvim'}, { event = "VimEnter *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 if should_profile then save_profiles() end

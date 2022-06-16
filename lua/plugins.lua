@@ -52,8 +52,22 @@ return require('packer').startup(function()
     use { "hrsh7th/cmp-omni", after = "nvim-cmp" }
     use {"quangnguyen30192/cmp-nvim-ultisnips", after = {'nvim-cmp', 'ultisnips'}}
     use {"hrsh7th/cmp-emoji", after = 'nvim-cmp'}
-    use({ "neovim/nvim-lspconfig", after = "cmp-nvim-lsp"})
+    use({ "neovim/nvim-lspconfig", after = "cmp-nvim-lsp", config = [[require('configs.lsp')]]})
+
+    
+     -- Git command inside vim
+    use({ "tpope/vim-fugitive"})
+    
+    -- Better git log display
+    use({ "rbong/vim-flog", requires = "tpope/vim-fugitive", cmd = { "Flog" } })
+
+    use({ "christoomey/vim-conflicted", requires = "tpope/vim-fugitive", cmd = {"Conflicted"}})
+
+    -- Better git commit experience
+    use({"rhysd/committia.vim", opt = true, setup = [[vim.cmd('packadd committia.vim')]]})
+
     -- Highlighters
-    use 'neoclide/vim-jsx-improve'
+    use 'maxmellon/vim-jsx-pretty'
+    use 'rust-lang/rust.vim'
 end)
 
