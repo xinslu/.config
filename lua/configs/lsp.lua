@@ -14,8 +14,8 @@ end
 
 lsp_installer.setup {
     -- A list of servers to automatically install if they're not already installed
-    ensure_installed = { "bashls", "cssls", "eslint", "graphql", "html", "jsonls", "sumneko_lua", "tailwindcss",
-        "tsserver", "vetur", "vuels", "rust_analyzer" },
+    ensure_installed = { "bashls", "cssls", "graphql", "html", "jsonls", "sumneko_lua", "tailwindcss",
+        "tsserver", "vetur", "vuels", "rust_analyzer", "eslint" },
     -- Whether servers that are set up (via lspconfig) should be automatically installed if they're not already installed
     automatic_installation = true,
 }
@@ -36,7 +36,8 @@ local custom_attach = function(client, bufnr)
     vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
     vim.keymap.set("n", "<space>q", function() vim.diagnostic.setqflist({ open = true }) end, opts)
     vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, opts)
-
+    vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+    vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
     vim.api.nvim_create_autocmd("CursorHold", {
         buffer = bufnr,
         callback = function()
@@ -180,7 +181,7 @@ lspconfig.sumneko_lua.setup({
             },
             workspace = {
                 -- Make the server aware of Neovim runtime files
-                library = api.nvim_get_runtime_file("", true),
+                library = vim.api.nvim_get_runtime_file("", true),
             },
             -- Do not send telemetry data containing a randomized but unique identifier
             telemetry = {
@@ -199,7 +200,6 @@ lspconfig.eslint.setup {
     on_attach = custom_attach,
     capabilities = capabilities,
     handlers = handlers,
-    on_attach = require('configs.lsp.eslint').on_attach,
     settings = require('configs.lsp.eslint').settings,
 }
 
@@ -211,9 +211,9 @@ lspconfig.jsonls.setup {
 }
 
 -- lspconfig.rome.setup {
---    on_attach = custom_attach,
---    capabilities = capabilities,
---    handlers = handlers
+--     on_attach = custom_attach,
+--     capabilities = capabilities,
+--     handlers = handlers
 -- }
 
 lspconfig.rust_analyzer.setup {

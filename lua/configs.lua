@@ -21,15 +21,24 @@ set.signcolumn = "yes:1"
 vim.g.mapleader = " "
 vim.g.gruvbox_italic = 1
 vim.g.gruvbox_contrast_dark = "hard"
-vim.g["gruvbox_colors"] = { bg0 = {'#000000'} }
+vim.g["gruvbox_colors"] = { bg0 = { '#000000' } }
 vim.g["gruvbox_sign_column"] = "bg1"
+set.clipboard = "unnamedplus"
 cmd("let g:gitgutter_override_sign_column_highlight=1")
 cmd('colorscheme gruvbox')
 cmd("highlight Normal guibg=#000000")
 vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
+vim.cmd [[autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js EslintFixAll]]
 -- cmd("set notermguicolors")
+vim.cmd [[autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js Prettier]]
 require('lualine').setup()
+require('nvim_comment').setup()
 -- require('configs.nvim-tree')
 cmd("let &t_SI = \"\\e[6 q\"")
 cmd("let &t_EI .= \"\\e[6 q\"")
+vim.api.nvim_set_keymap('i', '(', '()<Left>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('i', '{', '{}<Left>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('i', '\'', '\'\'<Left>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('i', '\"', '\"\"<Left>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('i', '[', '[]<Left>', { noremap = true, silent = true })
 vim.wo.number = true
