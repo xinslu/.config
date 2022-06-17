@@ -1,7 +1,7 @@
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function()
-  -- Packer can manage itself
+    -- Packer can manage itself
     use 'wbthomason/packer.nvim'
     use 'wojciechkepka/vim-github-dark'
     use {
@@ -17,57 +17,57 @@ return require('packer').startup(function()
     }
     use {
         'romgrk/barbar.nvim',
-        requires = {'kyazdani42/nvim-web-devicons'},
+        requires = { 'kyazdani42/nvim-web-devicons' },
         config = [[require('configs.barbar')]]
     }
     use {
         'nvim-telescope/telescope.nvim',
-        requires = { {'nvim-lua/plenary.nvim'} },
+        requires = { { 'nvim-lua/plenary.nvim' } },
         config = [[require('configs.telescope')]]
     }
 
     use 'morhetz/gruvbox'
-    use({"mhinz/vim-signify", event = 'BufEnter'})
+    use({ "mhinz/vim-signify", event = 'BufEnter' })
     use({
-      "gelguy/wilder.nvim",
-      requires ={{"romgrk/fzy-lua-native"}},
-      setup = [[vim.cmd('packadd wilder.nvim')]],
-      config=[[require('configs.wilder')]]
+        "gelguy/wilder.nvim",
+        requires = { { "romgrk/fzy-lua-native" } },
+        setup = [[vim.cmd('packadd wilder.nvim')]],
+        config = [[require('configs.wilder')]]
     })
-    
-    use({"onsails/lspkind-nvim", event = "VimEnter"})
+
+    use({ "onsails/lspkind-nvim", event = "VimEnter" })
     -- auto-completion engine
     use {
-        "hrsh7th/nvim-cmp", 
+        "hrsh7th/nvim-cmp",
         after = "lspkind-nvim",
-        requires = {{"SirVer/ultisnips"}},
+        requires = { { "SirVer/ultisnips" } },
         config = [[require('configs.cmp')]]
     }
 
     -- nvim-cmp completion sources
-    use {"hrsh7th/cmp-nvim-lsp", after = "nvim-cmp"}
-    use {"hrsh7th/cmp-nvim-lua", after = "nvim-cmp"}
-    use {"hrsh7th/cmp-path", after = "nvim-cmp"}
-    use {"hrsh7th/cmp-buffer", after = "nvim-cmp"}
+    use { "hrsh7th/cmp-nvim-lsp", after = "nvim-cmp" }
+    use { "hrsh7th/cmp-nvim-lua", after = "nvim-cmp" }
+    use { "hrsh7th/cmp-path", after = "nvim-cmp" }
+    use { "hrsh7th/cmp-buffer", after = "nvim-cmp" }
     use { "hrsh7th/cmp-omni", after = "nvim-cmp" }
-    use {"quangnguyen30192/cmp-nvim-ultisnips", after = {'nvim-cmp', 'ultisnips'}}
-    use {"hrsh7th/cmp-emoji", after = 'nvim-cmp'}
-    use({ "neovim/nvim-lspconfig", after = "cmp-nvim-lsp", config = [[require('configs.lsp')]]})
+    use { "quangnguyen30192/cmp-nvim-ultisnips", after = { 'nvim-cmp', 'ultisnips' } }
+    use { "hrsh7th/cmp-emoji", after = 'nvim-cmp' }
+    use({ "neovim/nvim-lspconfig", after = "cmp-nvim-lsp", config = [[require('configs.lsp')]] })
+    use 'williamboman/nvim-lsp-installer'
 
-    
-     -- Git command inside vim
-    use({ "tpope/vim-fugitive"})
-    
+    -- Git command inside vim
+    use({ "tpope/vim-fugitive" })
+
     -- Better git log display
     use({ "rbong/vim-flog", requires = "tpope/vim-fugitive", cmd = { "Flog" } })
 
-    use({ "christoomey/vim-conflicted", requires = "tpope/vim-fugitive", cmd = {"Conflicted"}})
+    use({ "christoomey/vim-conflicted", requires = "tpope/vim-fugitive", cmd = { "Conflicted" } })
 
     -- Better git commit experience
-    use({"rhysd/committia.vim", opt = true, setup = [[vim.cmd('packadd committia.vim')]]})
+    use({ "rhysd/committia.vim", opt = true, setup = [[vim.cmd('packadd committia.vim')]] })
 
     -- Highlighters
     use 'maxmellon/vim-jsx-pretty'
     use 'rust-lang/rust.vim'
+    use 'prettier/vim-prettier'
 end)
-
