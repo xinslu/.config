@@ -66,6 +66,7 @@ return require('packer').startup(function()
     -- Better git commit experience
     use({ "rhysd/committia.vim", opt = true, setup = [[vim.cmd('packadd committia.vim')]] })
 
+    use 'terrortylor/nvim-comment'
     -- Highlighters
     use 'maxmellon/vim-jsx-pretty'
     use 'rust-lang/rust.vim'
