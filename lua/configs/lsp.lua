@@ -191,22 +191,20 @@ lspconfig.sumneko_lua.setup({
     },
     capabilities = capabilities,
 })
-local handlers = {
-    ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),
-    ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" }),
-}
+-- local handlers = {
+--     ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),
+--     ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" }),
+-- }
 
 lspconfig.eslint.setup {
     on_attach = custom_attach,
     capabilities = capabilities,
-    handlers = handlers,
     settings = require('configs.lsp.eslint').settings,
 }
 
 lspconfig.jsonls.setup {
     on_attach = custom_attach,
     capabilities = capabilities,
-    handlers = handlers,
     settings = require('configs.lsp.jsonls').settings,
 }
 
@@ -214,21 +212,24 @@ lspconfig.jsonls.setup {
 --     on_attach = custom_attach,
 --     capabilities = capabilities,
 --     handlers = handlers
--- }
+-- }lspconfig.ccl
+
 
 lspconfig.rust_analyzer.setup {
     on_attach = custom_attach,
     capabilities = capabilities,
-    handlers = handlers
 }
 
 
-
+lspconfig.html.setup {
+    on_attach = custom_attach,
+    capabilities = capabilities,
+}
 -- Change diagnostic signs.
-fn.sign_define("DiagnosticSignError", { text = "✗", texthl = "DiagnosticSignError" })
-fn.sign_define("DiagnosticSignWarn", { text = "!", texthl = "DiagnosticSignWarn" })
-fn.sign_define("DiagnosticSignInformation", { text = "", texthl = "DiagnosticSignInfo" })
-fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint" })
+-- fn.sign_define("DiagnosticSignError", { text = "✗", texthl = "DiagnosticSignError" })
+-- fn.sign_define("DiagnosticSignWarn", { text = "!", texthl = "DiagnosticSignWarn" })
+-- fn.sign_define("DiagnosticSignInformation", { text = "", texthl = "DiagnosticSignInfo" })
+-- fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint" })
 
 -- global config for diagnostic
 vim.diagnostic.config({
