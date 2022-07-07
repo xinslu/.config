@@ -30,7 +30,12 @@ cmd("highlight Normal guibg=#000000")
 vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
 -- vim.cmd [[autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js EslintFixAll]]
 -- cmd("set notermguicolors")
+<<<<<<< Updated upstream
 -- vim.cmd [[autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js Prettier]]
+=======
+vim.cmd [[autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js Prettier]]
+vim.cmd [[autocmd BufWritePre *.go GoFmt]]
+>>>>>>> Stashed changes
 require('lualine').setup()
 require('nvim_comment').setup()
 -- require('configs.nvim-tree')
