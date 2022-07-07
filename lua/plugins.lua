@@ -71,4 +71,5 @@ return require('packer').startup(function()
     use 'maxmellon/vim-jsx-pretty'
     use 'rust-lang/rust.vim'
     use 'prettier/vim-prettier'
+    use 'fatih/vim-go'
 end)

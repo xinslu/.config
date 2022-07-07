@@ -28,9 +28,9 @@ cmd("let g:gitgutter_override_sign_column_highlight=1")
 cmd('colorscheme gruvbox')
 cmd("highlight Normal guibg=#000000")
 vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
-vim.cmd [[autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js EslintFixAll]]
+-- vim.cmd [[autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js EslintFixAll]]
 -- cmd("set notermguicolors")
-vim.cmd [[autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js Prettier]]
+-- vim.cmd [[autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js Prettier]]
 require('lualine').setup()
 require('nvim_comment').setup()
 -- require('configs.nvim-tree')
@@ -42,3 +42,4 @@ vim.api.nvim_set_keymap('i', '\'', '\'\'<Left>', { noremap = true, silent = true
 vim.api.nvim_set_keymap('i', '\"', '\"\"<Left>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('i', '[', '[]<Left>', { noremap = true, silent = true })
 vim.wo.number = true
+vim.wo.relativenumber = true

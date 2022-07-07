@@ -214,7 +214,8 @@ lspconfig.jsonls.setup {
 --     on_attach = custom_attach,
 --     capabilities = capabilities,
 --     handlers = handlers
--- }
+-- }lspconfig.ccl
+
 
 lspconfig.rust_analyzer.setup {
     on_attach = custom_attach,
@@ -223,7 +224,11 @@ lspconfig.rust_analyzer.setup {
 }
 
 
-
+lspconfig.html.setup {
+    on_attach = custom_attach,
+    capabilities = capabilities,
+    handlers = handlers
+}
 -- Change diagnostic signs.
 fn.sign_define("DiagnosticSignError", { text = "✗", texthl = "DiagnosticSignError" })
 fn.sign_define("DiagnosticSignWarn", { text = "!", texthl = "DiagnosticSignWarn" })
