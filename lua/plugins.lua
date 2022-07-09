@@ -9,11 +9,13 @@ return require('packer').startup(function()
         requires = {
             'kyazdani42/nvim-web-devicons', -- For file icon
         },
+        config = [[require('configs.nvim-tree')]]
+
     }
     use {
         'nvim-lualine/lualine.nvim',
         requires = { 'kyazdani42/nvim-web-devicons', opt = true },
-        config = [[require('configs.nvim-tree')]]
+        config = [[require('configs.lualine')]]
     }
     use {
         'romgrk/barbar.nvim',

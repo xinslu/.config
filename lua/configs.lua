@@ -32,7 +32,7 @@ vim.cmd [[autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js EslintFixAll]]
 vim.cmd [[autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js Prettier]]
 require('lualine').setup()
 require('nvim_comment').setup()
--- require('configs.nvim-tree')
+require('configs.terminal')
 require('configs.trouble')
 cmd("let &t_SI = \"\\e[6 q\"")
 cmd("let &t_EI .= \"\\e[6 q\"")
