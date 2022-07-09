@@ -85,4 +85,12 @@ return require('packer').startup(function()
             }
         end
     }
+
+    use {
+        's1n7ax/nvim-terminal',
+        config = function()
+            vim.o.hidden = true
+            require('nvim-terminal').setup()
+        end,
+    }
 end)
