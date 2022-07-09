@@ -11,7 +11,7 @@ M.settings = {
         }
     },
     codeActionOnSave = {
-        enable = false,
+        enable = true,
         mode = "all"
     },
     format = true,

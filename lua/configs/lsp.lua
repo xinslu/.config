@@ -218,6 +218,12 @@ lspconfig.dockerls.setup {
     capabilities = capabilities,
 }
 
+lspconfig.tsserver.setup {
+    on_attach = custom_attach,
+    capabilities = capabilities,
+    handlers = handlers
+}
+
 lspconfig.rust_analyzer.setup {
     on_attach = custom_attach,
     capabilities = capabilities,
@@ -229,10 +235,10 @@ lspconfig.html.setup {
     capabilities = capabilities,
 }
 -- Change diagnostic signs.
--- fn.sign_define("DiagnosticSignError", { text = "✗", texthl = "DiagnosticSignError" })
--- fn.sign_define("DiagnosticSignWarn", { text = "!", texthl = "DiagnosticSignWarn" })
--- fn.sign_define("DiagnosticSignInformation", { text = "", texthl = "DiagnosticSignInfo" })
--- fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint" })
+fn.sign_define("DiagnosticSignError", { text = "x", texthl = "DiagnosticSignError" })
+fn.sign_define("DiagnosticSignWarn", { text = "!", texthl = "DiagnosticSignWarn" })
+fn.sign_define("DiagnosticSignInformation", { text = "i", texthl = "DiagnosticSignInfo" })
+fn.sign_define("DiagnosticSignHint", { text = "?", texthl = "DiagnosticSignHint" })
 
 -- global config for diagnostic
 vim.diagnostic.config({
@@ -242,9 +248,9 @@ vim.diagnostic.config({
     severity_sort = true,
 })
 
--- lsp.handlers["textDocument/publishDiagnostics"] = lsp.with(lsp.diagnostic.on_publish_diagnostics, {
---   underline = false,
---   virtual_text = false,
---   signs = true,
---   update_in_insert = false,
--- })
+lsp.handlers["textDocument/publishDiagnostics"] = lsp.with(lsp.diagnostic.on_publish_diagnostics, {
+    underline = false,
+    virtual_text = false,
+    signs = true,
+    update_in_insert = false,
+})
