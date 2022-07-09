@@ -15,7 +15,7 @@ end
 lsp_installer.setup {
     -- A list of servers to automatically install if they're not already installed
     ensure_installed = { "bashls", "cssls", "graphql", "html", "jsonls", "sumneko_lua", "tailwindcss",
-        "tsserver", "vetur", "vuels", "rust_analyzer", "eslint" },
+        "tsserver", "vetur", "vuels", "rust_analyzer", "eslint", "gopls", "dockerls" },
     -- Whether servers that are set up (via lspconfig) should be automatically installed if they're not already installed
     automatic_installation = true,
 }
@@ -208,12 +208,15 @@ lspconfig.jsonls.setup {
     settings = require('configs.lsp.jsonls').settings,
 }
 
--- lspconfig.rome.setup {
---     on_attach = custom_attach,
---     capabilities = capabilities,
---     handlers = handlers
--- }lspconfig.ccl
+lspconfig.gopls.setup {
+    on_attach = custom_attach,
+    capabilities = capabilities,
+}
 
+lspconfig.dockerls.setup {
+    on_attach = custom_attach,
+    capabilities = capabilities,
+}
 
 lspconfig.rust_analyzer.setup {
     on_attach = custom_attach,
