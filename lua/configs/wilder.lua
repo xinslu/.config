@@ -4,7 +4,7 @@ wilder.set_option('pipeline', {
     wilder.branch(
         wilder.cmdline_pipeline({
             -- sets the language to use, 'vim' and 'python' are supported
-            language = 'python',
+            language = 'vim',
             -- 0 turns off fuzzy matching
             -- 1 turns on fuzzy matching
             -- 2 partial fuzzy matching (match does not have to begin with the same first letter)

@@ -15,7 +15,7 @@ end
 lsp_installer.setup {
     -- A list of servers to automatically install if they're not already installed
     ensure_installed = { "bashls", "cssls", "graphql", "html", "jsonls", "sumneko_lua", "tailwindcss",
-        "tsserver", "vetur", "vuels", "rust_analyzer", "eslint" },
+        "tsserver", "vetur", "vuels", "rust_analyzer", "eslint", "gopls", "dockerls" },
     -- Whether servers that are set up (via lspconfig) should be automatically installed if they're not already installed
     automatic_installation = true,
 }
@@ -191,49 +191,48 @@ lspconfig.sumneko_lua.setup({
     },
     capabilities = capabilities,
 })
-local handlers = {
-    ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),
-    ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" }),
-}
+-- local handlers = {
+--     ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),
+--     ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" }),
+-- }
 
 lspconfig.eslint.setup {
     on_attach = custom_attach,
     capabilities = capabilities,
-    handlers = handlers,
     settings = require('configs.lsp.eslint').settings,
 }
 
 lspconfig.jsonls.setup {
     on_attach = custom_attach,
     capabilities = capabilities,
-    handlers = handlers,
     settings = require('configs.lsp.jsonls').settings,
 }
 
--- lspconfig.rome.setup {
---     on_attach = custom_attach,
---     capabilities = capabilities,
---     handlers = handlers
--- }lspconfig.ccl
+lspconfig.gopls.setup {
+    on_attach = custom_attach,
+    capabilities = capabilities,
+}
 
+lspconfig.dockerls.setup {
+    on_attach = custom_attach,
+    capabilities = capabilities,
+}
 
 lspconfig.rust_analyzer.setup {
     on_attach = custom_attach,
     capabilities = capabilities,
-    handlers = handlers
 }
 
 
 lspconfig.html.setup {
     on_attach = custom_attach,
     capabilities = capabilities,
-    handlers = handlers
 }
 -- Change diagnostic signs.
-fn.sign_define("DiagnosticSignError", { text = "✗", texthl = "DiagnosticSignError" })
-fn.sign_define("DiagnosticSignWarn", { text = "!", texthl = "DiagnosticSignWarn" })
-fn.sign_define("DiagnosticSignInformation", { text = "", texthl = "DiagnosticSignInfo" })
-fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint" })
+-- fn.sign_define("DiagnosticSignError", { text = "✗", texthl = "DiagnosticSignError" })
+-- fn.sign_define("DiagnosticSignWarn", { text = "!", texthl = "DiagnosticSignWarn" })
+-- fn.sign_define("DiagnosticSignInformation", { text = "", texthl = "DiagnosticSignInfo" })
+-- fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint" })
 
 -- global config for diagnostic
 vim.diagnostic.config({
