@@ -11,7 +11,6 @@ set.expandtab = true
 set.autoindent = true
 set.cursorline = false
 set.termguicolors = true
-set.hlsearch = false
 set.hidden = true
 set.wrap = false
 set.errorbells = true
@@ -41,5 +40,6 @@ vim.api.nvim_set_keymap('i', '{', '{}<Left>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('i', '\'', '\'\'<Left>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('i', '\"', '\"\"<Left>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('i', '[', '[]<Left>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<CR>', ':noh<CR><CR>', { noremap = true, silent = true })
 vim.wo.number = true
 vim.wo.relativenumber = true

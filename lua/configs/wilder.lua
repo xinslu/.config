@@ -24,9 +24,8 @@ wilder.set_option('pipeline', {
 
 wilder.set_option('renderer', wilder.popupmenu_renderer({
     highlighter = {
-        wilder.lua_pcre2_highlighter(), -- requires `luarocks install pcre2`
         wilder.lua_fzy_highlighter(), -- requires fzy-lua-native vim plugin found
-        -- at https://github.com/romgrk/fzy-lua-native
+        wilder.basic_highlighter(), -- at https://github.com/romgrk/fzy-lua-native
     },
     highlights = {
         accent = wilder.make_hl('WilderAccent', 'Pmenu', { { a = 1 }, { a = 1 }, { foreground = '#f4468f' } }),
