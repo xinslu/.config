@@ -36,9 +36,9 @@ nvim_tree.setup({
             enable = true,
             icons = {
                 corner = "└",
-                edge = "│ ",
+                edge = "│",
                 item = "│",
-                none = "  ",
+                none = "",
             },
         },
         icons = {

@@ -90,4 +90,7 @@ return require('packer').startup(function()
     })
     use 'dag/vim-fish'
     use 'lukas-reineke/indent-blankline.nvim'
+    use 'sharkdp/fd'
+    use 'nvim-treesitter/nvim-treesitter'
+
 end)

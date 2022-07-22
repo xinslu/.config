@@ -17,6 +17,7 @@ set.incsearch = true
 set.hlsearch = true
 set.scrolloff = 8
 set.signcolumn = "yes:1"
+set.mouse = 'a'
 vim.g.mapleader = " "
 vim.g.gruvbox_contrast_dark = "hard"
 vim.g.gruvbox_improved_warnings = 1
