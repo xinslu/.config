@@ -56,7 +56,6 @@ return require('packer').startup(function()
     -- Better git log display
     use({ "rbong/vim-flog", requires = "tpope/vim-fugitive", cmd = { "Flog" } })
 
-    use({ "christoomey/vim-conflicted", requires = "tpope/vim-fugitive", cmd = { "Conflicted" } })
 
     -- Better git commit experience
     use({ "rhysd/committia.vim", opt = true, setup = [[vim.cmd('packadd committia.vim')]] })
@@ -93,4 +92,11 @@ return require('packer').startup(function()
     use 'sharkdp/fd'
     use 'nvim-treesitter/nvim-treesitter'
 
+    use { 'akinsho/git-conflict.nvim', config = function()
+        require('git-conflict').setup()
+    end }
+    use {
+        'nvim-treesitter/nvim-treesitter',
+        run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
+    }
 end)
