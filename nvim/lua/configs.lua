@@ -3,6 +3,7 @@ local cmd = vim.cmd -- execute Vim commands
 
 
 vim.api.nvim_set_keymap('t', '<Esc>', '<C-\\><C-n>', { noremap = true, silent = true })
+set.guicursor = ""
 set.tabstop = 4
 set.shiftwidth = 4
 set.softtabstop = 4
@@ -15,6 +16,7 @@ set.wrap = false
 set.errorbells = true
 set.incsearch = true
 set.hlsearch = true
+set.smartindent = true
 set.scrolloff = 8
 set.signcolumn = "yes:1"
 set.mouse = 'a'
