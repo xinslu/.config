@@ -48,5 +48,6 @@ vim.api.nvim_set_keymap('n', '<C-l>', '<C-W>l', { noremap = true, silent = true 
 vim.api.nvim_set_keymap('n', '<C-h>', '<C-W>h', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<C-f>', '<C-W>k<C-W>l', { noremap = true, silent = true })
 local group = vim.api.nvim_create_augroup("rc", { clear = true })
+cmd('autocmd FileType Trouble :setlocal nobuflisted')
 vim.api.nvim_create_autocmd("TermOpen", { command = "setlocal nobuflisted", group = group })
 vim.api.nvim_create_autocmd("InsertEnter", { command = ":let @/=\"\"" })
