@@ -20,7 +20,9 @@ enchant/
 evolution/
 goa-1.0/
 gtk-3.0/
+gtk-3.0/
 gtk-4.0/
+rofi.old/
 ibus/
 microsoft-edge/
 nautilus/
