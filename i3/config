@@ -251,8 +251,8 @@ client.background           $tb
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q sset Master 10%+
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q sset Master 10%-
 bindsym XF86AudioMute exec --no-startup-id amixer -q sset Master toggle
-bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl --min-val=2 -q set 3%-
-bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl -q set 3%+
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl --min-val=2 -q set 10%-
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl -q set 10%+
 # Media player controls
 
 
@@ -351,5 +351,6 @@ exec ~/.config/polybar/forest/launch.sh
 exec_always "setxkbmap -model pc104 -layout us -variant ,, -option grp:alt_shift_toggle"
 exec --no-startup-id i3-msg 'workspace 1; exec kitty;'
 exec --no-startup-id i3-msg 'workspace 2; exec firefox; workspace 2'
-exec --no-startup-id i3-msg 'workspace 5; exec /usr/bin/Discord; workspace 5'
+exec --no-startup-id i3-msg 'workspace 4; exec firefox; workspace 4'
+exec --no-startup-id i3-msg 'workspace 5; exec /usr/bin/Discord; workspace 1'
 exec_always "imwheel -b '45'"
