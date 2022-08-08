@@ -28,13 +28,18 @@ set.clipboard = "unnamedplus"
 vim.g.yoinkIncludeDeleteOperations = 1
 cmd('colorscheme gruvbox')
 cmd("let g:gitgutter_override_sign_column_highlight=0")
-cmd("highlight Normal guibg=#1c1c1c")
+cmd("highlight Normal guibg=#141414")
 vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
 vim.cmd [[autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js EslintFixAll]]
 vim.cmd [[autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js Prettier]]
 require('nvim_comment').setup()
 require('configs.terminal')
 require('configs.trouble')
+cmd('hi BufferTabpageFill guibg=#141414')
+cmd('hi BufferInactive guibg=#141414')
+cmd('hi BufferInactiveIndex guibg=#141414')
+cmd('hi BufferInactiveMod guibg=#141414')
+cmd('hi BufferInactiveSign guibg=#141414')
 cmd("let &t_SI = \"\\e[6 q\"")
 cmd("let &t_EI .= \"\\e[6 q\"")
 vim.api.nvim_set_keymap('i', '(', '()<Left>', { noremap = true, silent = true })
