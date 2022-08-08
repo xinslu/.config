@@ -11,6 +11,7 @@ set.expandtab = true
 set.autoindent = true
 set.cursorline = true
 set.termguicolors = true
+cmd('hi BufferInactiveMod guibg=#000000')
 set.hidden = true
 set.wrap = false
 set.errorbells = true
@@ -28,18 +29,22 @@ set.clipboard = "unnamedplus"
 vim.g.yoinkIncludeDeleteOperations = 1
 cmd('colorscheme gruvbox')
 cmd("let g:gitgutter_override_sign_column_highlight=0")
-cmd("highlight Normal guibg=#141414")
+cmd("highlight Normal guibg=#000000")
 vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
 vim.cmd [[autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js EslintFixAll]]
 vim.cmd [[autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js Prettier]]
 require('nvim_comment').setup()
 require('configs.terminal')
 require('configs.trouble')
-cmd('hi BufferTabpageFill guibg=#141414')
-cmd('hi BufferInactive guibg=#141414')
-cmd('hi BufferInactiveIndex guibg=#141414')
-cmd('hi BufferInactiveMod guibg=#141414')
-cmd('hi BufferInactiveSign guibg=#141414')
+cmd('hi BufferTabpageFill guibg=#000000')
+cmd('hi BufferInactive guibg=#000000')
+cmd('hi BufferInactiveIndex guibg=#000000')
+cmd('hi BufferInactiveMod guibg=#000000')
+cmd('hi BufferInactiveSign guibg=#000000')
+cmd('hi BufferCurrent guibg=#474646')
+cmd('hi BufferCurrentMod guibg=#474646')
+cmd('hi BufferCurrentSign guibg=#474646')
+cmd('hi BufferCurrentIndex guibg=#474646')
 cmd("let &t_SI = \"\\e[6 q\"")
 cmd("let &t_EI .= \"\\e[6 q\"")
 vim.api.nvim_set_keymap('i', '(', '()<Left>', { noremap = true, silent = true })
