@@ -90,7 +90,6 @@ return require('packer').startup(function()
     use 'dag/vim-fish'
     use 'lukas-reineke/indent-blankline.nvim'
     use 'sharkdp/fd'
-    use 'nvim-treesitter/nvim-treesitter'
 
     use { 'akinsho/git-conflict.nvim', config = function()
         require('git-conflict').setup()
@@ -99,4 +98,16 @@ return require('packer').startup(function()
         'nvim-treesitter/nvim-treesitter',
         run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
     }
+    use 'tpope/vim-surround'
+    use({
+        "gbprod/cutlass.nvim",
+        config = function()
+            require("cutlass").setup({
+                cut_key = "m",
+                override_del = nil,
+                exclude = {},
+            })
+        end
+    })
+    use 'svermeulen/vim-yoink'
 end)

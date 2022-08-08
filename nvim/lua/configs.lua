@@ -25,6 +25,7 @@ vim.g.gruvbox_contrast_dark = "hard"
 vim.g.gruvbox_improved_warnings = 1
 vim.g.gruvbox_guisp_fallback = 'bg'
 set.clipboard = "unnamedplus"
+vim.g.yoinkIncludeDeleteOperations = 1
 cmd('colorscheme gruvbox')
 cmd("let g:gitgutter_override_sign_column_highlight=0")
 cmd("highlight Normal guibg=#1c1c1c")
