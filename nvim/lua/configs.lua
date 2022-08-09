@@ -8,15 +8,6 @@ require('configs.trouble')
 vim.g.gruvbox_improved_warnings = 1
 cmd('colorscheme gruvbox')
 cmd("highlight Normal guibg=#000000")
-cmd('hi BufferTabpageFill guibg=#000000')
-cmd('hi BufferInactive guibg=#000000')
-cmd('hi BufferInactiveIndex guibg=#000000')
-cmd('hi BufferInactiveMod guibg=#000000')
-cmd('hi BufferInactiveSign guibg=#000000')
-cmd('hi BufferCurrent guibg=#474646')
-cmd('hi BufferCurrentMod guibg=#474646')
-cmd('hi BufferCurrentSign guibg=#474646')
-cmd('hi BufferCurrentIndex guibg=#474646')
 cmd("let g:gitgutter_override_sign_column_highlight=0")
 ----
 
