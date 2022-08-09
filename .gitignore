@@ -1,0 +1,10 @@
+*
+!*/
+!polybar/forest/
+!rofi/
+!starship.toml
+!nvim/
+!kitty/
+!i3/
+!fish/
+!.gitignore
