@@ -6,8 +6,10 @@ require('configs.trouble')
 
 -- Colors --
 vim.g.gruvbox_improved_warnings = 1
-cmd('colorscheme gruvbox')
+vim.g.gruvbox_contrast_dark = 'hard'
 cmd("highlight Normal guibg=#000000")
+cmd('colorscheme gruvbox')
+cmd('hi BufferTabpageFill guibg=#000000')
 cmd("let g:gitgutter_override_sign_column_highlight=0")
 ----
 
