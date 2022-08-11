@@ -52,16 +52,16 @@ bindsym $mod+Shift+q kill
 bindsym $mod+Shift+d exec dmenu_run
 
 #lock the screen using i3lock and a custom script
-bindsym $mod+Ctrl+q exec i3lock --color=000000
+bindsym $mod+Ctrl+q exec i3lock -i ~/Downloads/bg.png
 # bindsym $mod+d exec rofi -show run -lines 3 -eh 2 -width 100 -padding 800 -opacity "85" -bw 0 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd" -font "System San Francisco Display 18"
 
 #bindsym $mod+d exec rofi -show run -lines 3 -eh 2 -width 100 -padding 800 -opacity "85" -bw 0
 
-#I think compton ignores the opacity parameter since some update, it might be deprecated, but it still looks good without it
 bindsym $mod+d exec rofi -no-lazy-grab -show drun -modi drun -theme $HOME/.config/rofi/launchers/colorful/style_7
 bindsym $mod+c exec rofi -show run
 
-
+bindsym $mod+Print exec flameshot -c full
+bindsym $mod+Shift+Print exec flameshot gui
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -345,11 +345,12 @@ hide_edge_borders both
 # --glx-swap-method 3 --glx-no-rebind-pixmap
 
 exec --no-startup-id xrdb ~/.Xresources
-exec_always feh --bg-scale --no-startup-id ~/Downloads/bg.jpeg
+exec_always feh --bg-scale --no-startup-id ~/Downloads/bg.png
 exec ~/.config/polybar/forest/launch.sh 
 exec_always "setxkbmap -model pc104 -layout us -variant ,, -option grp:alt_shift_toggle"
 exec --no-startup-id i3-msg 'workspace 1; exec kitty;'
 exec --no-startup-id i3-msg 'workspace 2; exec firefox; workspace 2'
+exec --no-startup-id i3-msg 'workspace 3; exec thunderbird; workspace 3'
 exec --no-startup-id i3-msg 'workspace 4; exec firefox; workspace 4'
 exec --no-startup-id i3-msg 'workspace 5; exec /usr/bin/Discord; workspace 1'
 exec --no-startup-id xautolock -time 5 -locker 'i3lock -c 000000' &

@@ -34,6 +34,7 @@ vim.api.nvim_set_keymap('t', '<Esc>', '<C-\\><C-n>', { noremap = true, silent = 
 local group = vim.api.nvim_create_augroup("rc", { clear = true })
 vim.api.nvim_create_autocmd("TermOpen", { command = "setlocal nobuflisted", group = group })
 vim.api.nvim_create_autocmd("InsertEnter", { command = ":let @/=\"\"" })
+vim.cmd [[autocmd BufRead,BufNewFile   *.txt setlocal wrap spell]]
 ----
 
 
