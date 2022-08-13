@@ -9,6 +9,7 @@ require('configs.trouble')
 vim.g.gruvbox_improved_warnings = 1
 set.termguicolors = true
 cmd('colorscheme gruvbox')
+cmd("highlight NvimTreeNormal guibg=#3c3836")
 cmd("highlight Normal guibg=#212121")
 cmd('highlight clear SignColumn')
 cmd('highlight GitGutterAdd guibg=#212121 guifg=#009900')
@@ -18,6 +19,8 @@ cmd('highlight GruvboxRedSign ctermfg=167 ctermbg=237 guifg=#fb4934 guibg=#21212
 cmd('highlight GruvboxYellowSign ctermfg=214 ctermbg=237 guifg=#fabd2f guibg=#212121')
 cmd('highlight GruvboxBlueSign ctermfg=109 ctermbg=237 guifg=#83a598 guibg=#212121')
 cmd('highlight GruvboxAquaSign ctermfg=108 ctermbg=237 guifg=#8ec07c guibg=#212121')
+cmd('highlight GruvboxBg3 ctermfg=108 guibg=#212121 guifg=#212121')
+cmd('highlight VertSplit ctermfg=241 ctermbg=235 guifg=#212121 guibg=#212121')
 ----
 
 -- Formatting --
@@ -43,7 +46,6 @@ vim.api.nvim_set_keymap('t', '<Esc>', '<C-\\><C-n>', { noremap = true, silent = 
 local group = vim.api.nvim_create_augroup("rc", { clear = true })
 vim.api.nvim_create_autocmd("TermOpen", { command = "setlocal nobuflisted", group = group })
 vim.api.nvim_create_autocmd("InsertEnter", { command = ":let @/=\"\"" })
-vim.cmd [[autocmd BufRead,BufNewFile   *.txt setlocal wrap spell]]
 ----
 
 

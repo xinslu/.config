@@ -89,13 +89,6 @@ workspace $workspace6 output DP-3
 workspace $workspace8 output DP-3
 
 
-# switch to workspace
-#bindsym $mod+1 workspace 1
-#bindsym $mod+2 workspace 2
-#bindsym $mod+3 workspace 3
-#bindsym $mod+4 workspace 4
-#bindsym $mod+5 workspace 5
-#bindsym $mod+6 workspace 6
 bindsym $mod+1 workspace $workspace1
 bindsym $mod+2 workspace $workspace2
 bindsym $mod+3 workspace $workspace3
@@ -134,10 +127,10 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 bindsym $mod+Shift+a exec ~/connect_airpods.sh
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
 
         bindsym Left resize shrink width 10 px or 10 ppt
         bindsym Down resize grow height 10 px or 10 ppt
@@ -163,7 +156,7 @@ set $urgent-bg-color     #E53935
 set_from_resource $fg i3wm.color7 #f0f0f0
 set_from_resource $bg i3wm.color2 #f0f0f0
 # set $tb                           #cc222222
-set $tb                           #ffdab922
+set $tb                           #ffdab9
 
 # class                     border  backgr. text indicator child_border
 client.focused              $tb     $tb     $fg  $bg       $tb
