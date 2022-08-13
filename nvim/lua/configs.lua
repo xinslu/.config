@@ -10,6 +10,14 @@ vim.g.gruvbox_improved_warnings = 1
 set.termguicolors = true
 cmd('colorscheme gruvbox')
 cmd("highlight Normal guibg=#212121")
+cmd('highlight clear SignColumn')
+cmd('highlight GitGutterAdd guibg=#212121 guifg=#009900')
+cmd('highlight GitGutterChange guibg=#212121 guifg=#bbbb00')
+cmd('highlight GitGutterDelete guibg=#212121 guifg=#ff2222')
+cmd('highlight GruvboxRedSign ctermfg=167 ctermbg=237 guifg=#fb4934 guibg=#212121')
+cmd('highlight GruvboxYellowSign ctermfg=214 ctermbg=237 guifg=#fabd2f guibg=#212121')
+cmd('highlight GruvboxBlueSign ctermfg=109 ctermbg=237 guifg=#83a598 guibg=#212121')
+cmd('highlight GruvboxAquaSign ctermfg=108 ctermbg=237 guifg=#8ec07c guibg=#212121')
 ----
 
 -- Formatting --
