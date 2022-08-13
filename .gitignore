@@ -1,7 +1,5 @@
 *
 !*/
-!polybar/forest/**
-!rofi/**
 !starship.toml
 !nvim/**
 !kitty/**
