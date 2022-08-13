@@ -1,7 +1,8 @@
 local set = vim.opt -- global options
 local cmd = vim.cmd -- execute Vim commands
-require('nvim_comment').setup()
+vim.g.mapleader = " "
 require('configs.terminal')
+require('nvim_comment').setup()
 require('configs.trouble')
 
 -- Colors --
@@ -55,7 +56,6 @@ set.smartindent = true
 set.scrolloff = 8
 set.signcolumn = "yes:1"
 set.mouse = 'a'
-vim.g.mapleader = " "
 set.clipboard = "unnamedplus"
 vim.g.yoinkIncludeDeleteOperations = 1
 vim.wo.number = true
