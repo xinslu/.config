@@ -45,6 +45,7 @@ vim.api.nvim_set_keymap('n', '<C-l>', '<C-W>l', { noremap = true, silent = true 
 vim.api.nvim_set_keymap('n', '<C-h>', '<C-W>h', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<C-f>', '<C-W>k<C-W>l', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('t', '<Esc>', '<C-\\><C-n>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-b>', ':lua require"configs.build".openTerm()<CR>', { noremap = true })
 ----
 
 -- Autocmds --
