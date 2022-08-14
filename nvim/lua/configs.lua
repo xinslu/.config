@@ -8,8 +8,12 @@ require('configs.trouble')
 -- Colors --
 vim.g.gruvbox_improved_warnings = 1
 set.termguicolors = true
+vim.g.gruvbox_contrast_hard = 'hard'
 cmd('colorscheme gruvbox')
+cmd("highlight Directory gui=bold guifg=#677FA3")
+cmd("highlight NvimTreeOpenedFolderName gui=bold")
 cmd("highlight NvimTreeNormal guibg=#3c3836")
+cmd("highlight NvimTreeSignColumn guibg=#3c3836")
 cmd("highlight Normal guibg=#212121")
 cmd('highlight clear SignColumn')
 cmd('highlight GitGutterAdd guibg=#212121 guifg=#009900')
@@ -21,6 +25,7 @@ cmd('highlight GruvboxBlueSign ctermfg=109 ctermbg=237 guifg=#83a598 guibg=#2121
 cmd('highlight GruvboxAquaSign ctermfg=108 ctermbg=237 guifg=#8ec07c guibg=#212121')
 cmd('highlight GruvboxBg3 ctermfg=108 guibg=#212121 guifg=#212121')
 cmd('highlight VertSplit ctermfg=241 ctermbg=235 guifg=#212121 guibg=#212121')
+cmd('highlight EndOfBuffer ctermfg=bg guifg=#3c3836')
 ----
 
 -- Formatting --
@@ -44,7 +49,8 @@ vim.api.nvim_set_keymap('t', '<Esc>', '<C-\\><C-n>', { noremap = true, silent = 
 
 -- Autocmds --
 local group = vim.api.nvim_create_augroup("rc", { clear = true })
-vim.api.nvim_create_autocmd("TermOpen", { command = "setlocal nobuflisted", group = group })
+vim.api.nvim_create_autocmd("TermOpen",
+    { command = "setlocal nobuflisted nonumber norelativenumber", group = group })
 vim.api.nvim_create_autocmd("InsertEnter", { command = ":let @/=\"\"" })
 ----
 
@@ -70,3 +76,6 @@ set.clipboard = "unnamedplus"
 vim.g.yoinkIncludeDeleteOperations = 1
 vim.wo.number = true
 vim.wo.relativenumber = true
+cmd('highlight NvimTreeStatusLineNC guibg=#212121 guifg=#212121')
+cmd('highlight NvimTreeStatusLine guibg=#212121 guifg=#212121 gui=bold')
+set.laststatus = 3

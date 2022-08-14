@@ -78,10 +78,7 @@ return require('packer').startup(function()
 
     use {
         's1n7ax/nvim-terminal',
-        config = function()
-            vim.o.hidden = true
-            require('nvim-terminal').setup()
-        end,
+        config = [[require('configs.terminal')]]
     }
     use 'simrat39/rust-tools.nvim'
     use 'airblade/vim-gitgutter'
