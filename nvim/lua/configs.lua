@@ -35,9 +35,9 @@ vim.cmd [[autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js Prettier]]
 ----
 
 -- Keymaps --
-vim.api.nvim_set_keymap('i', '(', '()<Left>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('i', '{', '{}<Left>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('i', '[', '[]<Left>', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('i', '(', '()<Left>', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('i', '{', '{}<Left>', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('i', '[', '[]<Left>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<CR>', ':noh<CR><CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<C-j>', '<C-W>j', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<C-k>', '<C-W>k', { noremap = true, silent = true })

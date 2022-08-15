@@ -1,6 +1,6 @@
 #!/bin/sh
 
-TMPBG=~/.config/i3/lock.png
+TMPBG=~/polybar-themes/wallpapers/bg_22.jpg
 # Enable compton's fade-in effect so that the lockscreen gets a nice fade-in
 # effect.
 dbus-send --print-reply --dest=com.github.chjj.compton.${DISPLAY/:/_} / \
