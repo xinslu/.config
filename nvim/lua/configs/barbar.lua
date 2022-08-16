@@ -65,7 +65,7 @@ require 'bufferline'.setup {
     -- Enable/disable icons
     -- if set to 'numbers', will show buffer index in the tabline
     -- if set to 'both', will show buffer index and icons in the tabline
-    icons = 'numbers',
+    icons = 'both',
 
     -- If set, the icon color will follow its corresponding buffer
     -- highlight group. By default, the Buffer*Icon group is linked to the
@@ -74,8 +74,8 @@ require 'bufferline'.setup {
     icon_custom_colors = true,
 
     -- Configure icons on the bufferline.
-    icon_separator_active = '▎',
-    icon_separator_inactive = '▎',
+    icon_separator_active = '',
+    icon_separator_inactive = '',
     icon_close_tab = '',
     icon_close_tab_modified = '●',
     icon_pinned = '車',
