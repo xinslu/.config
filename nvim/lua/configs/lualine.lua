@@ -6,7 +6,7 @@ require("lualine").setup({
         -- section_separators = { left = "", right = "" },
         -- section_separators = "",
         -- component_separators = "",
-        disabled_filetypes = { 'packer', "Terminal", "TelescopePrompt", "NvimTree" },
+        disabled_filetypes = { 'packer', "Terminal", "NvimTree" },
         -- always_divide_middle = true,
     },
     sections = {
