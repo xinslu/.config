@@ -19,8 +19,8 @@ bindsym $mod+Ctrl+q exec ~/.config/i3/lock2.sh
 # bindsym $mod+d exec rofi -no-lazy-grab -show drun -modi drun -theme $HOME/.config/rofi/launchers/colorful/style_7
 bindsym $mod+d exec rofi -show run
 
-bindsym $mod+Print exec flameshot full -c
-bindsym $mod+Shift+Print exec flameshot gui
+bindsym Print exec flameshot full -c
+bindsym Shift+Print exec flameshot gui
 
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -123,6 +123,7 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 # Connect to Airpods
 bindsym $mod+Shift+a exec ~/connect_airpods.sh
+bindsym $mod+- exec ~/.config/i3/disconnect.sh
 # resize window (you can also use the mouse for that)
 mode "resize" {
         bindsym h resize shrink width 10 px or 10 ppt
@@ -188,7 +189,7 @@ for_window [class="^.*"] border pixel 0
 for_window [floating] border pixel 0
 for_window [tiling] border pixel 0
 for_window [class="kitty"] border pixel 0
-
+for_window [title=".*\(Private Browsing\).*"] move to workspace "6"
 
 new_window pixel 0
 
@@ -200,11 +201,13 @@ set $workspace2 "2"
 set $workspace3 "3"
 set $workspace4 "4"
 set $workspace5 "5"
+set $workspace6 "6"
 assign [class="discord"]   5
 
 hide_edge_borders both
 exec --no-startup-id xrdb ~/.Xresources
 exec_always feh --bg-scale --no-startup-id ~/Downloads/bg.png
+exec --no-startup-id xrandr --output HDMI-0 --primary --mode 2560x1440 --rate 75 --pos 0x0 --rotate normal --output DP-0 --off --output DP-1 --off --output eDP-1-0 --off
 exec ~/.config/polybar/docky/launch.sh 
 exec_always "setxkbmap -model pc104 -layout us -variant ,, -option grp:alt_shift_toggle"
 exec --no-startup-id i3-msg 'workspace 1; exec kitty;'
