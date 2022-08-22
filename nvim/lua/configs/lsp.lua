@@ -16,7 +16,7 @@ end
 lsp_installer.setup {
     -- A list of servers to automatically install if they're not already installed
     ensure_installed = { "bashls", "cssls", "graphql", "html", "jsonls", "sumneko_lua", "tailwindcss",
-        "tsserver", "vetur", "vuels", "rust_analyzer", "eslint", "gopls", "dockerls", "omnisharp" },
+        "tsserver", "vetur", "vuels", "rust_analyzer", "eslint", "gopls", "dockerls", "omnisharp", "pyright" },
     -- Whether servers that are set up (via lspconfig) should be automatically installed if they're not already installed
     automatic_installation = true,
 }
@@ -107,14 +107,14 @@ else
     vim.notify("pylsp not found!", 'warn', { title = 'Nvim-config' })
 end
 
--- if utils.executable('pyright') then
---   lspconfig.pyright.setup{
---     on_attach = custom_attach,
---     capabilities = capabilities
---   }
--- else
---   vim.notify("pyright not found!", 'warn', {title = 'Nvim-config'})
--- end
+if utils.executable('pyright') then
+    lspconfig.pyright.setup {
+        on_attach = custom_attach,
+        capabilities = capabilities
+    }
+else
+    vim.notify("pyright not found!", 'warn', { title = 'Nvim-config' })
+end
 
 if utils.executable('clangd') then
     lspconfig.clangd.setup({
@@ -224,7 +224,7 @@ lspconfig.html.setup {
     capabilities = capabilities,
 }
 -- Change diagnostic signs.
-fn.sign_define("DiagnosticSignError", { text = "x", texthl = "DiagnosticSignError" })
+fn.sign_define("DiagnosticSignError", { text = "x", texthl = "DiagnosticSignError", })
 fn.sign_define("DiagnosticSignWarn", { text = "!", texthl = "DiagnosticSignWarn" })
 fn.sign_define("DiagnosticSignInformation", { text = "i", texthl = "DiagnosticSignInfo" })
 fn.sign_define("DiagnosticSignHint", { text = "?", texthl = "DiagnosticSignHint" })

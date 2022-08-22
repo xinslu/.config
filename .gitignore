@@ -1,6 +1,8 @@
-omf/
-thefuck/
-yarn/
-configstore/
-iterm2/
-.DS_Store
+*
+!*/
+!starship.toml
+!nvim/**
+!kitty/**
+!i3/**
+!fish/**
+!.gitignore

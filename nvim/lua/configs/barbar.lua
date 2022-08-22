@@ -47,7 +47,7 @@ require 'bufferline'.setup {
     animation = true,
 
     -- Enable/disable auto-hiding the tab bar when there is a single buffer
-    auto_hide = false,
+    auto_hide = true,
 
     -- Enable/disable current/total tabpages indicator (top right corner)
     tabpages = true,
@@ -65,7 +65,7 @@ require 'bufferline'.setup {
     -- Enable/disable icons
     -- if set to 'numbers', will show buffer index in the tabline
     -- if set to 'both', will show buffer index and icons in the tabline
-    icons = 'numbers',
+    icons = 'both',
 
     -- If set, the icon color will follow its corresponding buffer
     -- highlight group. By default, the Buffer*Icon group is linked to the
@@ -74,8 +74,8 @@ require 'bufferline'.setup {
     icon_custom_colors = true,
 
     -- Configure icons on the bufferline.
-    icon_separator_active = '▎',
-    icon_separator_inactive = '▎',
+    icon_separator_active = '',
+    icon_separator_inactive = '',
     icon_close_tab = '',
     icon_close_tab_modified = '●',
     icon_pinned = '車',
@@ -111,7 +111,7 @@ local nvim_tree_events = require('nvim-tree.events')
 local bufferline_state = require('bufferline.state')
 
 nvim_tree_events.on_tree_open(function()
-    bufferline_state.set_offset(31, "File Tree")
+    bufferline_state.set_offset(30, "")
 end)
 
 nvim_tree_events.on_tree_close(function()

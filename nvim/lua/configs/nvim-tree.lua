@@ -6,7 +6,7 @@ nvim_tree.setup({
     hijack_cursor = true,
     hijack_netrw = true,
     hijack_unnamed_buffer_when_opening = false,
-    ignore_buffer_on_setup = true,
+    ignore_buffer_on_setup = false,
     open_on_setup = false,
     open_on_setup_file = false,
     open_on_tab = false,
@@ -14,7 +14,7 @@ nvim_tree.setup({
     update_cwd = false,
     view = {
         width = 30,
-        height = 30,
+        height = 100,
         hide_root_folder = false,
         side = "left",
         preserve_window_proportions = false,
@@ -42,11 +42,18 @@ nvim_tree.setup({
             },
         },
         icons = {
-            git_placement = "after",
+            webdev_colors = true,
+            git_placement = "signcolumn",
             show = {
                 folder = true,
-                file = false
-            }
+                file = true
+            },
+            glyphs = {
+                folder = {
+                    default = "",
+                    open = ""
+                }
+            },
         },
         highlight_opened_files = "3"
     },
@@ -129,18 +136,3 @@ vim.keymap.set('n', ' fe', function()
     return require('nvim-tree').toggle(false, true)
 end,
     { noremap = true, silent = true, desc = "toggle nvim-tree" })
-
-
-local _M = {}
-_M.toggle_tree = function()
-    if view.win_open() then
-        require 'nvim-tree'.close()
-        require 'bufferline.state'.set_offset(0)
-    else
-        require 'bufferline.state'.set_offset(31, 'File Explorer')
-        require 'nvim-tree'.find_file(true)
-    end
-
-end
-
-return _M

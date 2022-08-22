@@ -37,7 +37,7 @@ def _draw_icon(screen: Screen, index: int, symbol: str = "") -> int:
 
     fg, bg = screen.cursor.fg, screen.cursor.bg
     screen.cursor.fg = as_rgb(color_as_int(Color(255, 250, 205)))
-    screen.cursor.bg = as_rgb(color_as_int(Color(60, 71, 77)))
+    screen.cursor.bg = as_rgb(color_as_int(Color(210, 216, 217)))
     screen.draw(symbol)
     screen.cursor.fg, screen.cursor.bg = fg, bg
     screen.cursor.x = len(symbol)
@@ -136,7 +136,7 @@ def draw_tab(
     is_last: bool,
     extra_data: ExtraData,
 ) -> int:
-    _draw_icon(screen, index, symbol="  \uf490  ")
+    _draw_icon(screen, index)
     _draw_left_status(
         draw_data,
         screen,

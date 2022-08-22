@@ -1,13 +1,13 @@
 require("lualine").setup({
     options = {
         icons_enabled = true,
-        theme = "codedark",
-        component_separators = { left = "", right = "" },
+        theme = "gruvbox",
+        -- component_separators = { left = "|", right = "|" },
         -- section_separators = { left = "", right = "" },
-        section_separators = "",
+        -- section_separators = "",
         -- component_separators = "",
-        disabled_filetypes = {},
-        always_divide_middle = true,
+        disabled_filetypes = { 'packer', "Terminal", "TelescopePrompt", "NvimTree" },
+        -- always_divide_middle = true,
     },
     sections = {
         lualine_a = { "mode" },
