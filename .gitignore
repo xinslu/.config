@@ -3,6 +3,11 @@
 !starship.toml
 !nvim/**
 !kitty/**
+!polybar/docky**
 !i3/**
 !fish/**
+!ranger/**
 !.gitignore
+!.zshenv
+!.zshrc
+!.imwheelrc
