@@ -7,6 +7,7 @@
 !i3/**
 !fish/**
 !ranger/**
+!rofi/launchers/type-1/**
 !.gitignore
 !.zshenv
 !.zshrc

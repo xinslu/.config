@@ -17,7 +17,7 @@ bindsym $mod+Shift+d exec dmenu_run
 bindsym $mod+Ctrl+q exec ~/.config/i3/lock2.sh
 
 # bindsym $mod+d exec rofi -no-lazy-grab -show drun -modi drun -theme $HOME/.config/rofi/launchers/colorful/style_7
-bindsym $mod+d exec rofi -show run
+bindsym $mod+d exec ~/.config/rofi/launchers/type-1/launcher.sh
 
 bindsym Print exec flameshot full -c
 bindsym Shift+Print exec flameshot gui
@@ -124,7 +124,8 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 # Connect to Airpods
 bindsym $mod+Shift+a exec ~/.config/i3/connect_airpods.sh
-bindsym $mod+- exec ~/.config/i3/disconnect.sh
+bindsym $mod+Shift+p exec firefox -private-window
+bindsym $mod+Shift+u exec ~/.config/i3/disconnect.sh
 # resize window (you can also use the mouse for that)
 mode "resize" {
         bindsym h resize shrink width 10 px or 10 ppt
@@ -213,7 +214,7 @@ exec_always "setxkbmap -model pc104 -layout us -variant ,, -option grp:alt_shift
 exec --no-startup-id i3-msg 'workspace 1; exec kitty;'
 exec --no-startup-id i3-msg 'workspace 2; exec firefox; workspace 2'
 exec --no-startup-id i3-msg 'workspace 3; exec thunderbird; workspace 3'
-exec --no-startup-id i3-msg 'workspace 4; exec firefox; workspace 4'
+exec --no-startup-id i3-msg 'workspace 4; exec firefox youtube.com; workspace 4'
 exec --no-startup-id i3-msg 'workspace 5; exec /usr/bin/Discord; workspace 1'
 exec --no-startup-id xautolock -time 5 -locker '~/.config/i3/lock2.sh' &
 exec_always "imwheel -b '45'"
