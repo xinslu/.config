@@ -142,7 +142,7 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-bindsym $mod+n exec --no-startup-id "$HOME/.local/bin/wal -i $HOME/wallpapers/inuse"
+# bindsym $mod+n exec --no-startup-id "$HOME/.local/bin/wal -i $HOME/wallpapers/inuse"
 
 
 set $bg-color            #2f343f
@@ -180,7 +180,6 @@ bindsym XF86AudioPrev exec playerctl previous
 # Media player controls
 
 
-
 # Add a 5px border to all windows.
 font pango:lemon 0
 for_window [class=".*"] title_format "<span font='Hack Nerd Font Mono'> > %title</span>"
@@ -192,8 +191,6 @@ for_window [class="kitty"] border pixel 0
 for_window [title=".*\(Private Browsing\).*"] move to workspace "6"
 
 new_window pixel 0
-
-
 
 #set workspace names
 set $workspace1 "1"

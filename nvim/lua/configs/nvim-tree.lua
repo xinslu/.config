@@ -52,7 +52,16 @@ nvim_tree.setup({
                 folder = {
                     default = "",
                     open = ""
-                }
+                },
+                git = {
+                    unstaged = "U",
+                    staged = "S",
+                    unmerged = "",
+                    renamed = "➜",
+                    untracked = "★",
+                    deleted = "",
+                    ignored = "◌",
+                },
             },
         },
         highlight_opened_files = "3"
