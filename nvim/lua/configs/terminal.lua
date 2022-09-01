@@ -10,7 +10,7 @@ require('nvim-terminal').setup({
         split = 'sp',
 
         -- Width of the terminal
-        width = 116,
+        width = 115,
 
         -- Height of the terminal
         height = 8,
