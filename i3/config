@@ -125,7 +125,7 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 # Connect to Airpods
 bindsym $mod+Shift+a exec ~/.config/i3/connect_airpods.sh
 bindsym $mod+Shift+b exec ~/.config/i3/connect_beats.sh
-bindsym $mod+Shift+p exec firefox -private-window
+bindsym $mod+Shift+p exec brave-browser -private-window
 bindsym $mod+Shift+u exec ~/.config/i3/disconnect.sh
 bindsym $mod+Ctrl+v exec rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
 # resize window (you can also use the mouse for that)
@@ -190,9 +190,6 @@ font pango:monospace 0
 # for_window [class=".*"] title_format "<span font='Hack Nerd Font Mono'> %title</span>"
 
 for_window [class="^.*"] border normal 0
-# for_window [floating] border pixel 2
-# for_window [tiling] border pixel 2
-# for_window [class="kitty"] border pixel 0
 for_window [title=".*\(Private Browsing\).*"] move to workspace "7"
 default_border pixel 2
 default_floating_border pixel 2
@@ -210,16 +207,16 @@ assign [class="discord"] 5
 
 hide_edge_borders both
 # exec --no-startup-id xrdb ~/.Xresources
-exec_always feh --bg-scale --no-startup-id ~/Downloads/bg.png
-exec --no-startup-id xrandr --output HDMI-0 --primary --mode 2560x1440 --rate 75 --pos 0x0 --rotate normal --output DP-0 --off --output DP-1 --off --output eDP-1-0 --off
-exec ~/.config/polybar/docky/launch.sh 
+exec_always "python3 ~/.config/i3/screens.py"
 exec_always "setxkbmap -model pc104 -layout us -variant ,, -option grp:alt_shift_toggle"
-exec --no-startup-id i3-msg 'workspace 1; exec kitty;'
-exec --no-startup-id i3-msg 'workspace 2; exec firefox; workspace 2'
-exec --no-startup-id i3-msg 'workspace 3; exec thunderbird; workspace 3'
-exec --no-startup-id i3-msg 'workspace 4; exec firefox; workspace 4'
-exec --no-startup-id i3-msg 'workspace 5; exec /usr/bin/Discord; workspace 5'
-exec --no-startup-id i3-msg 'workspace 6; exec firefox --new-window canvas.gatech.edu; workspace 6'
-exec --no-startup-id xautolock -time 5 -locker '~/.config/i3/lock2.sh' &
 exec_always greenclip daemon
 exec_always "imwheel -b '45'"
+exec_always ~/.config/polybar/docky/launch.sh 
+exec_always feh --bg-scale --no-startup-id ~/Downloads/background.png
+exec --no-startup-id i3-msg 'workspace 1; exec kitty;'
+exec --no-startup-id i3-msg 'workspace 5; exec /usr/bin/Discord; workspace 5'
+exec --no-startup-id i3-msg 'workspace 3; exec thunderbird; workspace 3'
+exec --no-startup-id i3-msg 'workspace 2; exec brave-browser; workspace 2'
+exec --no-startup-id i3-msg 'workspace 4; exec brave-browser; workspace 4'
+exec --no-startup-id i3-msg 'workspace 6; exec brave-browser; workspace 6'
+exec --no-startup-id xautolock -time 5 -locker '~/.config/i3/lock2.sh' &
