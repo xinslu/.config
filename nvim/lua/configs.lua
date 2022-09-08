@@ -21,8 +21,7 @@ local group = vim.api.nvim_create_augroup("rc", { clear = true })
 vim.api.nvim_create_autocmd("TermOpen",
     { command = "setlocal nobuflisted nonumber norelativenumber", group = group })
 vim.api.nvim_create_autocmd("FileType qf",
-    { command = "set nobuflisted", group = group })
-vim.api.nvim_create_autocmd("InsertEnter", { command = ":let @/=\"\"" })
+    { command = "set nobuflisted" })
 ----
 
 set.guicursor = ""
