@@ -14,6 +14,7 @@ require("highlights")
 vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
 vim.cmd [[autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js EslintFixAll]]
 vim.cmd [[autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js Prettier]]
+vim.cmd [[set guifont="Dank Mono:12"]]
 ----
 
 -- Autocmds --

@@ -1,12 +1,12 @@
 require("lualine").setup({
     options = {
         icons_enabled = true,
-        theme = "gruvbox",
+        theme = "codedark",
         -- component_separators = { left = "|", right = "|" },
         -- section_separators = { left = "", right = "" },
-        -- section_separators = "",
-        -- component_separators = "",
-        disabled_filetypes = { 'packer', "Terminal" },
+        section_separators = "",
+        component_separators = "",
+        -- disabled_filetypes = { 'packer', "Terminal" },
         -- always_divide_middle = true,
     },
     sections = {
