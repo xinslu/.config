@@ -6,4 +6,3 @@ export VIDEO="mpv"
 export IMAGE="sxiv"
 export COLORTERM="truecolor"
 export WM="i23wm"
-

@@ -44,13 +44,13 @@ map('n', '<Space>bw', ':BufferOrderByWindowNumber<CR>', opts)
 -- Set barbar's options
 require 'bufferline'.setup {
     -- Enable/disable animations
-    animation = false,
+    animation = true,
 
     -- Enable/disable auto-hiding the tab bar when there is a single buffer
     auto_hide = false,
 
     -- Enable/disable current/total tabpages indicator (top right corner)
-    tabpages = true,
+    tabpages = false,
 
     -- Enable/disable close button
     closable = true,
