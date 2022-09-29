@@ -5,7 +5,6 @@ return require('packer').startup(function()
     use {
         'kyazdani42/nvim-tree.lua',
         config = [[require('configs.nvim-tree')]]
-
     }
     use {
         'nvim-lualine/lualine.nvim',
@@ -116,4 +115,5 @@ return require('packer').startup(function()
     })
     use 'svermeulen/vim-yoink'
     use 'kyazdani42/nvim-web-devicons'
+    use 'ayu-theme/ayu-vim'
 end)
