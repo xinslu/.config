@@ -1,7 +1,5 @@
 set $mod Mod4
-
 floating_modifier $mod
-
 # start a terminal
 bindsym $mod+Shift+Return exec kitty ranger
 
@@ -17,7 +15,7 @@ bindsym $mod+Shift+d exec dmenu_run
 bindsym $mod+Ctrl+q exec ~/.config/i3/lock2.sh
 
 # bindsym $mod+d exec rofi -no-lazy-grab -show drun -modi drun -theme $HOME/.config/rofi/launchers/colorful/style_7
-bindsym $mod+d exec rofi -show run
+bindsym $mod+d exec ~/.config/rofi/launchers/type-1/launcher.sh
 
 bindsym Print exec flameshot full -c
 bindsym Shift+Print exec flameshot gui
@@ -64,6 +62,7 @@ bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
+
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
 
@@ -77,14 +76,14 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 #bind workspaces to specific screens
-workspace $workspace1 output DP-0
-workspace $workspace3 output DP-0
-workspace $workspace5 output DP-0
-workspace $workspace7 output DP-0
-workspace $workspace2 output DP-3
-workspace $workspace4 output DP-3
-workspace $workspace6 output DP-3
-workspace $workspace8 output DP-3
+# workspace $workspace1 output DP-0
+# workspace $workspace3 output DP-0
+# workspace $workspace5 output DP-0
+# workspace $workspace7 output DP-0
+# workspace $workspace2 output DP-3
+# workspace $workspace4 output DP-3
+# workspace $workspace6 output DP-3
+# workspace $workspace8 output DP-3
 
 
 bindsym $mod+1 workspace $workspace1
@@ -95,8 +94,8 @@ bindsym $mod+5 workspace $workspace5
 bindsym $mod+6 workspace $workspace6
 bindsym $mod+7 workspace $workspace7
 bindsym $mod+8 workspace $workspace8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
+bindsym $mod+9 workspace $workspace9
+bindsym $mod+0 workspace $workspace0
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $workspace1
@@ -107,7 +106,7 @@ bindsym $mod+Shift+5 move container to workspace $workspace5
 bindsym $mod+Shift+6 move container to workspace $workspace6
 bindsym $mod+Shift+7 move container to workspace $workspace7
 bindsym $mod+Shift+8 move container to workspace $workspace8
-bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+9 move container to workspace $workspace9
 bindsym $mod+Shift+0 move container to workspace 10
 
 # make mod+tab cycle through workspaces
@@ -122,8 +121,11 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 # Connect to Airpods
-bindsym $mod+Shift+a exec ~/connect_airpods.sh
-bindsym $mod+- exec ~/.config/i3/disconnect.sh
+bindsym $mod+Shift+a exec ~/.config/i3/connect_airpods.sh
+bindsym $mod+Shift+b exec ~/.config/i3/connect_beats.sh
+bindsym $mod+Shift+p exec brave-browser -private-window
+bindsym $mod+Shift+u exec ~/.config/i3/disconnect.sh
+bindsym $mod+Ctrl+v exec rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
 # resize window (you can also use the mouse for that)
 mode "resize" {
         bindsym h resize shrink width 10 px or 10 ppt
@@ -145,7 +147,7 @@ bindsym $mod+r mode "resize"
 # bindsym $mod+n exec --no-startup-id "$HOME/.local/bin/wal -i $HOME/wallpapers/inuse"
 
 
-set $bg-color            #2f343f
+set $bg-color            #000000
 set $inactive-bg-color   #2f343f
 set $text-color          #f3f4f5
 set $inactive-text-color #676E7D
@@ -155,15 +157,15 @@ set $urgent-bg-color     #E53935
 set_from_resource $fg i3wm.color7 #f0f0f0
 set_from_resource $bg i3wm.color2 #f0f0f0
 # set $tb                           #cc222222
-set $tb                           #ffdab9
+set $tb                           #3587e5
 
 # class                     border  backgr. text indicator child_border
-client.focused              $tb     $tb     $fg  $bg       $tb
-client.focused_inactive     $tb     $tb     $fg  $bg       $tb
-client.unfocused            $tb     $tb     $fg  $bg       $tb
-client.urgent               $tb     $tb     $fg  $bg       $tb
+client.focused              $tb     $tb $tb  $tb       $tb
+client.focused_inactive     $tb     #000000 $fg  $bg       $tb
+# client.unfocused            #000000     $tb     $fg  $bg       $tb
+# client.urgent               $tb     $tb     $fg  $bg       $tb
 client.placeholder          $tb     $tb     $fg  $bg       $tb
-client.background           $tb
+# client.background           $tb
 
 
 
@@ -181,16 +183,13 @@ bindsym XF86AudioPrev exec playerctl previous
 
 
 # Add a 5px border to all windows.
-font pango:lemon 0
-for_window [class=".*"] title_format "<span font='Hack Nerd Font Mono'> > %title</span>"
+font pango:monospace 0
+# for_window [class=".*"] title_format "<span font='Hack Nerd Font Mono'> %title</span>"
 
-for_window [class="^.*"] border pixel 0
-for_window [floating] border pixel 0
-for_window [tiling] border pixel 0
-for_window [class="kitty"] border pixel 0
-for_window [title=".*\(Private Browsing\).*"] move to workspace "6"
-
-new_window pixel 0
+for_window [class="^.*"] border normal 0
+for_window [title=".*\(Private Browsing\).*"] move to workspace "7"
+default_border pixel 2
+default_floating_border pixel 2
 
 #set workspace names
 set $workspace1 "1"
@@ -199,18 +198,23 @@ set $workspace3 "3"
 set $workspace4 "4"
 set $workspace5 "5"
 set $workspace6 "6"
-assign [class="discord"]   5
+set $workspace7 "7"
+set $workspace8 "8"
+set $workspace9 "9"
+assign [class="discord"] 5
 
 hide_edge_borders both
-exec --no-startup-id xrdb ~/.Xresources
-exec_always feh --bg-scale --no-startup-id ~/Downloads/bg.png
-exec --no-startup-id xrandr --output HDMI-0 --primary --mode 2560x1440 --rate 75 --pos 0x0 --rotate normal --output DP-0 --off --output DP-1 --off --output eDP-1-0 --off
-exec ~/.config/polybar/docky/launch.sh 
+# exec --no-startup-id xrdb ~/.Xresources
+exec_always "python3 ~/.config/i3/screens.py"
 exec_always "setxkbmap -model pc104 -layout us -variant ,, -option grp:alt_shift_toggle"
-exec --no-startup-id i3-msg 'workspace 1; exec kitty;'
-exec --no-startup-id i3-msg 'workspace 2; exec firefox; workspace 2'
-exec --no-startup-id i3-msg 'workspace 3; exec thunderbird; workspace 3'
-exec --no-startup-id i3-msg 'workspace 4; exec firefox; workspace 4'
-exec --no-startup-id i3-msg 'workspace 5; exec /usr/bin/Discord; workspace 1'
-exec --no-startup-id xautolock -time 5 -locker '~/.config/i3/lock2.sh' &
+exec_always greenclip daemon
 exec_always "imwheel -b '45'"
+exec_always ~/.config/polybar/docky/launch.sh 
+exec_always --no-startup-id xsetroot -solid "#000000" 
+exec --no-startup-id i3-msg 'workspace 1; exec kitty;'
+exec --no-startup-id i3-msg 'workspace 5; exec /usr/bin/Discord; workspace 5'
+exec --no-startup-id i3-msg 'workspace 3; exec thunderbird; workspace 3'
+exec --no-startup-id i3-msg 'workspace 2; exec brave-browser && sleep 10; workspace 2'
+exec --no-startup-id i3-msg 'workspace 4; exec brave-browser && sleep 10; workspace 4'
+exec --no-startup-id i3-msg 'workspace 6; exec brave-browser && sleep 10; workspace 6'
+exec --no-startup-id xautolock -time 5 -locker '~/.config/i3/lock2.sh' &

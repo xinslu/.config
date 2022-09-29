@@ -4,12 +4,12 @@ vim.g.mapleader = " "
 vim.g.gruvbox_improved_warnings = 1
 set.termguicolors = true
 vim.g.gruvbox_contrast_hard = 'hard'
+vim.cmd [[let bufferline = get(g:, 'bufferline', {})]]
 require('configs.terminal')
 require('nvim_comment').setup()
 require('configs.trouble')
 require('keymaps')
 require("highlights")
-
 -- Formatting --
 vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
 vim.cmd [[autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js EslintFixAll]]
@@ -21,8 +21,7 @@ local group = vim.api.nvim_create_augroup("rc", { clear = true })
 vim.api.nvim_create_autocmd("TermOpen",
     { command = "setlocal nobuflisted nonumber norelativenumber", group = group })
 vim.api.nvim_create_autocmd("FileType qf",
-    { command = "set nobuflisted", group = group })
-vim.api.nvim_create_autocmd("InsertEnter", { command = ":let @/=\"\"" })
+    { command = "set nobuflisted" })
 ----
 
 set.guicursor = ""

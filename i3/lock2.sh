@@ -7,7 +7,7 @@ dbus-send --print-reply --dest=com.github.chjj.compton.${DISPLAY/:/_} / \
     com.github.chjj.compton.opts_set string:unredir_if_possible boolean:false
 
 i3lock \
-  -i $TMPBG \
+  --color=000000\
   --time-pos="x+90:y+1320" \
   --date-pos="tx+24:ty+25" \
   --clock --date-str "Type password to unlock..." \
