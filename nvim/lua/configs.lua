@@ -11,17 +11,17 @@ require('configs.trouble')
 require('keymaps')
 require("highlights")
 -- Formatting --
-vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
-vim.cmd [[autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js EslintFixAll]]
-vim.cmd [[autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js Prettier]]
+cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
+cmd [[autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js EslintFixAll]]
+cmd [[autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js Prettier]]
 ----
 
 -- Autocmds --
-local group = vim.api.nvim_create_augroup("rc", { clear = true })
+local group = vim.api.nvim_create_augroup("rc", { clear = false })
 vim.api.nvim_create_autocmd("TermOpen",
     { command = "setlocal nobuflisted nonumber norelativenumber", group = group })
-vim.api.nvim_create_autocmd("FileType qf",
-    { command = "set nobuflisted" })
+-- vim.api.nvim_create_autocmd("FileType Trouble",
+--     { command = "setlocal nobuflisted" })
 ----
 
 set.guicursor = ""

@@ -16,7 +16,8 @@ end
 lsp_installer.setup {
     -- A list of servers to automatically install if they're not already installed
     ensure_installed = { "bashls", "cssls", "graphql", "html", "jsonls", "sumneko_lua", "tailwindcss",
-        "tsserver", "vetur", "vuels", "rust_analyzer", "eslint", "gopls", "dockerls", "omnisharp", "pyright" },
+        "tsserver", "vetur", "vuels", "rust_analyzer", "eslint", "gopls", "dockerls", "omnisharp", "pyright",
+        "clangd" },
     -- Whether servers that are set up (via lspconfig) should be automatically installed if they're not already installed
     automatic_installation = true,
 }
@@ -191,6 +192,12 @@ lspconfig.rust_analyzer.setup {
     capabilities = capabilities,
 }
 
+lspconfig.clangd.setup {
+    on_attach = custom_attach,
+    capabilities = capabilities,
+}
+
+
 lspconfig.jsonls.setup {
     on_attach = custom_attach,
     capabilities = capabilities,
@@ -201,6 +208,12 @@ lspconfig.gopls.setup {
     on_attach = custom_attach,
     capabilities = capabilities,
 }
+
+-- lspconfig.ccls.setup {
+--     on_attach = custom_attach,
+--     capabilities = capabilities,
+-- }
+
 
 lspconfig.dockerls.setup {
     on_attach = custom_attach,

@@ -3,7 +3,7 @@
 
 # Path to your oh-my-zsh installation.
 # export ZSH="$HOME/.oh-my-zsh"
-export PATH="/home/kinshukphalke/.config/networkmanager-dmenu-2.1.0/networkmanager_dmenu:/home/kinshukphalke/greenclip:$PATH"
+export PATH="/opt/ti/uniflash_4.6.0/deskdb/content/TICloudAgent/linux/ccs_base/DebugServer/bin:/opt/gcc-arm-none-eabi-9-2019-q4-major/bin:/home/kinshukphalke/.config/networkmanager-dmenu-2.1.0/networkmanager_dmenu:/home/kinshukphalke/greenclip:$PATH"
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -14,7 +14,7 @@ export EDITOR=nvim
 alias cat="bat"
 alias grouch="python ~/Documents/grouch/src/tracker.py fall"
 alias cn="cd ~/.config/nvim && nvim ~/.config/nvim/init.lua"
-alias circuitsim='java --module-path ~/Downloads/javafx-sdk-18.0.2/lib/ --add-modules=javafx.controls -jar ~/Downloads/CircuitSim1.8.3.jar'
+alias circuitsim='java --module-path ~/Downloads/javafx-sdk-18.0.2/lib/ --add-modules=javafx.controls -jar ~/Downloads/CircuitSim1.8.2.jar'
 TREE_IGNORE="cache|log|logs|node_modules|vendor"
 bindkey "^[[A" history-beginning-search-backward
 bindkey "^[[B" history-beginning-search-forward # Set list of themes to pick from when loading at random
@@ -105,7 +105,8 @@ alias gp="git push"
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-#
+export PKG_CONFIG_PATH="/usr/local/lib/arm-none-eabi/pkgconfig:$PKG_CONFIG_PATH"
+export ACLOCAL_PATH="/usr/local/share/aclocal:$ACLOCAL_PATH"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
