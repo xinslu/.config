@@ -35,7 +35,7 @@ require('telescope').setup {
 vim.keymap.set('n', '<C-f>', ":lua require('telescope.builtin').grep_string({ search = vim.fn.input('Grep For > ')})<CR>"
     ,
     { noremap = true, desc = "Project Wide search" })
-vim.keymap.set('n', '<C-p>', ":lua require('telescope.builtin').find_files()<CR>"
+vim.keymap.set('n', '<C-s>', ":lua require('telescope.builtin').find_files()<CR>"
     ,
     { noremap = true, desc = "Project Wide File search" })
 vim.keymap.set('n', 'gr', ":lua require('telescope.builtin').lsp_references()<CR>"

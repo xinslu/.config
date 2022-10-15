@@ -123,8 +123,10 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 # Connect to Airpods
 bindsym $mod+Shift+a exec ~/.config/i3/connect_airpods.sh
 bindsym $mod+Shift+b exec ~/.config/i3/connect_beats.sh
-bindsym $mod+Shift+p exec brave-browser -private-window
+bindsym $mod+Shift+p exec ~/.config/i3/connect_q30.sh
 bindsym $mod+Shift+u exec ~/.config/i3/disconnect.sh
+bindsym $mod+c exec brave-browser --new-window gatech.instructure.com
+bindsym $mod+p exec kitty python 
 bindsym $mod+Ctrl+v exec rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -220,4 +222,4 @@ exec --no-startup-id i3-msg 'workspace 3; exec thunderbird; workspace 3'
 exec --no-startup-id i3-msg 'workspace 2; exec brave-browser && sleep 10; workspace 2'
 exec --no-startup-id i3-msg 'workspace 4; exec brave-browser && sleep 10; workspace 4'
 exec --no-startup-id i3-msg 'workspace 6; exec brave-browser && sleep 10; workspace 6'
-# exec --no-startup-id xautolock -time 5 -locker '~/.config/i3/lock2.sh' &
+exec --no-startup-id xautolock -time 5 -locker '~/.config/i3/lock2.sh' &

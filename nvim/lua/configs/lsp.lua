@@ -34,8 +34,7 @@ local custom_attach = function(client, bufnr)
     vim.keymap.set("n", "<space>wl", function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end, opts)
     vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, opts)
     vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
-    vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
-    vim.keymap.set("n", "<space>q", function() vim.diagnostic.setqflist({ open = true }) end, opts)
+    vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts) vim.keymap.set("n", "<space>q", function() vim.diagnostic.setqflist({ open = true }) end, opts)
     vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, opts)
     vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, opts)
     vim.api.nvim_create_autocmd("CursorHold", {
@@ -209,16 +208,22 @@ lspconfig.gopls.setup {
     capabilities = capabilities,
 }
 
--- lspconfig.ccls.setup {
---     on_attach = custom_attach,
---     capabilities = capabilities,
--- }
+lspconfig.texlab.setup {
+    on_attach = custom_attach,
+    capabilities = capabilities,
+}
 
 
 lspconfig.dockerls.setup {
     on_attach = custom_attach,
     capabilities = capabilities,
 }
+
+lspconfig.ccls.setup {
+    on_attach = custom_attach,
+    capabilities = capabilities,
+}
+
 
 lspconfig.tsserver.setup {
     on_attach = custom_attach,
@@ -264,7 +269,6 @@ cmd("set shortmess+=c")
 local opts = {
     tools = { -- rust-tools options
         autoSetHints = true,
-        hover_with_actions = true,
         inlay_hints = {
             show_parameter_hints = false,
             parameter_hints_prefix = "",
