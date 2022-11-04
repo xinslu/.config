@@ -1,9 +1,7 @@
 local set = vim.opt -- global options
 local cmd = vim.cmd -- execute Vim commands
 vim.g.mapleader = " "
-vim.g.gruvbox_improved_warnings = 1
 set.termguicolors = true
-vim.g.gruvbox_contrast_hard = 'hard'
 require('configs.terminal')
 require('nvim_comment').setup()
 require('configs.trouble')
@@ -13,7 +11,7 @@ require("highlights")
 -- Formatting --
 cmd [[filetype on]]
 cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
-cmd [[autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js EslintFixAll]]
+-- cmd [[autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js EslintFixAll]]
 cmd [[autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js Prettier]]
 ----
 

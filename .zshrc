@@ -3,7 +3,8 @@
 
 # Path to your oh-my-zsh installation.
 # export ZSH="$HOME/.oh-my-zsh"
-export PATH="/opt/ti/uniflash_4.6.0/deskdb/content/TICloudAgent/linux/ccs_base/DebugServer/bin:/opt/gcc-arm-none-eabi-9-2019-q4-major/bin:/home/kinshukphalke/.config/networkmanager-dmenu-2.1.0/networkmanager_dmenu:/home/kinshukphalke/greenclip:$PATH"
+export IDF_PATH=~/esp/esp-idf
+export PATH="$IDF_PATH/tools:/opt/ti/uniflash_4.6.0/deskdb/content/TICloudAgent/linux/ccs_base/DebugServer/bin:/opt/gcc-arm-none-eabi-9-2019-q4-major/bin:/home/kinshukphalke/.config/networkmanager-dmenu-2.1.0/networkmanager_dmenu:/home/kinshukphalke/greenclip:/home/kinshukphalke/.local/bin:$PATH"
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -11,7 +12,7 @@ export PATH="/opt/ti/uniflash_4.6.0/deskdb/content/TICloudAgent/linux/ccs_base/D
 # ZSH_THEME="robbyrussell"
 export VISUAL=nvim
 export EDITOR=nvim
-alias cat="bat"
+# alias cat="bat"
 alias grouch="python ~/Documents/grouch/src/tracker.py fall"
 alias cn="cd ~/.config/nvim && nvim ~/.config/nvim/init.lua"
 alias circuitsim='java --module-path ~/Downloads/javafx-sdk-18.0.2/lib/ --add-modules=javafx.controls -jar ~/Downloads/CircuitSim1.8.2.jar'
@@ -115,13 +116,13 @@ eval "$(starship init zsh)"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-alias ls="exa --group-directories-first"
-alias la=' ls -al'
-alias ll=' ls --git -l'
-alias lt=' ls --tree -L 2 -I ${TREE_IGNORE}'
-alias ltt=' ls --tree -D -L 3 -I ${TREE_IGNORE}'
-alias lttt=' ls --tree -D -L 4 -I ${TREE_IGNORE}'
-alias ltttt=' ls --tree -D -L 5 -I ${TREE_IGNORE}'
+# alias ls="exa --group-directories-first"
+# alias la=' ls -al'
+# alias ll=' ls --git -l'
+# alias lt=' ls --tree -L 2 -I ${TREE_IGNORE}'
+# alias ltt=' ls --tree -D -L 3 -I ${TREE_IGNORE}'
+# alias lttt=' ls --tree -D -L 4 -I ${TREE_IGNORE}'
+# alias ltttt=' ls --tree -D -L 5 -I ${TREE_IGNORE}'
 alias ca="~/connect_airpods.sh"
 source /home/kinshukphalke/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 SAVEHIST=1000  # Save most-recent 1000 lines

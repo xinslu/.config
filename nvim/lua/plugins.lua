@@ -118,4 +118,9 @@ return require('packer').startup(function()
     use 'svermeulen/vim-yoink'
     use 'kyazdani42/nvim-web-devicons'
     use 'ayu-theme/ayu-vim'
+    use {
+        "ray-x/lsp_signature.nvim",
+    }
+    use 'chriskempson/base16-vim'
+    use 'sjl/badwolf'
 end)

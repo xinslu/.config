@@ -17,7 +17,7 @@ lsp_installer.setup {
     -- A list of servers to automatically install if they're not already installed
     ensure_installed = { "bashls", "cssls", "graphql", "html", "jsonls", "sumneko_lua", "tailwindcss",
         "tsserver", "vetur", "vuels", "rust_analyzer", "eslint", "gopls", "dockerls", "omnisharp", "pyright",
-        "clangd" },
+        "clangd", "jdtls" },
     -- Whether servers that are set up (via lspconfig) should be automatically installed if they're not already installed
     automatic_installation = true,
 }
@@ -34,9 +34,16 @@ local custom_attach = function(client, bufnr)
     vim.keymap.set("n", "<space>wl", function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end, opts)
     vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, opts)
     vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
-    vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts) vim.keymap.set("n", "<space>q", function() vim.diagnostic.setqflist({ open = true }) end, opts)
+    vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
+    vim.keymap.set("n", "<space>q", function() vim.diagnostic.setqflist({ open = true }) end, opts)
     vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, opts)
     vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, opts)
+    require "lsp_signature".on_attach({
+        bind = true,
+        handler_opts = {
+            border = "rounded"
+        }
+    }, bufnr)
     vim.api.nvim_create_autocmd("CursorHold", {
         buffer = bufnr,
         callback = function()
@@ -64,10 +71,10 @@ local custom_attach = function(client, bufnr)
     })
 
     -- Set some key bindings conditional on server capabilities
-    if client.resolved_capabilities.document_formatting then
+    if client.server_capabilities.document_formatting then
         vim.keymap.set("n", "<space>f", vim.lsp.buf.formatting_sync, opts)
     end
-    if client.resolved_capabilities.document_range_formatting then
+    if client.server_capabilities.document_range_formatting then
         vim.keymap.set("x", "<space>f", vim.lsp.buf.range_formatting, opts)
     end
 
@@ -78,35 +85,30 @@ local custom_attach = function(client, bufnr)
 end
 
 local capabilities = lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local lspconfig = require("lspconfig")
 
-if utils.executable('pylsp') then
-    lspconfig.pylsp.setup({
-        on_attach = custom_attach,
-        settings = {
-            pylsp = {
-                plugins = {
-                    pylint = { enabled = true, executable = "pylint" },
-                    pyflakes = { enabled = false },
-                    pycodestyle = { enabled = false },
-                    jedi_completion = { fuzzy = true },
-                    pyls_isort = { enabled = true },
-                    pylsp_mypy = { enabled = true },
-                },
+lspconfig.pylsp.setup({
+    on_attach = custom_attach,
+    settings = {
+        pylsp = {
+            plugins = {
+                pylint = { enabled = true, executable = "pylint" },
+                pyflakes = { enabled = false },
+                pycodestyle = { enabled = false },
+                jedi_completion = { fuzzy = true },
+                pyls_isort = { enabled = true },
+                pylsp_mypy = { enabled = true },
             },
         },
-        flags = {
-            debounce_text_changes = 200,
-        },
-        capabilities = capabilities,
-    })
-else
-    vim.notify("pylsp not found!", 'warn', { title = 'Nvim-config' })
-end
-
+    },
+    flags = {
+        debounce_text_changes = 200,
+    },
+    capabilities = capabilities,
+})
 if utils.executable('pyright') then
     lspconfig.pyright.setup {
         on_attach = custom_attach,
@@ -176,10 +178,10 @@ lspconfig.sumneko_lua.setup({
     },
     capabilities = capabilities,
 })
--- local handlers = {
---     ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),
---     ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" }),
--- }
+local handlers = {
+    ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),
+    ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" }),
+}
 
 lspconfig.eslint.setup {
     on_attach = custom_attach,
@@ -196,6 +198,10 @@ lspconfig.clangd.setup {
     capabilities = capabilities,
 }
 
+lspconfig.jdtls.setup {
+    on_attach = custom_attach,
+    capabilities = capabilities,
+}
 
 lspconfig.jsonls.setup {
     on_attach = custom_attach,
@@ -219,10 +225,10 @@ lspconfig.dockerls.setup {
     capabilities = capabilities,
 }
 
-lspconfig.ccls.setup {
-    on_attach = custom_attach,
-    capabilities = capabilities,
-}
+-- lspconfig.ccls.setup {
+--     on_attach = custom_attach,
+--     capabilities = capabilities,
+-- }
 
 
 lspconfig.tsserver.setup {
