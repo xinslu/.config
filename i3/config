@@ -122,7 +122,8 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 # Connect to Airpods
 bindsym $mod+Shift+a exec ~/.config/i3/connect_airpods.sh
-bindsym $mod+Shift+b exec ~/.config/i3/connect_beats.sh
+# bindsym $mod+Shift+b exec ~/.config/i3/connect_beats.sh
+bindsym $mod+Shift+b exec marcador rofi
 bindsym $mod+Shift+p exec ~/.config/i3/connect_q30.sh
 bindsym $mod+Shift+u exec ~/.config/i3/disconnect.sh
 bindsym $mod+c exec brave-browser --new-window gatech.instructure.com
