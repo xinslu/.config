@@ -12,3 +12,5 @@
 !.zshenv
 !.zshrc
 !.imwheelrc
+!tmux/** 
+!alacritty/**
