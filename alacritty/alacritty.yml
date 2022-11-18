@@ -133,7 +133,7 @@ font:
     family: monospace
 
     # The `style` can be specified to pick a specific face.
-    style: RobotMono Nerd Font Mono Bold
+    # style: RobotMono Nerd Font Mono Bold
 
   # Italic font face
   italic:
@@ -144,7 +144,7 @@ font:
     family: monospace
 
     # The `style` can be specified to pick a specific face.
-    style: RobotMono Font Mono Italic 
+    # style: RobotMono Font Mono Italic 
 
   # Bold italic font face
   bold_italic:
@@ -155,7 +155,7 @@ font:
     family: monospace
 
     # The `style` can be specified to pick a specific face.
-    style: RobotoMono Font Mono Bold Italic
+    # style: RobotoMono Font Mono Bold Italic
 
   # Point size
   size: 16.0
@@ -163,15 +163,15 @@ font:
   # Offset is the extra space around each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter
   # spacing.
-  # offset:
-  #  x: 0
-  #  y: 0
+  offset:
+   x: -1
+   y: -1
 
   # Glyph offset determines the locations of the glyphs within their cells with
   # the default being at the bottom. Increasing `x` moves the glyph to the
   # right, increasing `y` moves the glyph upward.
   glyph_offset:
-    x: 1
+    x: 2
     y: 0
 
   # Use built-in font for box drawing characters.

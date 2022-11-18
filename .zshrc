@@ -7,7 +7,7 @@ alias cn="cd ~/.config/nvim && nvim ~/.config/nvim/init.lua"
 alias circuitsim='java --module-path ~/Downloads/javafx-sdk-18.0.2/lib/ --add-modules=javafx.controls -jar ~/Downloads/CircuitSim1.8.2.jar'
 TREE_IGNORE="cache|log|logs|node_modules|vendor"
 bindkey "^[[A" history-beginning-search-backward
-bindkey "^[[B" history-beginning-search-forward # Set list of themes to pick from when loading at random
+bindkey "^[[B" history-beginning-search-forward 
 alias gcam="git commit -am"
 alias gaa="git add ."
 alias gp="git push"
