@@ -14,14 +14,14 @@
 # Any items in the `env` entry below will be added as
 # environment variables. Some entries may override variables
 # set by alacritty itself.
-env:
+# env:
   # TERM variable
   #
   # This value is used to set the `$TERM` environment variable for
   # each instance of Alacritty. If it is not present, alacritty will
   # check the local terminfo database and use `alacritty` if it is
   # available, otherwise `xterm-256color` is used.
-  TERM: xterm-kitty
+  # TERM: xterm-256color 
 
 #window:
   # Window dimensions (changes require restart)
@@ -780,6 +780,18 @@ key_bindings:
   -  { key: S,            mods: alt,                        chars: "\u001B:w\n"}
   -  { key: W,            mods: alt,                        chars: "\u001B:BufferClose\n"}
   -  { key: Q,            mods: alt,                        chars: "\u001B:quitall\n"}
+  -  { key: Key1,         mods: Control,                        chars: "\x02\x31"}
+  -  { key: Key2,         mods: Control,                        chars: "\x02\x32"}
+  -  { key: Key3,         mods: Control,                        chars: "\x02\x33"}
+  -  { key: Key4,         mods: Control,                        chars: "\x02\x34"}
+  -  { key: Key5,         mods: Control,                        chars: "\x02\x35"}
+  -  { key: Key6,         mods: Control,                        chars: "\x02\x36"}
+  -  { key: Key7,         mods: Control,                        chars: "\x02\x37"}
+  -  { key: Key8,         mods: Control,                        chars: "\x02\x38"}
+  -  { key: Key9,         mods: Control,                        chars: "\x02\x39"}
+  -  { key: T,            mods: Control,                        chars: "\x02\x63"}
+  -  { key: Q,            mods: Control,                        chars: "\x02\x78"}
+  -  { key: F,            mods: Control,                        chars: "ranger \x0D"}
 
   # Vi Mode
   #- { key: Space,  mods: Shift|Control, mode: ~Search,    action: ToggleViMode            }

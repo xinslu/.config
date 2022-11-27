@@ -124,7 +124,7 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 bindsym $mod+Shift+a exec ~/.config/i3/connect_airpods.sh
 # bindsym $mod+Shift+b exec ~/.config/i3/connect_beats.sh
 bindsym $mod+Shift+b exec ~/.config/i3/bookmark.sh
-bindsym $mod+Shift+p exec ~/.config/i3/connect_q30.sh
+bindsym $mod+Shift+p exec ~/.config/i3/connect_q30.sh > ~/output.txt
 bindsym $mod+Shift+u exec ~/.config/i3/disconnect.sh
 bindsym $mod+c exec brave-browser --new-window gatech.instructure.com
 bindsym $mod+p exec kitty python 
@@ -217,7 +217,7 @@ exec_always greenclip daemon
 exec_always "imwheel -b '45'"
 exec_always ~/.config/polybar/docky/launch.sh 
 exec_always --no-startup-id xsetroot -solid "#000000" 
-exec --no-startup-id i3-msg 'workspace 1; exec alacritty;'
+exec --no-startup-id i3-msg 'workspace 1; exec alacritty && sleep 10;'
 exec --no-startup-id i3-msg 'workspace 5; exec /usr/bin/Discord; workspace 5'
 exec --no-startup-id i3-msg 'workspace 3; exec thunderbird; workspace 3'
 exec --no-startup-id i3-msg 'workspace 2; exec brave-browser && sleep 10; workspace 2'

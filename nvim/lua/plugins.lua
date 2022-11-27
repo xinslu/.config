@@ -124,4 +124,6 @@ return require('packer').startup(function()
     use 'chriskempson/base16-vim'
     use 'sjl/badwolf'
     use 'aktersnurra/no-clown-fiesta.nvim'
+    use 'junegunn/goyo.vim'
+    use 'vimwiki/vimwiki'
 end)
