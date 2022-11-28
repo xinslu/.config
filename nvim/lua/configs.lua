@@ -11,7 +11,6 @@ require("highlights")
 -- Formatting --
 cmd [[filetype on]]
 cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
--- cmd [[autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js EslintFixAll]]
 cmd [[autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js Prettier]]
 ----
 
@@ -19,8 +18,6 @@ cmd [[autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js Prettier]]
 local group = vim.api.nvim_create_augroup("rc", { clear = false })
 vim.api.nvim_create_autocmd("TermOpen",
     { command = "setlocal nobuflisted nonumber norelativenumber", group = group })
--- vim.api.nvim_create_autocmd("FileType Trouble",
---     { command = "setlocal nobuflisted", group = group })
 ----
 
 set.guicursor = ""
