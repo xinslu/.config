@@ -8,6 +8,8 @@ export ACLOCAL_PATH="/usr/local/share/aclocal:$ACLOCAL_PATH"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+bindkey "^[[A" history-beginning-search-backward
+bindkey "^[[B" history-beginning-search-forward
 
 
 ### CONFIGS ###
@@ -27,7 +29,12 @@ alias todo="cd ~/vimwiki/ && nvim todos/todo.wiki"
 
 ### EVALS ###
 eval $(thefuck --alias)
-eval "$(starship init zsh)"
+
+## PROMPT ##
+autoload -U promptinit; promptinit
+zstyle :prompt:pure:path color cyan
+zstyle :prompt:pure:prompt:success color green
+prompt pure
 
 ### PLUGINS ###
 source /home/kinshukphalke/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

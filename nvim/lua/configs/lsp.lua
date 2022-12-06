@@ -95,7 +95,7 @@ lspconfig.pylsp.setup({
     settings = {
         pylsp = {
             plugins = {
-                pylint = { enabled = true, executable = "pylint" },
+                pylint = { enabled = false },
                 pyflakes = { enabled = false },
                 pycodestyle = { enabled = false },
                 jedi_completion = { fuzzy = true },
