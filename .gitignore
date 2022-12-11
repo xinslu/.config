@@ -12,3 +12,7 @@
 !.zshenv
 !.zshrc
 !.imwheelrc
+!tmux/** 
+!alacritty/**
+!awesome/**
+!dunst/**

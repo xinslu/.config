@@ -1,9 +1,7 @@
 local set = vim.opt -- global options
 local cmd = vim.cmd -- execute Vim commands
 vim.g.mapleader = " "
-vim.g.gruvbox_improved_warnings = 1
 set.termguicolors = true
-vim.g.gruvbox_contrast_hard = 'hard'
 require('configs.terminal')
 require('nvim_comment').setup()
 require('configs.trouble')
@@ -11,17 +9,13 @@ require('keymaps')
 require("highlights")
 
 -- Formatting --
-cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
-cmd [[autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js EslintFixAll]]
-cmd [[autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js Prettier]]
+cmd [[filetype on]]
 ----
 
 -- Autocmds --
 local group = vim.api.nvim_create_augroup("rc", { clear = false })
 vim.api.nvim_create_autocmd("TermOpen",
     { command = "setlocal nobuflisted nonumber norelativenumber", group = group })
--- vim.api.nvim_create_autocmd("FileType Trouble",
---     { command = "setlocal nobuflisted" })
 ----
 
 set.guicursor = ""

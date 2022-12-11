@@ -17,4 +17,5 @@ while True:
             subprocess.Popen(["bash", "~/.config/polybar/docky/launch.sh"])
         if scr_info2 == 1:
             subprocess.Popen(["xrandr", "--output", internal, "--auto"])
+            subprocess.Popen(["bash", "~/.config/polybar/docky/launch.sh"])
     scr_info1 = scr_info2
