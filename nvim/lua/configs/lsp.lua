@@ -37,7 +37,7 @@ local custom_attach = function(client, bufnr)
     vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
     vim.keymap.set("n", "<space>q", function() vim.diagnostic.setqflist({ open = true }) end, opts)
     vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, opts)
-    vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, opts)
+    vim.keymap.set('n', '<space>f', vim.lsp.buf.format, opts)
     require "lsp_signature".on_attach({
         bind = true,
         handler_opts = {

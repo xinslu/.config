@@ -10,8 +10,6 @@ require("highlights")
 
 -- Formatting --
 cmd [[filetype on]]
-cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
-cmd [[autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js Prettier]]
 ----
 
 -- Autocmds --

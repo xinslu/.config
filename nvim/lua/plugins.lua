@@ -1,12 +1,7 @@
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function()
-    use 'wbthomason/packer.nvim'
-    use {
-        'kyazdani42/nvim-tree.lua',
-        config = [[require('configs.nvim-tree')]]
-    }
-    use {
+    use 'wbthomason/packer.nvim' use {
         'nvim-lualine/lualine.nvim',
         requires = { 'kyazdani42/nvim-web-devicons', opt = true },
         config = [[require('configs.lualine')]]
@@ -21,7 +16,6 @@ return require('packer').startup(function()
         config = [[require('configs.telescope')]]
     }
 
-    use 'gruvbox-community/gruvbox'
     use({
         "gelguy/wilder.nvim",
         requires = { { "romgrk/fzy-lua-native" } },
@@ -45,7 +39,6 @@ return require('packer').startup(function()
     use { "hrsh7th/cmp-buffer", after = "nvim-cmp" }
     use { "hrsh7th/cmp-omni", after = "nvim-cmp" }
     use { "quangnguyen30192/cmp-nvim-ultisnips", after = { 'nvim-cmp', 'ultisnips' } }
-    use { "hrsh7th/cmp-emoji", after = 'nvim-cmp' }
     use({ "neovim/nvim-lspconfig", after = "cmp-nvim-lsp", config = [[require('configs.lsp')]] })
     use 'williamboman/nvim-lsp-installer'
 
@@ -85,7 +78,6 @@ return require('packer').startup(function()
     use 'airblade/vim-gitgutter'
     use({ 'lervag/vimtex'
     })
-    use 'dag/vim-fish'
     use { 'lukas-reineke/indent-blankline.nvim',
         config = function()
             require("indent_blankline").setup {
@@ -117,13 +109,9 @@ return require('packer').startup(function()
     })
     use 'svermeulen/vim-yoink'
     use 'kyazdani42/nvim-web-devicons'
-    use 'ayu-theme/ayu-vim'
     use {
         "ray-x/lsp_signature.nvim",
     }
-    use 'chriskempson/base16-vim'
-    use 'sjl/badwolf'
     use 'aktersnurra/no-clown-fiesta.nvim'
-    use 'junegunn/goyo.vim'
     use 'vimwiki/vimwiki'
 end)

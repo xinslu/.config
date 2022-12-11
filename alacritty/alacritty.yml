@@ -791,7 +791,6 @@ key_bindings:
   -  { key: Key9,         mods: Control,                        chars: "\x02\x39"}
   -  { key: T,            mods: Control,                        chars: "\x02\x63"}
   -  { key: Q,            mods: Control,                        chars: "\x02\x78"}
-  -  { key: F,            mods: Control,                        chars: "ranger \x0D"}
 
   # Vi Mode
   #- { key: Space,  mods: Shift|Control, mode: ~Search,    action: ToggleViMode            }

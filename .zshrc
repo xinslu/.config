@@ -26,6 +26,8 @@ alias gcam="git commit -am"
 alias gaa="git add ."
 alias gp="git push"
 alias todo="cd ~/vimwiki/ && nvim todos/todo.wiki"
+alias r="ranger"
+alias n="nvim"
 
 ### EVALS ###
 eval $(thefuck --alias)
@@ -38,3 +40,7 @@ prompt pure
 
 ### PLUGINS ###
 source /home/kinshukphalke/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+### TROLLING ###
+alias bruh='echo  "Deleting / :gwbruhtrolled:"'
+export PATH=$PATH:/home/kinshukphalke/.spicetify
