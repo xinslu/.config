@@ -6,7 +6,7 @@ internal = "eDP-1-1"
 scr_info1 = 0
 
 while True:
-    time.sleep(4)
+    time.sleep(2)
     get_screens = subprocess.check_output("xrandr").decode("utf-8").splitlines()
     scr_data = [l for l in get_screens if " connected " in l]
     scr_info2  = len(scr_data)

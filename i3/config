@@ -215,9 +215,9 @@ exec_always "imwheel -b '45'"
 exec_always ~/.config/polybar/docky/launch.sh 
 exec_always --no-startup-id xsetroot -solid "#000000" 
 exec --no-startup-id i3-msg 'workspace 1; exec kitty;'
-exec --no-startup-id i3-msg 'workspace 5; exec /usr/bin/Discord; workspace 5'
+exec --no-startup-id i3-msg 'workspace 5; exec discord; workspace 5'
 exec --no-startup-id i3-msg 'workspace 3; exec thunderbird; workspace 3'
-exec --no-startup-id i3-msg 'workspace 2; exec brave-browser && sleep 10; workspace 2'
-exec --no-startup-id i3-msg 'workspace 4; exec brave-browser && sleep 10; workspace 4'
-exec --no-startup-id i3-msg 'workspace 6; exec brave-browser && sleep 10; workspace 6'
-# exec --no-startup-id xautolock -time 5 -locker '~/.config/i3/lock2.sh' &
+exec --no-startup-id i3-msg 'workspace 2; exec brave && sleep 10; workspace 2'
+exec --no-startup-id i3-msg 'workspace 4; exec brave && sleep 10; workspace 4'
+exec --no-startup-id i3-msg 'workspace 6; exec brave && sleep 10; workspace 6'
+exec --no-startup-id xautolock -time 5 -locker '~/.config/i3/lock2.sh' &
