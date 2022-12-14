@@ -21,16 +21,19 @@ HISTFILE=~/.zsh_history
 alias grouch="python ~/Documents/grouch/src/tracker.py fall"
 alias cn="cd ~/.config/nvim && nvim ~/.config/nvim/init.lua"
 alias wiki="cd ~/vimwiki/ && nvim index.wiki"
-alias circuitsim='java --module-path ~/Downloads/javafx-sdk-18.0.2/lib/ --add-modules=javafx.controls -jar ~/Downloads/CircuitSim1.8.2.jar'
+alias circuitsim='java  --module-path /usr/lib/jvm/java-19-openjdk/lib/javafx.base.jar:/usr/lib/jvm/java-19-openjdk/lib/javafx.controls.jar:/usr/lib/jvm/java-19-openjdk/lib/javafx.graphics.jar --add-modules=javafx.controls -jar ~/Downloads/CircuitSim1.8.2.jar'
 alias gcam="git commit -am"
 alias gaa="git add ."
 alias gp="git push"
 alias todo="cd ~/vimwiki/ && nvim todos/todo.wiki"
 alias r="ranger"
+alias e="exa"
 alias n="nvim"
+alias ls='ls --color=auto'
 
 ### EVALS ###
 eval $(thefuck --alias)
+eval $(env TERM=xterm256-color dircolors)
 
 ## PROMPT ##
 autoload -U promptinit; promptinit
@@ -43,4 +46,3 @@ source /home/kinshukphalke/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 ### TROLLING ###
 alias bruh='echo  "Deleting / :gwbruhtrolled:"'
-export PATH=$PATH:/home/kinshukphalke/.spicetify

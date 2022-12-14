@@ -16,6 +16,14 @@ cmd [[filetype on]]
 local group = vim.api.nvim_create_augroup("rc", { clear = false })
 vim.api.nvim_create_autocmd("TermOpen",
     { command = "setlocal nobuflisted nonumber norelativenumber", group = group })
+local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
+vim.api.nvim_create_autocmd('TextYankPost', {
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+  group = highlight_group,
+  pattern = '*',
+})
 ----
 
 set.guicursor = ""
@@ -41,4 +49,6 @@ vim.wo.relativenumber = true
 vim.opt.list = true
 vim.opt.listchars:append "space:⋅"
 vim.opt.listchars:append "eol:↴"
+set.undofile = true
+set.completeopt = 'menuone,noselect'
 set.laststatus = 3
