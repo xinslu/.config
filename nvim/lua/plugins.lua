@@ -114,4 +114,5 @@ return require('packer').startup(function()
     }
     use 'aktersnurra/no-clown-fiesta.nvim'
     use 'vimwiki/vimwiki'
+    use 'jacoborus/tender.vim'
 end)

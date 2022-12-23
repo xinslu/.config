@@ -1,6 +1,6 @@
 local cmd = vim.cmd -- execute Vim commands
 -- cmd("let ayucolor=\"dark\"")
-cmd('colorscheme no-clown-fiesta')
+cmd('colorscheme tender')
 cmd("highlight Directory gui=bold guifg=#677FA3")
 cmd("highlight NvimTreeOpenedFolderName gui=bold")
 cmd("highlight NvimTreeNormal guibg=#000000")
