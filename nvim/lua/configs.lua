@@ -1,13 +1,14 @@
 local set = vim.opt -- global options
 local cmd = vim.cmd -- execute Vim commands
 vim.g.mapleader = " "
+vim.g.netrw_keepdir = 0
+vim.g.netrw_banner = 0
 set.termguicolors = true
 require('configs.terminal')
 require('nvim_comment').setup()
 require('configs.trouble')
 require('keymaps')
 require("highlights")
-require("telescope").load_extension "file_browser"
 
 -- Formatting --
 cmd [[filetype on]]
@@ -27,10 +28,11 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 vim.api.nvim_set_keymap(
   "n",
-  "<space>fb",
-  ":Telescope file_browser\n",
+  "<space>fe",
+  ":Explore\n",
   { noremap = true }
 )
+
 ----
 
 set.guicursor = ""
