@@ -51,7 +51,7 @@ cmp.setup({
             mode = "symbol_text",
             menu = ({
                 nvim_lsp = "[LSP]",
-                ultisnips = "[US]",
+                ultisnips = "[UltSnp]",
                 nvim_lua = "[Lua]",
                 path = "[Path]",
                 buffer = "[Buffer]",

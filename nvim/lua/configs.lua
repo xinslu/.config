@@ -3,6 +3,7 @@ local cmd = vim.cmd -- execute Vim commands
 vim.g.mapleader = " "
 vim.g.netrw_keepdir = 0
 vim.g.netrw_banner = 0
+vim.g.astro_typescript = 'enable'
 set.termguicolors = true
 require('configs.terminal')
 require('nvim_comment').setup()
