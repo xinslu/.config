@@ -3,7 +3,7 @@
 !starship.toml
 !nvim/**
 !kitty/**
-!polybar/docky**
+!polybar/**
 !i3/**
 !fish/**
 !ranger/**
