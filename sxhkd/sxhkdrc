@@ -156,6 +156,18 @@ XF86AudioPrev
 Print
     flameshot full -c
 
-Shift+Print
-i   flameshot gui
+shift+Print
+    flameshot gui
+
+super+shift+p
+    ~/.config/i3/connect_q30.sh
+
+super+shift+u
+    ~/.config/i3/disconnect.sh
+
+super+shift+a
+    ~/.config/i3/connect_airpods.sh
+
+super+control+q
+    ~/.config/bspwm/lock.sh
 
