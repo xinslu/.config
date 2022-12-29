@@ -10,6 +10,7 @@ require('nvim_comment').setup()
 require('configs.trouble')
 require('keymaps')
 require("highlights")
+local map = require("utils").map
 
 -- Formatting --
 cmd [[filetype on]]
@@ -33,6 +34,18 @@ vim.api.nvim_set_keymap(
   ":Explore\n",
   { noremap = true }
 )
+map("n", "<A-1>", ":BufferGoto 1<CR>", { silent = true })
+map("n", "<A-2>", ":BufferGoto 2<CR>", { silent = true })
+map("n", "<A-3>", ":BufferGoto 3<CR>", { silent = true })
+map("n", "<A-4>", ":BufferGoto 4<CR>", { silent = true })
+map("n", "<A-5>", ":BufferGoto 5<CR>", { silent = true })
+map("n", "<A-6>", ":BufferGoto 6<CR>", { silent = true })
+map("n", "<A-7>", ":BufferGoto 7<CR>", { silent = true })
+map("n", "<A-8>", ":BufferGoto 8<CR>", { silent = true })
+map("n", "<A-9>", ":BufferGoto 9<CR>", { silent = true })
+map("n", "<A-s>", ":w<CR>", { silent = true })
+map("n", "<A-w>", ":BufferClose<CR>", { silent = true })
+map("n", "<A-q>", ":quitall<CR>", { silent = true })
 
 ----
 

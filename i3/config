@@ -1,9 +1,9 @@
 set $mod Mod4
 floating_modifier $mod
 # start a terminal
-bindsym $mod+Shift+Return exec alacritty --command ranger
+bindsym $mod+Shift+Return exec st ranger
 
-bindsym $mod+Return exec alacritty --command tmux
+bindsym $mod+Return exec st
 
 bindsym $mod+Shift+q kill
 
@@ -74,17 +74,6 @@ bindsym $mod+a focus parent
 
 # focus the child container
 #bindsym $mod+d focus child
-
-#bind workspaces to specific screens
-# workspace $workspace1 output DP-0
-# workspace $workspace3 output DP-0
-# workspace $workspace5 output DP-0
-# workspace $workspace7 output DP-0
-# workspace $workspace2 output DP-3
-# workspace $workspace4 output DP-3
-# workspace $workspace6 output DP-3
-# workspace $workspace8 output DP-3
-
 
 bindsym $mod+1 workspace $workspace1
 bindsym $mod+2 workspace $workspace2
@@ -217,7 +206,7 @@ exec_always greenclip daemon
 exec_always "imwheel -b '45'"
 exec_always ~/.config/polybar/docky/launch.sh 
 exec_always --no-startup-id xsetroot -solid "#000000" 
-exec --no-startup-id i3-msg 'workspace 1; exec alacritty && sleep 3;'
+exec --no-startup-id i3-msg 'workspace 1; exec st;'
 exec --no-startup-id i3-msg 'workspace 2; exec firefox; workspace 2'
 exec --no-startup-id i3-msg 'workspace 4; exec firefox; workspace 4'
 exec --no-startup-id i3-msg 'workspace 6; exec firefox; workspace 6'

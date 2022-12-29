@@ -767,19 +767,19 @@ key_bindings:
   #- { key: PageDown,  mods: Shift,   mode: ~Alt,        action: ScrollPageDown }
   #- { key: Home,      mods: Shift,   mode: ~Alt,        action: ScrollToTop    }
   #- { key: End,       mods: Shift,   mode: ~Alt,        action: ScrollToBottom }
-  -  { key: Key1,         mods: alt,                        chars: "\u001B:BufferGoto 1\n"}
-  -  { key: Key2,         mods: alt,                        chars: "\u001B:BufferGoto 2\n"}
-  -  { key: Key3,         mods: alt,                        chars: "\u001B:BufferGoto 3\n"}
-  -  { key: Key4,         mods: alt,                        chars: "\u001B:BufferGoto 4\n"}
-  -  { key: Key5,         mods: alt,                        chars: "\u001B:BufferGoto 5\n"}
-  -  { key: Key6,         mods: alt,                        chars: "\u001B:BufferGoto 6\n"}
-  -  { key: Key7,         mods: alt,                        chars: "\u001B:BufferGoto 7\n"}
-  -  { key: Key8,         mods: alt,                        chars: "\u001B:BufferGoto 8\n"}
-  -  { key: Key9,         mods: alt,                        chars: "\u001B:BufferGoto 9\n"}
-  -  { key: Key0,         mods: alt,                        chars: "\u001B:BufferNext\n"}
-  -  { key: S,            mods: alt,                        chars: "\u001B:w\n"}
-  -  { key: W,            mods: alt,                        chars: "\u001B:BufferClose\n"}
-  -  { key: Q,            mods: alt,                        chars: "\u001B:quitall\n"}
+  # -  { key: Key1,         mods: alt,                        chars: "\u001B:BufferGoto 1\n"}
+  # -  { key: Key2,         mods: alt,                        chars: "\u001B:BufferGoto 2\n"}
+  # -  { key: Key3,         mods: alt,                        chars: "\u001B:BufferGoto 3\n"}
+  # -  { key: Key4,         mods: alt,                        chars: "\u001B:BufferGoto 4\n"}
+  # -  { key: Key5,         mods: alt,                        chars: "\u001B:BufferGoto 5\n"}
+  # -  { key: Key6,         mods: alt,                        chars: "\u001B:BufferGoto 6\n"}
+  # -  { key: Key7,         mods: alt,                        chars: "\u001B:BufferGoto 7\n"}
+  # -  { key: Key8,         mods: alt,                        chars: "\u001B:BufferGoto 8\n"}
+  # -  { key: Key9,         mods: alt,                        chars: "\u001B:BufferGoto 9\n"}
+  # -  { key: Key0,         mods: alt,                        chars: "\u001B:BufferNext\n"}
+  # -  { key: S,            mods: alt,                        chars: "\u001B:w\n"}
+  # -  { key: W,            mods: alt,                        chars: "\u001B:BufferClose\n"}
+  # -  { key: Q,            mods: alt,                        chars: "\u001B:quitall\n"}
   -  { key: Key1,         mods: Control,                        chars: "\x02\x31"}
   -  { key: Key2,         mods: Control,                        chars: "\x02\x32"}
   -  { key: Key3,         mods: Control,                        chars: "\x02\x33"}
