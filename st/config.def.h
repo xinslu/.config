@@ -193,16 +193,30 @@ static Shortcut shortcuts[] = {
 	{ ControlMask,          XK_Print,       toggleprinter,  {.i =  0} },
 	{ ShiftMask,            XK_Print,       printscreen,    {.i =  0} },
 	{ XK_ANY_MOD,           XK_Print,       printsel,       {.i =  0} },
-	{ TERMMOD,              XK_Prior,       zoom,           {.f = +1} },
-	{ TERMMOD,              XK_Next,        zoom,           {.f = -1} },
+	{ TERMMOD,              XK_plus,        zoom,           {.f = +1} },
+	{ TERMMOD,              XK_underscore,  zoom,           {.f = -1} },
 	{ TERMMOD,              XK_Home,        zoomreset,      {.f =  0} },
 	{ TERMMOD,              XK_C,           clipcopy,       {.i =  0} },
 	{ TERMMOD,              XK_V,           clippaste,      {.i =  0} },
 	{ TERMMOD,              XK_Y,           selpaste,       {.i =  0} },
 	{ ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
-	{ ShiftMask,            XK_Page_Up,     kscrollup,      {.i = -1} },
-	{ ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = -1} },
+	{ MODKEY,               XK_k,           kscrollup,      {.i =  1} },
+	{ MODKEY,               XK_j,           kscrolldown,    {.i =  1} },
+	{ MODKEY,               XK_u,           kscrollup,      {.i =  -1} },
+	{ MODKEY,               XK_d,           kscrolldown,    {.i =  -1} },
+    /* { MODKEY,               XK_1,           kwrite,         {.ca = ":BufferGoto 1\n"} }, */
+    /* { MODKEY,               XK_2,           kwrite,         {.ca = ":BufferGoto 2\n"} }, */
+    /* { MODKEY,               XK_3,           kwrite,         {.ca = ":BufferGoto 3\n"} }, */
+    /* { MODKEY,               XK_4,           kwrite,         {.ca = ":BufferGoto 4\n"} }, */
+    /* { MODKEY,               XK_2,           kwrite,         {.ca = ":BufferGoto 5\n"} }, */
+    /* { MODKEY,               XK_6,           kwrite,         {.ca = ":BufferGoto 6\n"} }, */
+    /* { MODKEY,               XK_7,           kwrite,         {.ca = ":BufferGoto 7\n"} }, */
+    /* { MODKEY,               XK_8,           kwrite,         {.ca = ":BufferGoto 8\n"} }, */
+    /* { MODKEY,               XK_9,           kwrite,         {.ca = ":BufferGoto 9\n"} }, */
+    /* { MODKEY,               XK_s,           kwrite,         {.ca = ":w\n"} }, */
+    /* { MODKEY,               XK_w,           kwrite,         {.ca = ":BufferClose\n"} }, */
+    /* { MODKEY,               XK_q,           kwrite,         {.ca = ":quitall\n"} }, */
 };
 
 /*
@@ -284,7 +298,7 @@ static Key key[] = {
 	{ XK_KP_Delete,     XK_ANY_MOD,     "\033[3~",      +1,    0},
 	{ XK_KP_Multiply,   XK_ANY_MOD,     "\033Oj",       +2,    0},
 	{ XK_KP_Add,        XK_ANY_MOD,     "\033Ok",       +2,    0},
-	{ XK_KP_Enter,      XK_ANY_MOD,     "\033OM",       +2,    0},
+	/* { XK_KP_Enter,      XK_ANY_MOD,     "\033OM",       +2,    0}, */
 	{ XK_KP_Enter,      XK_ANY_MOD,     "\r",           -1,    0},
 	{ XK_KP_Subtract,   XK_ANY_MOD,     "\033Om",       +2,    0},
 	{ XK_KP_Decimal,    XK_ANY_MOD,     "\033On",       +2,    0},
