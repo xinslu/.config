@@ -6,6 +6,10 @@
 super + Return
 	st
 
+super + shift + Return
+	st ranger
+
+
 # program launcher
 super + @space
 	dmenu_run
