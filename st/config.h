@@ -6,6 +6,7 @@
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
 static char *font = "JetBrainsMono Nerd Font:size=12:antialias=true:autohint=false";
+static char *font2 = "Roboto Mono for Powerline:pixelsize=8:antialias=true:autohint=true";
 static int borderpx = 1;
 
 /*
