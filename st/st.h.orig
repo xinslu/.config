@@ -43,7 +43,6 @@ enum drawing_mode {
 	DRAW_FG   = 1 << 1,
 };
 
-
 enum selection_mode {
 	SEL_IDLE = 0,
 	SEL_EMPTY = 1,
