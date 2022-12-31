@@ -14,7 +14,7 @@ bindkey "^[[B" history-beginning-search-forward
 
 ### CONFIGS ###
 TREE_IGNORE="cache|log|logs|node_modules|vendor"
-SAVEHIST=1000
+SAVEHIST=10000
 HISTFILE=~/.zsh_history
 
 ### ALIASES ###
@@ -35,6 +35,16 @@ alias ls='ls --color=auto'
 eval $(thefuck --alias)
 eval $(env TERM=xterm256-color dircolors)
 
+### OPTIONS ###
+unsetopt menu_complete
+unsetopt flow_control
+setopt prompt_subst
+setopt always_to_end
+setopt append_history
+setopt auto_menu
+setopt complete_in_word
+setopt hist_ignore_dups
+
 ## PROMPT ##
 autoload -U promptinit; promptinit
 zstyle :prompt:pure:path color cyan
@@ -43,6 +53,7 @@ prompt pure
 
 ### PLUGINS ###
 source /home/kinshukphalke/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /home/kinshukphalke/zsh-history-substring-search/zsh-history-substring-search.zsh
 
 ### TROLLING ###
 alias bruh='echo  "Deleting / :gwbruhtrolled:"'
