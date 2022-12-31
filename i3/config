@@ -179,10 +179,10 @@ bindsym XF86AudioPrev exec playerctl previous
 font pango:monospace 0
 # for_window [class=".*"] title_format "<span font='Hack Nerd Font Mono'> %title</span>"
 
-for_window [class="^.*"] border normal 0
+for_window [class="^.*"] border none
 for_window [title=".*\(Private Browsing\).*"] move to workspace "7"
-default_border pixel 2
-default_floating_border pixel 2
+default_border pixel 5
+default_floating_border pixel 0
 
 
 
@@ -204,7 +204,7 @@ exec_always "python3 ~/.config/i3/screens.py"
 exec_always "setxkbmap -model pc104 -layout us -variant ,, -option grp:alt_shift_toggle"
 exec_always greenclip daemon
 exec_always "imwheel -b '45'"
-exec_always ~/.config/polybar/docky/launch.sh 
+exec_always pkill polybar && sleep 1 && polybar -q i3-bar
 exec_always --no-startup-id xsetroot -solid "#000000" 
 exec --no-startup-id i3-msg 'workspace 1; exec st;'
 exec --no-startup-id i3-msg 'workspace 2; exec firefox; workspace 2'
