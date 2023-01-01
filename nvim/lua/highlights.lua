@@ -1,4 +1,6 @@
 local cmd = vim.cmd -- execute Vim commands
+vim.g.sonokai_diagnostic_virtual_text  = 'colored'
+vim.g.sonokai_disable_terminal_colors = 1
 cmd("set termguicolors")
 cmd('colorscheme sonokai')
 cmd("highlight Directory gui=bold guifg=#677FA3")
@@ -27,6 +29,3 @@ cmd('highlight StatusLineNC guibg=#0f0f0f')
 cmd('highlight TabLineFill guibg=#0f0f0f')
 cmd('highlight TabLineSel guibg=#0f0f0f')
 cmd('highlight Comment gui=italic')
-vim.g.sonokai_diagnostic_virtual_text  = 'colored'
-local highlight = {}
-vim.g.sonokai_diagnostic_colors_override = highlight
