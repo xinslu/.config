@@ -1,9 +1,7 @@
 local cmd = vim.cmd -- execute Vim commands
--- cmd("let ayucolor=\"dark\"")
 cmd("set termguicolors")
-cmd('colorscheme tender')
+cmd('colorscheme sonokai')
 cmd("highlight Directory gui=bold guifg=#677FA3")
-cmd("highlight NvimTreeOpenedFolderName gui=bold")
 cmd("highlight Normal guibg=#0f0f0f")
 cmd('highlight clear SignColumn')
 cmd('highlight clear LineNr')
@@ -28,3 +26,7 @@ cmd('highlight StatusLine guifg=#0f0f0f guibg=#0f0f0f')
 cmd('highlight StatusLineNC guibg=#0f0f0f')
 cmd('highlight TabLineFill guibg=#0f0f0f')
 cmd('highlight TabLineSel guibg=#0f0f0f')
+cmd('highlight Comment gui=italic')
+vim.g.sonokai_diagnostic_virtual_text  = 'colored'
+local highlight = {}
+vim.g.sonokai_diagnostic_colors_override = highlight

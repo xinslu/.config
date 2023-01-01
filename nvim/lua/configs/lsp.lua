@@ -25,10 +25,13 @@ lsp_installer.setup {
 local custom_attach = function(client, bufnr)
     -- Mappings.
     local opts = { silent = true, buffer = bufnr }
+    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+    vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
     vim.keymap.set("n", "<C-]>", vim.lsp.buf.definition, opts)
     vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-    vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
+    vim.keymap.set("n", "<space>sg", vim.lsp.buf.signature_help, opts)
     vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, opts)
     vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, opts)
     vim.keymap.set("n", "<space>wl", function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end, opts)
@@ -243,20 +246,24 @@ fn.sign_define("DiagnosticSignHint", { text = "?", texthl = "DiagnosticSignHint"
 -- global config for diagnostic
 vim.diagnostic.config({
     underline = false,
-    virtual_text = false,
     signs = true,
+    virtual_text = {
+        prefix = '●', -- Could be '■', '▎', 'x'
+    },
     severity_sort = true,
+    float = {
+        source = "always", -- Or "if_many"
+    },
+
 })
 
 lsp.handlers["textDocument/publishDiagnostics"] = lsp.with(lsp.diagnostic.on_publish_diagnostics, {
     underline = false,
-    virtual_text = false,
+    virtual_text = true,
     signs = true,
     update_in_insert = false,
 })
 
-cmd("set completeopt=menuone,noinsert,noselect")
-cmd("set shortmess+=c")
 
 
 local opts = {
