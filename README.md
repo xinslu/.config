@@ -20,3 +20,4 @@ This repo is entirely maintained by me according to my preferences, there were a
     - nvim, text editor
     - ranger, terminal file manager
     - neofetch, fetch script that makes me look like a haxor man
+    - Powerlevel10k, fast and configurable prompt
