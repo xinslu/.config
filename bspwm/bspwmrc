@@ -2,7 +2,6 @@
 
 pgrep -x sxhkd > /dev/null || sxhkd &
 ~/.config/bspwm/screens.py &
-# xsetroot -solid '#000000'
 polybar -q bar &
 feh --bg-fill ~/Downloads/spaceman-bg.jpg
 picom --config ~/.config/picom/picom.conf --backend glx &

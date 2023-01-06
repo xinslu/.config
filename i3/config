@@ -15,7 +15,7 @@ bindsym $mod+Shift+d exec dmenu_run
 bindsym $mod+Ctrl+q exec ~/.config/i3/lock2.sh
 
 # bindsym $mod+d exec rofi -no-lazy-grab -show drun -modi drun -theme $HOME/.config/rofi/launchers/colorful/style_7
-bindsym $mod+d exec ~/.config/rofi/launchers/type-1/launcher.sh
+bindsym $mod+d exec rofi -show run -theme ~/.config/rofi/launcher.rasi
 
 bindsym Print exec flameshot full -c
 bindsym Shift+Print exec flameshot gui
@@ -204,7 +204,7 @@ exec_always "python3 ~/.config/i3/screens.py"
 exec_always "setxkbmap -model pc104 -layout us -variant ,, -option grp:alt_shift_toggle"
 exec_always greenclip daemon
 exec_always "imwheel -b '45'"
-exec_always pkill polybar && sleep 1 && polybar -q i3-bar
+exec_always polybar -q i3-bar
 exec_always --no-startup-id xsetroot -solid "#000000" 
 exec --no-startup-id i3-msg 'workspace 1; exec st;'
 exec --no-startup-id i3-msg 'workspace 2; exec firefox; workspace 2'

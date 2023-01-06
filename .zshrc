@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 ### EXPORTS ###
 export IDF_PATH=~/esp/esp-idf
 export PATH="$IDF_PATH/tools:/opt/ti/uniflash_4.6.0/deskdb/content/TICloudAgent/linux/ccs_base/DebugServer/bin:/opt/gcc-arm-none-eabi-9-2019-q4-major/bin:/home/kinshukphalke/.config/networkmanager-dmenu-2.1.0/networkmanager_dmenu:/home/kinshukphalke/greenclip:/home/kinshukphalke/.local/bin:$PATH:/opt"
@@ -45,15 +52,23 @@ setopt auto_menu
 setopt complete_in_word
 setopt hist_ignore_dups
 
-## PROMPT ##
-autoload -U promptinit; promptinit
-zstyle :prompt:pure:path color cyan
-zstyle :prompt:pure:prompt:success color green
-prompt pure
+### PROMPT ###
+source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
 
 ### PLUGINS ###
-source /home/kinshukphalke/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /home/kinshukphalke/zsh-history-substring-search/zsh-history-substring-search.zsh
+source /home/kinshukphalke/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+### SYNTAX HIGHLIIGHTING ###
+typeset -A ZSH_HIGHLIGHT_STYLES
+ZSH_HIGHLIGHT_STYLES[suffix-alias]=fg=#5fd700,underline
+ZSH_HIGHLIGHT_STYLES[precommand]=fg=#5fd700,underline
+ZSH_HIGHLIGHT_STYLES[arg0]=fg=#5fd700
+
 
 ### TROLLING ###
 alias bruh='echo  "Deleting / :gwbruhtrolled:"'

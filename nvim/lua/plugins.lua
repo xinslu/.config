@@ -4,7 +4,7 @@ return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
     use {
         'nvim-lualine/lualine.nvim',
-        requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+        requires = { 'kyazdani42/nvim-web-devicons', opt = false},
         config = [[require('configs.lualine')]]
     }
     use {
@@ -42,9 +42,6 @@ return require('packer').startup(function(use)
     use { "quangnguyen30192/cmp-nvim-ultisnips", after = { 'nvim-cmp', 'ultisnips' } }
     use({ "neovim/nvim-lspconfig", after = "cmp-nvim-lsp", config = [[require('configs.lsp')]] })
     use 'williamboman/nvim-lsp-installer'
-
-    -- Git command inside vim
-    use({ "tpope/vim-fugitive" })
 
     -- Better git log display
     use({ "rbong/vim-flog", requires = "tpope/vim-fugitive", cmd = { "Flog" } })
@@ -97,7 +94,6 @@ return require('packer').startup(function(use)
         'nvim-treesitter/nvim-treesitter',
         run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
     }
-    use 'tpope/vim-surround'
     use({
         "gbprod/cutlass.nvim",
         config = function()
@@ -109,14 +105,14 @@ return require('packer').startup(function(use)
         end
     })
     use 'svermeulen/vim-yoink'
-    use 'kyazdani42/nvim-web-devicons'
     use { "ray-x/lsp_signature.nvim"}
     use 'vimwiki/vimwiki'
-    use 'jacoborus/tender.vim'
     use 'sainnhe/sonokai'
     use 'wuelnerdotexe/vim-astro'
     use { -- Additional text objects via treesitter
         'nvim-treesitter/nvim-treesitter-textobjects',
         after = 'nvim-treesitter',
     }
+    use 'p00f/clangd_extensions.nvim'
+    use 'elkowar/yuck.vim'
 end)

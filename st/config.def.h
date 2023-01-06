@@ -7,7 +7,7 @@
  */
 static char *font = "JetBrainsMono Nerd Font:size=12:antialias=true:autohint=false";
 static char *font2 = "Roboto Mono for Powerline:pixelsize=8:antialias=true:autohint=true";
-static int borderpx = 1;
+static int borderpx = 0;
 
 /*
  * What program is execed by st depends of these precedence rules:
