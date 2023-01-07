@@ -21,3 +21,8 @@
 !sxhkd/**
 !neofetch/**
 !picom/**
+!dwm/**
+!lf/**
+!.xinitrc
+!.zshprofile
+!.p10k.zsh

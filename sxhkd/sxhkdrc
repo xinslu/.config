@@ -6,10 +6,6 @@
 super + Return
 	st
 
-super + shift + Return
-	st ranger
-
-
 # program launcher
 super + @space
 	dmenu_run
@@ -135,9 +131,6 @@ XF86AudioLowerVolume
 
 XF86AudioMute
     amixer -q sset Master toggle
-
-XF86MonBrightnessDown 
-    brightnessctl --min-val=2 -q set 10%-
 
 XF86MonBrightnessUp
     brightnessctl -q set 10%+
