@@ -1,0 +1,6 @@
+#!/bin/sh
+~/.config/bspwm/screens.py
+feh --bg-fill ~/Downloads/spaceman-bg.jpg
+picom --config ~/.config/picom/picom.conf --backend glx &
+xautolock -time 5 -locker '~/.config/bspwm/lock.sh' &
+dwm
