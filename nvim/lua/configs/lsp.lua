@@ -62,7 +62,6 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local lspconfig = require("lspconfig")
-vim.lsp.set_log_level("debug")
 local lsps = { "pyright", "bashls", "eslint", "rust_analyzer", "clangd", "jdtls", "gopls", "texlab", "dockerls", "html"} 
 for _, lsp_name in ipairs(lsps) do
     lspconfig[lsp_name].setup {

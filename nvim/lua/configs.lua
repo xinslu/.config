@@ -37,6 +37,7 @@ vim.opt.listchars:append "space:⋅"
 set.undofile = true
 set.completeopt = 'menuone,noselect'
 set.laststatus = 3
+vim.lsp.set_log_level("debug")
 ---
 
 -- imports --
