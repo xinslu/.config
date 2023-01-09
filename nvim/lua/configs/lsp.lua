@@ -117,10 +117,6 @@ lspconfig.sumneko_lua.setup({
     },
     capabilities = capabilities,
 })
-local handlers = {
-    ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),
-    ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" }),
-}
 
 lspconfig.eslint.setup {
     on_attach = custom_attach,
@@ -192,4 +188,3 @@ local opts = {
     },
 }
 
-require('rust-tools').setup(opts)

@@ -13,8 +13,6 @@ export ACLOCAL_PATH="/usr/local/share/aclocal:$ACLOCAL_PATH"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-bindkey "^[[A" history-beginning-search-backward
-bindkey "^[[B" history-beginning-search-forward
 
 
 ### CONFIGS ###
@@ -56,11 +54,11 @@ source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 
 
 ### PLUGINS ###
-source /home/kinshukphalke/zsh-history-substring-search/zsh-history-substring-search.zsh
 source /home/kinshukphalke/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /home/kinshukphalke/zsh-history-substring-search/zsh-history-substring-search.zsh
+bindkey "^[[A" history-beginning-search-backward
+bindkey "^[[B" history-beginning-search-forward
 
-### TROLLING ###
-alias bruh='echo  "Deleting / :gwbruhtrolled:"'
 
 
 ## LF ###

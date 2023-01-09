@@ -29,7 +29,7 @@ return require('packer').startup(function(use)
     use {
         "hrsh7th/nvim-cmp",
         after = "lspkind-nvim",
-        requires = { { "SirVer/ultisnips" } },
+        requires = { { "L3MON4D3/LuaSnip" } },
         config = [[require('configs.cmp')]]
     }
 
@@ -39,7 +39,7 @@ return require('packer').startup(function(use)
     use { "hrsh7th/cmp-path", after = "nvim-cmp" }
     use { "hrsh7th/cmp-buffer", after = "nvim-cmp" }
     use { "hrsh7th/cmp-omni", after = "nvim-cmp" }
-    use { "quangnguyen30192/cmp-nvim-ultisnips", after = { 'nvim-cmp', 'ultisnips' } }
+    use { "saadparwaiz1/cmp_luasnip", after = { 'nvim-cmp'} }
     use({ "neovim/nvim-lspconfig", after = "cmp-nvim-lsp", config = [[require('configs.lsp')]] })
     use 'williamboman/nvim-lsp-installer'
 
@@ -105,7 +105,7 @@ return require('packer').startup(function(use)
         end
     })
     use 'svermeulen/vim-yoink'
-    use { "ray-x/lsp_signature.nvim"}
+    use "ray-x/lsp_signature.nvim"
     use 'vimwiki/vimwiki'
     use 'sainnhe/sonokai'
     use 'wuelnerdotexe/vim-astro'
@@ -114,5 +114,5 @@ return require('packer').startup(function(use)
         after = 'nvim-treesitter',
     }
     use 'p00f/clangd_extensions.nvim'
-    use 'elkowar/yuck.vim'
 end)
+

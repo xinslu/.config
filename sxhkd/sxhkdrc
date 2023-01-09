@@ -139,16 +139,16 @@ XF86MonBrightnessDown
     brightnessctl --min-val=2 -q set 10%-
 
 XF86AudioPlay
-    playerctl play-pause
+    playerctl --all-players play-pause
 
 XF86AudioPause 
-    playerctl play-pause
+    playerctl --all-players play-pause
 
 XF86AudioNext
-    playerctl next
+    playerctl --player=spotify next
 
 XF86AudioPrev
-    playerctl previous
+    playerctl --player=spotify previous
 
 Print
     flameshot full -c
