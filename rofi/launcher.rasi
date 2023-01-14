@@ -1,7 +1,8 @@
 /*****----- Configuration -----*****/
 configuration {
-	modi:                       "run";
+	modi:                       "drun";
     show-icons:                 true;
+    drun-display-format:        "{name}";
 }
 
 /*****----- Global Properties -----*****/

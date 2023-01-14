@@ -6,12 +6,16 @@
 super + Return
 	st
 
+super + shift + Return
+	st lf
+
+
 # program launcher
 super + @space
 	dmenu_run
 
 super + d
-    rofi -show run -theme ~/.config/rofi/launcher.rasi
+    rofi -show drun -theme ~/.config/rofi/launcher.rasi
 
 # make sxhkd reload its configuration files:
 super + Escape
