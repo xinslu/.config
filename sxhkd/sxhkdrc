@@ -10,6 +10,9 @@ super + shift + Return
 	st lf
 
 
+super + shift + @space
+    tabbed -r 2 st -w ''
+
 # program launcher
 super + @space
 	dmenu_run

@@ -1,9 +1,4 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+source ~/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 
 ### EXPORTS ###
 export IDF_PATH=~/esp/esp-idf
@@ -31,6 +26,8 @@ alias r="lfcd"
 alias e="exa"
 alias n="nvim"
 alias ls='ls --color=auto'
+alias gs='git status'
+alias tabbed-st="tabbed -r 2 st -w ''"
 alias weather="curl 'wttr.in/Atlanta?m'"
 [ -f /opt/miniconda3/etc/profile.d/conda.sh ] && source /opt/miniconda3/etc/profile.d/conda.sh
 
@@ -49,19 +46,16 @@ setopt complete_in_word
 setopt hist_ignore_dups
 
 ### PROMPT ###
-source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
+function parse_git_branch {
+   git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+}
+export PS1="%F{blue} %B%~%b%f %F{8}\$(parse_git_branch)%f %F{green}➜%f "
 
 ### PLUGINS ###
 source /home/kinshukphalke/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /home/kinshukphalke/zsh-history-substring-search/zsh-history-substring-search.zsh
-bindkey "^[[A" history-beginning-search-backward
-bindkey "^[[B" history-beginning-search-forward
-
-
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
 
 ## LF ###
 lfcd () {
@@ -77,5 +71,3 @@ lfcd () {
         fi
     fi
 }
-
-
