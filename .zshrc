@@ -1,5 +1,3 @@
-source ~/zsh-autocomplete/zsh-autocomplete.plugin.zsh
-
 ### EXPORTS ###
 export IDF_PATH=~/esp/esp-idf
 export PATH="$HOME/go/bin:$IDF_PATH/tools:/opt/ti/uniflash_4.6.0/deskdb/content/TICloudAgent/linux/ccs_base/DebugServer/bin:/opt/gcc-arm-none-eabi-9-2019-q4-major/bin:/home/kinshukphalke/.config/networkmanager-dmenu-2.1.0/networkmanager_dmenu:/home/kinshukphalke/greenclip:/home/kinshukphalke/.local/bin:$PATH:/opt"
@@ -50,12 +48,8 @@ function parse_git_branch {
    git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }
 export PS1="%F{blue} %B%~%b%f %F{8}\$(parse_git_branch)%f %F{green}➜%f "
+bindkey -e
 
-### PLUGINS ###
-source /home/kinshukphalke/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /home/kinshukphalke/zsh-history-substring-search/zsh-history-substring-search.zsh
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
 
 ## LF ###
 lfcd () {
@@ -71,3 +65,9 @@ lfcd () {
         fi
     fi
 }
+
+### PLUGINS ###
+source /home/kinshukphalke/zsh-history-substring-search/zsh-history-substring-search.zsh
+source ~/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
