@@ -1,118 +1,87 @@
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
+
     use 'wbthomason/packer.nvim'
+
+    -- Status Line
     use {
         'nvim-lualine/lualine.nvim',
         requires = { 'kyazdani42/nvim-web-devicons', opt = false},
-        config = [[require('configs.lualine')]]
-    }
-    use {
-        'romgrk/barbar.nvim',
-        config = [[require('configs.barbar')]]
-    }
-    use {
-        'nvim-telescope/telescope.nvim',
-        requires = { { 'nvim-lua/plenary.nvim' } },
-        config = [[require('configs.telescope')]]
     }
 
-    use({
-        "gelguy/wilder.nvim",
-        requires = { { "romgrk/fzy-lua-native" } },
-        setup = [[vim.cmd('packadd wilder.nvim')]],
-        config = [[require('configs.wilder')]]
-    })
+    -- Buffer Line
+    use 'romgrk/barbar.nvim'
 
-    use({ "onsails/lspkind-nvim", event = "VimEnter" })
-    -- auto-completion engine
+    -- Theme
+    use 'sainnhe/sonokai'
+
+-- AutoCompletion {{{
     use {
         "hrsh7th/nvim-cmp",
         after = "lspkind-nvim",
         requires = { { "L3MON4D3/LuaSnip" } },
-        config = [[require('configs.cmp')]]
+        config = [[require('lang.cmp')]]
     }
-
-    -- nvim-cmp completion sources
     use { "hrsh7th/cmp-nvim-lsp", after = "nvim-cmp" }
     use { "hrsh7th/cmp-nvim-lua", after = "nvim-cmp" }
     use { "hrsh7th/cmp-path", after = "nvim-cmp" }
     use { "hrsh7th/cmp-buffer", after = "nvim-cmp" }
     use { "hrsh7th/cmp-omni", after = "nvim-cmp" }
     use { "saadparwaiz1/cmp_luasnip", after = { 'nvim-cmp'} }
-    use({ "neovim/nvim-lspconfig", after = "cmp-nvim-lsp", config = [[require('configs.lsp')]] })
+-- }}}
+
+-- lsp {{{
+    use({ "neovim/nvim-lspconfig", after = "cmp-nvim-lsp", config = [[require('lang.lsp')]] })
     use 'williamboman/nvim-lsp-installer'
+    use({ "onsails/lspkind-nvim", event = "VimEnter" })
+    use "ray-x/lsp_signature.nvim"
+    use {
+        "folke/trouble.nvim",
+        requires = "kyazdani42/nvim-web-devicons",
+    }
+-- }}}
 
-    -- Better git log display
+-- Git {{{
     use({ "rbong/vim-flog", requires = "tpope/vim-fugitive", cmd = { "Flog" } })
+    use 'airblade/vim-gitgutter'
+    use 'akinsho/git-conflict.nvim' 
+-- }}}
 
-
-    -- Better git commit experience
-    use({ "rhysd/committia.vim", opt = true, setup = [[vim.cmd('packadd committia.vim')]] })
-
-    use 'terrortylor/nvim-comment'
-    -- Highlighters
+-- Language Specific {{{
     use 'maxmellon/vim-jsx-pretty'
     use 'rust-lang/rust.vim'
     use 'prettier/vim-prettier'
     use 'fatih/vim-go'
     use 'darrikonn/vim-gofmt'
-
-    use {
-        "folke/trouble.nvim",
-        requires = "kyazdani42/nvim-web-devicons",
-        config = function()
-            require("trouble").setup {
-                mode = "quickfix"
-            }
-        end
-    }
-
-    use {
-        's1n7ax/nvim-terminal',
-        config = [[require('configs.terminal')]]
-    }
     use 'simrat39/rust-tools.nvim'
-    use 'airblade/vim-gitgutter'
-    use({ 'lervag/vimtex'
-    })
-    use { 'lukas-reineke/indent-blankline.nvim',
-        config = function()
-            require("indent_blankline").setup {
-                show_end_of_line = true,
-                space_char_blankline = " ",
-                show_current_context_start = true,
-            }
-        end
-    }
-    use 'sharkdp/fd'
+    use 'lervag/vimtex'
+    use 'p00f/clangd_extensions.nvim'
+    use 'vimwiki/vimwiki'
+    use 'wuelnerdotexe/vim-astro'
+-- }}}
 
-    use { 'akinsho/git-conflict.nvim', config = function()
-        require('git-conflict').setup()
-    end }
+-- treesitter {{{
     use {
         'nvim-treesitter/nvim-treesitter',
         run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
     }
-    use({
-        "gbprod/cutlass.nvim",
-        config = function()
-            require("cutlass").setup({
-                cut_key = "m",
-                override_del = nil,
-                exclude = {},
-            })
-        end
-    })
-    use 'svermeulen/vim-yoink'
-    use "ray-x/lsp_signature.nvim"
-    use 'vimwiki/vimwiki'
-    use 'sainnhe/sonokai'
-    use 'wuelnerdotexe/vim-astro'
     use { -- Additional text objects via treesitter
         'nvim-treesitter/nvim-treesitter-textobjects',
         after = 'nvim-treesitter',
     }
-    use 'p00f/clangd_extensions.nvim'
-end)
+-- }}}
 
+-- Better Workflow {{{
+    use {
+        'nvim-telescope/telescope.nvim',
+        requires = { { 'nvim-lua/plenary.nvim' } },
+    }
+    use 'terrortylor/nvim-comment'
+    use 's1n7ax/nvim-terminal'
+    use 'lukas-reineke/indent-blankline.nvim'
+    use "gbprod/cutlass.nvim"
+-- }}}
+
+end)
+-- vim:ts=4:sw=4:ai:foldmethod=marker:foldlevel=0:

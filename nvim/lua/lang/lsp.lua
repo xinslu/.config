@@ -122,13 +122,13 @@ lspconfig.sumneko_lua.setup({
 lspconfig.eslint.setup {
     on_attach = custom_attach,
     capabilities = capabilities,
-    settings = require('configs.lsp.eslint').settings,
+    settings = require('lang.lsp.eslint').settings,
 }
 
 lspconfig.jsonls.setup {
     on_attach = custom_attach,
     capabilities = capabilities,
-    settings = require('configs.lsp.jsonls').settings,
+    settings = require('lang.lsp.jsonls').settings,
 }
 
 
