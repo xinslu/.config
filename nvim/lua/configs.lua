@@ -39,6 +39,7 @@ vim.g.wildmenu = true
 vim.g.wildignorecase = true
 vim.g.wildmode = "list:longest,full"
 vim.o.hidden = true
+vim.opt.fillchars:append("eob: ")
 vim.lsp.set_log_level("debug")
 --- }}}
 
@@ -160,11 +161,11 @@ require('git-conflict').setup()
 local cmd = vim.cmd -- execute Vim commands
 vim.g.sonokai_diagnostic_virtual_text  = 'colored'
 vim.g.sonokai_disable_terminal_colors = 1
-cmd("set termguicolors")
-cmd('colorscheme sonokai')
-cmd("highlight Normal guibg=#0f0f0f")
-cmd('highlight EndOfBuffer ctermfg=241 guifg=#0f0f0f guibg=#0f0f0f')
-cmd('highlight Comment gui=italic')
+vim.g.sonokai_show_eob = 1
+vim.cmd.colorscheme("sonokai")
+vim.api.nvim_set_hl(0, "Normal", { bg = "#0f0f0f" })
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+vim.api.nvim_set_hl(0, "Comment", {default = true, italic = true})
 -- }}}
 
 -- Autocmds {{{

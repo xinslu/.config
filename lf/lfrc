@@ -128,6 +128,7 @@ cmd setwallpaper ${{
 map gd cd ~/Documents
 map gD cd ~/Downloads
 map gc cd ~/.config
+map gcn cd ~/.config/nvim
 map gt cd ~/Documents/gt
 map a mkfile
 map D mkdir
