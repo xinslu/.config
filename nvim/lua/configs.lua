@@ -1,7 +1,6 @@
-local set = vim.opt -- global options
-local cmd = vim.cmd -- execute Vim commands
-
--- Global Configs --
+-- {{{ Global Configs 
+local set = vim.opt
+local cmd = vim.cmd 
 vim.g.mapleader = " "
 vim.g.netrw_keepdir = 0
 vim.g.netrw_banner = 0
@@ -33,69 +32,58 @@ vim.wo.number = true
 vim.wo.relativenumber = true
 vim.opt.list = true
 vim.opt.listchars:append "space:⋅"
--- vim.opt.listchars:append "eol:↴"
 set.undofile = true
 set.completeopt = 'menuone,noselect'
 set.laststatus = 3
 vim.lsp.set_log_level("debug")
----
+--- }}}
 
--- imports --
-local map = require("utils").map
+-- imports {{{
 require('configs.terminal')
 require('nvim_comment').setup()
-require('configs.trouble')
 require('keymaps')
-require("highlights")
+require("autocmd")
 require("configs.treesitter");
---
+-- }}}
 
--- Formatting --
+-- Formatting {{{
 cmd [[filetype on]]
-----
+-- }}}
 
--- Autocmds --
-local group = vim.api.nvim_create_augroup("rc", { clear = false })
-vim.api.nvim_create_autocmd("TermOpen",
-    { command = "setlocal nobuflisted nonumber norelativenumber", group = group })
-local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
-vim.api.nvim_create_autocmd('TextYankPost', {
-    callback = function()
-        vim.highlight.on_yank()
-    end,
-    group = highlight_group,
-    pattern = '*',
-})
-vim.api.nvim_set_keymap(
-    "n",
-    "<space>fe",
-    ":Explore\n",
-    { noremap = true, silent = true}
-)
-map("n", "<A-s>", ":w<CR>", { silent = true })
-map("n", "<A-q>", ":quitall<CR>", { silent = true })
-local ft = vim.api.nvim_create_augroup("netrw", { clear = false })
-vim.api.nvim_create_autocmd("FileType", {
-    callback = function()
-        vim.api.nvim_buf_set_keymap(0, "n", "l", "<CR>", { silent = true })
-    end,
-    pattern = "netrw",
-    group = ft,
- })
-vim.api.nvim_create_autocmd("FileType", {
-    callback = function()
-        vim.api.nvim_buf_set_keymap(0, "n", "h", "-", { silent = true })
-    end,
-    pattern = "netrw",
-    group = ft,
- })
-vim.api.nvim_create_autocmd("FileType", {
-    callback = function()
-        vim.api.nvim_buf_set_keymap(0, "n", "a", "%", { silent = true })
-    end,
-    pattern = "netrw",
-    group = ft,
- })
-----
+-- Plugins {{{
 
+-- vim-tex {{{
+vim.g.vimtex_view_method = 'zathura'
+vim.g.vimtex_syntax_enabled = 1
+vim.g.vimtex_syntax_conceal = 1
+-- }}}
 
+-- indent-blankline {{{
+    vim.opt.list = true
+    require("indent_blankline").setup {
+        show_end_of_line = true,
+    }
+-- }}}
+
+-- blankline {{{
+    require("indent_blankline").setup {
+        show_end_of_line = true,
+        space_char_blankline = " ",
+        show_current_context_start = true,
+    }
+-- }}}
+
+--}}}
+
+-- Highlights {{{
+local cmd = vim.cmd -- execute Vim commands
+vim.g.sonokai_diagnostic_virtual_text  = 'colored'
+vim.g.sonokai_disable_terminal_colors = 1
+cmd("set termguicolors")
+cmd('colorscheme sonokai')
+cmd("highlight Normal guibg=#0f0f0f")
+cmd('highlight EndOfBuffer ctermfg=241 guifg=#0f0f0f guibg=#0f0f0f')
+cmd('highlight Comment gui=italic')
+-- }}}
+
+-- vim:ts=4:sw=4:ai:foldmethod=marker:foldlevel=0:

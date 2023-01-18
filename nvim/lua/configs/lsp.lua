@@ -30,7 +30,15 @@ local custom_attach = function(client, bufnr)
     vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
     vim.keymap.set("n", "<C-]>", vim.lsp.buf.definition, opts)
     vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-    vim.keymap.set("n", "<C-[>", vim.lsp.buf.signature_help, opts)
+    if client.server_capabilities.signature_help then
+        vim.keymap.set("n", "<C-[>", vim.lsp.buf.signature_help, opts)
+        require "lsp_signature".on_attach({
+            bind = true,
+            handler_opts = {
+                border = "rounded"
+            }
+        }, bufnr)
+    end
     vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, opts)
     vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, opts)
     vim.keymap.set("n", "<space>wl", function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end, opts)
@@ -42,12 +50,6 @@ local custom_attach = function(client, bufnr)
     vim.keymap.set('n', '<space>f', vim.lsp.buf.format, opts)
     vim.keymap.set('n', '<space>ff', vim.diagnostic.open_float, opts)
 
-    require "lsp_signature".on_attach({
-        bind = true,
-        handler_opts = {
-            border = "rounded"
-        }
-    }, bufnr)
     -- Set some key bindings conditional on server capabilities
     if client.server_capabilities.document_formatting then
         vim.keymap.set("n", "<space>f", vim.lsp.buf.formatting_sync, opts)
@@ -62,7 +64,7 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local lspconfig = require("lspconfig")
-local lsps = { "pyright", "bashls", "eslint", "rust_analyzer", "clangd", "jdtls", "gopls", "texlab", "dockerls", "html"} 
+local lsps = { "pyright", "bashls", "eslint", "rust_analyzer", "clangd", "jdtls", "gopls", "texlab", "dockerls", "html", "hls"} 
 for _, lsp_name in ipairs(lsps) do
     lspconfig[lsp_name].setup {
         on_attach = custom_attach,

@@ -1,7 +1,5 @@
 ### EXPORTS ###
-export IDF_PATH=~/esp/esp-idf
-export PATH="$HOME/go/bin:$IDF_PATH/tools:/opt/ti/uniflash_4.6.0/deskdb/content/TICloudAgent/linux/ccs_base/DebugServer/bin:/opt/gcc-arm-none-eabi-9-2019-q4-major/bin:/home/kinshukphalke/.config/networkmanager-dmenu-2.1.0/networkmanager_dmenu:/home/kinshukphalke/greenclip:/home/kinshukphalke/.local/bin:$PATH:/opt"
-export PKG_CONFIG_PATH="/usr/local/lib/arm-none-eabi/pkgconfig:$PKG_CONFIG_PATH"
+export PATH="$HOME/.cabal/bin:$HOME/.ghcup/bin:$HOME/go/bin:/home/kinshukphalke/.local/bin:$PATH:/opt"
 export ACLOCAL_PATH="/usr/local/share/aclocal:$ACLOCAL_PATH"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -50,7 +48,6 @@ function parse_git_branch {
 export PS1="%F{blue} %B%~%b%f %F{8}\$(parse_git_branch)%f %F{green}➜%f "
 bindkey -e
 
-
 ## LF ###
 lfcd () {
     tmp="$(mktemp)"
@@ -71,3 +68,5 @@ source /home/kinshukphalke/zsh-history-substring-search/zsh-history-substring-se
 source ~/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
+
+[ -f "/home/kinshukphalke/.ghcup/env" ] && source "/home/kinshukphalke/.ghcup/env" # ghcup-env

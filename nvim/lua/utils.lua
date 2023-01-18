@@ -25,11 +25,27 @@ function M.may_create_dir()
     end
 end
 function M.map(mode, lhs, rhs, opts)
-    local options = { noremap = true }
+    local options = { noremap = true, silent = true }
     if opts then
         options = vim.tbl_extend("force", options, opts)
     end
     vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+end
+
+function M.openTerm()
+    local file = vim.fn.expand('%:p')
+    local extension = vim.bo.filetype
+    local cmd = "botright 7split | terminal"
+    if vim.bo.filetype == 'lua' then
+        cmd = cmd .. " lua " .. file
+    end
+    if vim.bo.filetype == 'python' then
+        cmd = cmd .. " python " .. file
+    end
+    if vim.bo.filetype == 'rust' then
+        cmd = cmd .. " rustc " .. file 
+    end
+    vim.cmd(cmd)
 end
 
 return M
