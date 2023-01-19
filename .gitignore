@@ -1,20 +1,14 @@
 *
 !*/
-!starship.toml
 !nvim/**
-!kitty/**
 !polybar/**
 !i3/**
-!fish/**
 !ranger/**
 !rofi/**
 !.gitignore
 !.zshenv
 !.zshrc
-!.imwheelrc
-!tmux/** 
 !alacritty/**
-!awesome/**
 !dunst/**
 !st/**
 !bspwm/**
@@ -25,5 +19,4 @@
 !lf/**
 !.xinitrc
 !.zshprofile
-!.p10k.zsh
 !.github/**

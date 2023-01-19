@@ -15,7 +15,9 @@ HISTFILE=~/.zsh_history
 alias grouch="python ~/Documents/grouch/src/tracker.py spring"
 alias cn="cd ~/.config/nvim && nvim ~/.config/nvim/init.lua"
 alias wiki="cd ~/vimwiki/ && nvim index.wiki"
-alias circuitsim='java  --module-path /usr/lib/jvm/java-19-openjdk/lib/javafx.base.jar:/usr/lib/jvm/java-19-openjdk/lib/javafx.controls.jar:/usr/lib/jvm/java-19-openjdk/lib/javafx.graphics.jar --add-modules=javafx.controls -jar ~/Downloads/CircuitSim1.8.2.jar' alias gcam="git commit -am" alias gaa="git add ."
+alias circuitsim='java  --module-path /usr/lib/jvm/java-19-openjdk/lib/javafx.base.jar:/usr/lib/jvm/java-19-openjdk/lib/javafx.controls.jar:/usr/lib/jvm/java-19-openjdk/lib/javafx.graphics.jar --add-modules=javafx.controls -jar ~/Downloads/CircuitSim1.8.2.jar' 
+alias gcam="git commit -am" 
+alias gaa="git add ."
 alias gp="git push"
 alias todo="cd ~/vimwiki/ && nvim todos/todo.wiki"
 alias r="lfcd"

@@ -2,7 +2,6 @@ local set = vim.opt
 local cmd = vim.cmd 
 local map = require("utils").map
 
-
 -- {{{ Global Configs 
 vim.g.mapleader = " "
 vim.g.netrw_keepdir = 0
@@ -34,7 +33,6 @@ vim.g.yoinkIncludeDeleteOperations = 1
 vim.wo.number = true
 vim.wo.relativenumber = true
 vim.opt.list = true
-vim.opt.listchars:append("space:⋅")
 set.undofile = true
 set.completeopt = 'menuone,noselect'
 set.laststatus = 3
@@ -126,7 +124,6 @@ require("lualine").setup({
 -- barbar {{{
 require 'bufferline'.setup {
     icons = 'both',
-    icon_separator_inactive = '',
     icon_close_tab_modified = '●',
     no_name_title = "unnamed",
 }

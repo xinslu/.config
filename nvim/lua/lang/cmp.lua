@@ -64,7 +64,7 @@ cmp.setup({
     }),
     sources = {
         { name = 'luasnip' }, -- For luasnip
-        { name = 'nvim_lsp', max_item_count = 10 }, -- For nvim-lsp
+        { name = 'nvim_lsp', max_item_count = 20 }, -- For nvim-lsp
         { name = 'nvim_lua' }, -- for nvim lua function
         { name = 'path' }, -- for path completion
         { name = 'nvim_lsp_signature_help' }
