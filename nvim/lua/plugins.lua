@@ -26,13 +26,12 @@ return require('packer').startup(function(use)
     use { "hrsh7th/cmp-nvim-lsp", after = "nvim-cmp" }
     use { "hrsh7th/cmp-nvim-lua", after = "nvim-cmp" }
     use { "hrsh7th/cmp-path", after = "nvim-cmp" }
-    use { "hrsh7th/cmp-buffer", after = "nvim-cmp" }
-    use { "hrsh7th/cmp-omni", after = "nvim-cmp" }
+    use 'L3MON4D3/LuaSnip'
     use { "saadparwaiz1/cmp_luasnip", after = { 'nvim-cmp'} }
 -- }}}
 
 -- lsp {{{
-    use({ "neovim/nvim-lspconfig", after = "cmp-nvim-lsp", config = [[require('lang.lsp')]] })
+    use({ "neovim/nvim-lspconfig", config = [[require('lang.lsp')]] })
     use 'williamboman/nvim-lsp-installer'
     use({ "onsails/lspkind-nvim", event = "VimEnter" })
     use "ray-x/lsp_signature.nvim"
@@ -59,6 +58,7 @@ return require('packer').startup(function(use)
     use 'p00f/clangd_extensions.nvim'
     use 'vimwiki/vimwiki'
     use 'wuelnerdotexe/vim-astro'
+    use 'folke/neodev.nvim'
 -- }}}
 
 -- treesitter {{{

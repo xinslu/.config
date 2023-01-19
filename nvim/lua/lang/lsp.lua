@@ -4,7 +4,6 @@ local lsp = vim.lsp
 local pid = vim.fn.getpid()
 local cmd = vim.cmd -- execute Vim commands
 local utils = require("utils")
-require("clangd_extensions").prepare()
 
 -- Setup installer & lsp configs
 local typescript_ok, typescript = pcall(require, 'typescript')
@@ -45,7 +44,6 @@ local custom_attach = function(client, bufnr)
     vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, opts)
     vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
     vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
-    vim.keymap.set("n", "<space>q", function() vim.diagnostic.setqflist({ open = true }) end, opts)
     vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, opts)
     vim.keymap.set('n', '<space>f', vim.lsp.buf.format, opts)
     vim.keymap.set('n', '<space>ff', vim.diagnostic.open_float, opts)
@@ -60,11 +58,10 @@ local custom_attach = function(client, bufnr)
 end
 
 local capabilities = lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local lspconfig = require("lspconfig")
-local lsps = { "pyright", "bashls", "eslint", "rust_analyzer", "clangd", "jdtls", "gopls", "texlab", "dockerls", "html", "hls"} 
+local lsps = { "pyright", "bashls", "eslint", "jdtls", "gopls", "texlab", "dockerls", "html", "hls"}
 for _, lsp_name in ipairs(lsps) do
     lspconfig[lsp_name].setup {
         on_attach = custom_attach,
@@ -72,25 +69,17 @@ for _, lsp_name in ipairs(lsps) do
         single_file_support = true,
     }
 end
-lspconfig.pylsp.setup({
-    on_attach = custom_attach,
-    settings = {
-        pylsp = {
-            plugins = {
-                pylint = { enabled = false },
-                pyflakes = { enabled = false },
-                pycodestyle = { enabled = false },
-                jedi_completion = { fuzzy = true },
-                pyls_isort = { enabled = true },
-                pylsp_mypy = { enabled = true },
-            },
-        },
-    },
-    flags = {
-        debounce_text_changes = 200,
-    },
-    capabilities = capabilities,
+
+require("clangd_extensions").setup({
+    server = {
+        on_attach = custom_attach,
+        capabilities = capabilities,
+        single_file_support = true,
+    }
 })
+
+
+require("neodev").setup({})
 
 lspconfig.sumneko_lua.setup({
     on_attach = custom_attach,
@@ -138,6 +127,17 @@ lspconfig.omnisharp.setup {
     cmd = { "/usr/local/bin/omnisharp-roslyn/run", "--languageserver", "--hostPID", tostring(pid) }
 }
 
+local rt = require("rust-tools")
+
+rt.setup({
+  server = {
+    on_attach = function(_, bufnr)
+      vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
+      vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
+    end,
+  },
+})
+
 -- Change diagnostic signs.
 fn.sign_define("DiagnosticSignError", { text = "x", texthl = "DiagnosticSignError", })
 fn.sign_define("DiagnosticSignWarn", { text = "!", texthl = "DiagnosticSignWarn" })
@@ -156,36 +156,4 @@ vim.diagnostic.config({
     float = {
         source = "always", -- Or "if_many"
     },
-
 })
-
-
-local opts = {
-    tools = { -- rust-tools options
-        autoSetHints = true,
-        inlay_hints = {
-            show_parameter_hints = false,
-            parameter_hints_prefix = "",
-            other_hints_prefix = "",
-        },
-    },
-
-    -- all the opts to send to nvim-lspconfig
-    -- these override the defaults set by rust-tools.nvim
-    -- see https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#rust_analyzer
-    server = {
-        -- on_attach is a callback called when the language server attachs to the buffer
-        -- on_attach = on_attach,
-        settings = {
-            -- to enable rust-analyzer settings visit:
-            -- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
-            ["rust-analyzer"] = {
-                -- enable clippy on save
-                checkOnSave = {
-                    command = "clippy"
-                },
-            }
-        }
-    },
-}
-

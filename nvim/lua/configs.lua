@@ -1,6 +1,9 @@
--- {{{ Global Configs 
 local set = vim.opt
 local cmd = vim.cmd 
+local map = require("utils").map
+
+
+-- {{{ Global Configs 
 vim.g.mapleader = " "
 vim.g.netrw_keepdir = 0
 vim.g.netrw_banner = 0
@@ -31,7 +34,7 @@ vim.g.yoinkIncludeDeleteOperations = 1
 vim.wo.number = true
 vim.wo.relativenumber = true
 vim.opt.list = true
-vim.opt.listchars:append "space:⋅"
+vim.opt.listchars:append("space:⋅")
 set.undofile = true
 set.completeopt = 'menuone,noselect'
 set.laststatus = 3
@@ -52,7 +55,7 @@ vim.cmd("filetype on")
 -- vim-tex {{{
 vim.g.vimtex_view_method = 'zathura'
 vim.g.vimtex_syntax_enabled = 1
-vim.g.vimtex_syntax_conceal = 1
+vim.g.vimtex_quickfix_enabled = 0
 -- }}}
 
 -- indent-blankline {{{
@@ -158,7 +161,6 @@ require('git-conflict').setup()
 -- }}}
 
 -- Highlights {{{
-local cmd = vim.cmd -- execute Vim commands
 vim.g.sonokai_diagnostic_virtual_text  = 'colored'
 vim.g.sonokai_disable_terminal_colors = 1
 vim.g.sonokai_show_eob = 1
@@ -214,68 +216,46 @@ vim.api.nvim_create_autocmd("FileType", {
 -- }}}
 
 -- Keymaps {{{
-local map = require("utils").map
-
-map('n', '<CR>', ':noh<CR><CR>')
+-- Key remaps {{{
 map('n', '<C-j>', '<C-W>j')
 map('n', '<C-k>', '<C-W>k')
 map('n', '<C-l>', '<C-W>l')
 map('n', '<C-h>', '<C-W>h')
 map('t', '<Esc>', '<C-\\><C-n>')
-map("n", "<space>fe", ":Explore\n")
-map("n", "<A-s>", ":w<CR>")
 map("n", "E", "ea")
-map("n", "<A-q>", ":quitall<CR>")
-map('n', '<A-,>', ':BufferPrevious<CR>')
-map('n', '<A-.>', ':BufferNext<CR>')
-map('n', '<A-<>', ':BufferMovePrevious<CR>')
-map('n', '<A->>', ' :BufferMoveNext<CR>')
-map("n", "<A-1>", ":BufferGoto 1<CR>")
-map("n", "<A-2>", ":BufferGoto 2<CR>")
-map("n", "<A-3>", ":BufferGoto 3<CR>")
-map("n", "<A-4>", ":BufferGoto 4<CR>")
-map("n", "<A-5>", ":BufferGoto 5<CR>")
-map("n", "<A-6>", ":BufferGoto 6<CR>")
-map("n", "<A-7>", ":BufferGoto 7<CR>")
-map("n", "<A-8>", ":BufferGoto 8<CR>")
-map("n", "<A-9>", ":BufferGoto 9<CR>")
-map('n', '<A-0>', ':BufferLast<CR>')
-map('n', '<A-p>', ':BufferPin<CR>')
-map("n", "<A-w>", ":BufferClose<CR>")
-map('n', '<C-p>', ':BufferPick<CR>')
-map('n', '<Space>bb', ':BufferOrderByBufferNumber<CR>')
-map('n', '<Space>bd', ':BufferOrderByDirectory<CR>')
-map('n', '<Space>bl', ':BufferOrderByLanguage<CR>')
-map('n', '<Space>bw', ':BufferOrderByWindowNumber<CR>')
-map("n", " xx", "<cmd>Trouble<cr>")
-map("n", " xw", "<cmd>Trouble workspace_diagnostics<cr>")
-map("n", " xd", "<cmd>Trouble document_diagnostics<cr>")
-map("n", " xl", "<cmd>Trouble loclist<cr>")
-map("n", " xq", "<cmd>Trouble quickfix<cr>")
-map("n", "gR", "<cmd>Trouble lsp_references<cr>")
+map("n", "<space>fe", cmd.Explore)
+map("n", "<A-s>", cmd.w)
+map("n", "<A-q>", cmd.q)
+map("n", "<A-e>", cmd.quitall)
+map('n', '<CR>', cmd.noh)
+-- }}}
 
-vim.keymap.set('n', '<C-f>',
+-- Function Keybinds {{{
+map("n", "<A-1>", function() cmd.BufferGoto(1) end)
+map("n", "<A-2>", function() cmd.BufferGoto(2) end)
+map("n", "<A-3>", function() cmd.BufferGoto(3) end)
+map("n", "<A-4>", function() cmd.BufferGoto(4) end)
+map("n", "<A-5>", function() cmd.BufferGoto(5) end)
+map("n", "<A-6>", function() cmd.BufferGoto(6) end)
+map("n", "<A-7>", function() cmd.BufferGoto(7) end)
+map("n", "<A-8>", function() cmd.BufferGoto(8) end)
+map("n", "<A-9>", function() cmd.BufferGoto(9) end)
+map("n", "<A-0>", cmd.BufferLast)
+map("n", "<A-p>", cmd.BufferPin)
+map("n", "<A-w>", cmd.BufferClose)
+map("n", "<A-p>", cmd.BufferPick)
+map("n", " xx", cmd.Trouble)
+map("n", " xx", "<cmd>TroubleToggle<cr>")
+map("n", " xd", "<cmd>TroubleToggle document_diagnostics<cr>")
+map("n", " xw", "<cmd>TroubleToggle workspace_diagnostics<cr>")
+map('n', '<C-s>', require('telescope.builtin').find_files)
+map('n', 'gr', require('telescope.builtin').lsp_references)
+map('n', '<C-b>', require("utils").openTerm)
+map('n', '<C-f>',
     function()
         require('telescope.builtin').grep_string({ search = vim.fn.input('Grep For > ')})
-    end, 
-    { noremap = true, desc = "Project Wide search" })
-vim.keymap.set('n', '<C-s>', 
-    function()
-        require('telescope.builtin').find_files()
-    end,
-    { noremap = true, desc = "Project Wide File search" })
-vim.keymap.set('n', 'gr', 
-    function()
-        require('telescope.builtin').lsp_references()
-    end,
-    { noremap = true, desc = "Project Wide File search" })
-
-vim.keymap.set('n', '<C-b>', 
-    function()
-        require("utils").openTerm()
-    end,
-    { noremap = true, desc = "Build System" })
-
+    end)
+-- }}}
 -- }}}
 
 -- vim:ts=4:sw=4:ai:foldmethod=marker:foldlevel=0:

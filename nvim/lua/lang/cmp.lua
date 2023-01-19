@@ -8,6 +8,23 @@ local luasnip = require("luasnip")
 local cmp = require 'cmp'
 local lspkind = require 'lspkind'
 
+local types = require("luasnip.util.types")
+
+require("luasnip.loaders.from_snipmate").load()
+
+luasnip.config.set_config({
+    history=true,
+    updatevents = "TextChanged, TextChangedI",
+    enable_autosnippets = true,
+    ext_opts = {
+		[types.choiceNode] = {
+			active = {
+				virt_text = {  "●" },
+			},
+        },
+    },
+})
+
 cmp.setup({
     snippet = {
         expand = function(args)
@@ -46,13 +63,10 @@ cmp.setup({
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
     }),
     sources = {
-        { name = 'nvim_lsp', max_item_count = 20 }, -- For nvim-lsp
         { name = 'luasnip' }, -- For luasnip
+        { name = 'nvim_lsp', max_item_count = 10 }, -- For nvim-lsp
         { name = 'nvim_lua' }, -- for nvim lua function
         { name = 'path' }, -- for path completion
-        { name = 'buffer', keyword_length = 4 }, -- for buffer word completion
-        { name = 'omni' },
-        { name = 'emoji', insert = true, }, -- emoji completion
         { name = 'nvim_lsp_signature_help' }
     },
     completion = {
@@ -70,15 +84,7 @@ cmp.setup({
                 luasnip = "[Snip]",
                 nvim_lua = "[Lua]",
                 path = "[Path]",
-                buffer = "[Buffer]",
-                emoji = "[Emoji]",
-                omni = "[Omni]",
             }),
         }),
     },
-    experimental = {
-        ghost_text = true,
-        native_menu = false,
-    }
 })
-
