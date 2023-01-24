@@ -15,7 +15,7 @@ set.shiftwidth = 4
 set.softtabstop = 4
 set.expandtab = true
 set.autoindent = true
-set.cursorline = true
+set.cursorline = false
 set.hidden = true
 set.wrap = false
 set.errorbells = false
@@ -40,6 +40,7 @@ vim.g.wildmenu = true
 vim.g.wildignorecase = true
 vim.g.wildmode = "list:longest,full"
 vim.o.hidden = true
+vim.opt.showtabline = 2
 vim.opt.fillchars:append("eob: ")
 vim.lsp.set_log_level("debug")
 --- }}}
@@ -84,36 +85,19 @@ require('nvim-terminal').setup({
 })
 --}}}
 
--- lualine {{{
-require("lualine").setup({
-    options = {
-        icons_enabled = true,
-        theme = "sonokai",
-    },
+-- staline {{{
+require('staline').setup({
     sections = {
-        lualine_a = { "mode" },
-        lualine_b = { "branch", "diff" },
-        lualine_c = {"filename"},
-        lualine_x = { "filetype"},
-        lualine_y = { "progress" },
-        lualine_z = {
-            "location",
-            {
-                "diagnostics",
-                sources = { "nvim_diagnostic" }
-            },
-        },
+        left = { '- ', '-mode', 'left_sep_double', ' ', 'branch' },
+        mid  = { 'file_name' },
+        right = { 'lsp' ,'right_sep_double', '-line_column' },
     },
-    inactive_sections = {
-        lualine_a = {},
-        lualine_b = {},
-        lualine_c = { "filename" },
-        lualine_x = { "location" },
-        lualine_y = {},
-        lualine_z = {},
+    mode_colors = {
+        n = "#5FB0FC",
     },
-    tabline = {},
-    extensions = { 'quickfix', 'fugitive' },
+    defaults = {
+        line_column = "%l:%c",
+    }
 })
 -- }}}
 
@@ -123,9 +107,11 @@ require("lualine").setup({
 
 -- barbar {{{
 require 'bufferline'.setup {
-    icons = 'both',
+    icons = 'numbers',
     icon_close_tab_modified = '●',
     no_name_title = "unnamed",
+    icon_separator_inactive = '',
+    icon_separator_active = '',
 }
 -- }}}
 
@@ -160,11 +146,17 @@ require('git-conflict').setup()
 -- Highlights {{{
 vim.g.sonokai_diagnostic_virtual_text  = 'colored'
 vim.g.sonokai_disable_terminal_colors = 1
-vim.g.sonokai_show_eob = 1
 vim.cmd.colorscheme("sonokai")
 vim.api.nvim_set_hl(0, "Normal", { bg = "#0f0f0f" })
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
 vim.api.nvim_set_hl(0, "Comment", {default = true, italic = true})
+vim.api.nvim_set_hl(0, "BufferCurrent", {bg = "#5FB0FC", fg = "#101317", bold = true})
+vim.api.nvim_set_hl(0, "BufferCurrentIndex", {bg = "#5FB0FC",  fg = "#101317" })
+vim.api.nvim_set_hl(0, "BufferCurrentMod", {bg = "#5FB0FC", fg = "#101317" })
+vim.api.nvim_set_hl(0, "BufferCurrentSign", {bg = "#5FB0FC"})
+vim.api.nvim_set_hl(0, "BufferCurrentIcon", {fg = "#101317"})
+vim.api.nvim_set_hl(0, "EndOfBuffer", {bg = "#0f0f0f"})
 -- }}}
 
 -- Autocmds {{{

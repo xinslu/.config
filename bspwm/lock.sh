@@ -4,7 +4,7 @@ dbus-send --print-reply --dest=com.github.chjj.compton.${DISPLAY/:/_} / \
 dbus-send --print-reply --dest=com.github.chjj.compton.${DISPLAY/:/_} / \
     com.github.chjj.compton.opts_set string:unredir_if_possible boolean:false
 
-env XSECURELOCK_NO_COMPOSITE=1 XSECURELOCK_SHOW_DATETIME=1 XSECURELOCK_FONT="Iosevka Nerd Font Mono" xsecurelock
+env XSECURELOCK_NO_COMPOSITE=1 XSECURELOCK_SHOW_DATETIME=1 XSECURELOCK_AUTH_WARNING_COLOR="#ff0000" XSECURELOCK_FONT="Iosevka Nerd Font Mono" xsecurelock
 
 sleep 0.2
 dbus-send --print-reply --dest=com.github.chjj.compton.${DISPLAY/:/_} / \

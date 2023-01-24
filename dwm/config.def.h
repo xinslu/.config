@@ -65,24 +65,24 @@ static const char *flameshot[] = { "flameshot", "full", "-c", NULL };
 static const char *lock[] = { "/home/kinshukphalke/.config/dwm/lock.sh", NULL };
 static const char *volumeup[] = { "amixer", "-q", "sset", "Master", "10%+", NULL };
 static const char *volumedown[] = { "amixer", "-q", "sset", "Master", "10%-", NULL };
-static const char *volumedown[] = { "amixer", "-q", "sset", "Master", "toggle", NULL };
+static const char *volumetoggle[] = { "amixer", "-q", "sset", "Master", "toggle", NULL };
 
 #include "selfrestart.c"
-
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ 0,                            XF86XK_AudioLowerVolume,       spawn,          {.v = volumedown} },
 	{ 0,                            XF86XK_AudioRaiseVolume,       spawn,          {.v = volumeup} },
-	{ 0,                            XF86XK_AudioMute,              spawn,          {.v = volumeup} },
+	{ 0,                            XF86XK_AudioMute,              spawn,          {.v = volumetoggle} },
 	{ MODKEY,                       XK_d,                          spawn,          {.v = rofi} },
 	{ MODKEY,                       XK_Return,                     spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,                          togglebar,      {0} },
 	{ MODKEY,                       XK_j,                          focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,                          focusstack,     {.i = -1 } },
+	{ MODKEY,                       XK_l,                          focusstack,     {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_i,                          incnmaster,     {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_d,                          incnmaster,     {.i = -1 } },
-	{ MODKEY,                       XK_h,                          setmfact,       {.f = -0.05} },
-	{ MODKEY,                       XK_l,                          setmfact,       {.f = +0.05} },
+	{ MODKEY|ShiftMask,             XK_h,                          setmfact,       {.f = -0.05} },
+	{ MODKEY|ShiftMask,             XK_l,                          setmfact,       {.f = +0.05} },
 	{ MODKEY|ShiftMask,             XK_Return,                     zoom,           {0} },
 	{ MODKEY,                       XK_Tab,                        view,           {0} },
 	{ MODKEY,                       XK_w,                          killclient,     {0} },
@@ -113,6 +113,7 @@ static const Key keys[] = {
     { MODKEY|ShiftMask,             XK_r,                          self_restart,   {0} },
     { MODKEY|ControlMask,           XK_q,                          spawn,          {.v = lock  } },
 	{ MODKEY|ShiftMask,             XK_q,                          quit,           {0} },
+    { MODKEY,                       XK_h,                          focusmaster,    {0} },
 };
 
 /* button definitions */
