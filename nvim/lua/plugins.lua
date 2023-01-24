@@ -67,6 +67,7 @@ return require('packer').startup(function(use)
         'nvim-treesitter/nvim-treesitter-textobjects',
         after = 'nvim-treesitter',
     }
+    use 'nvim-treesitter/playground'
 -- }}}
 
 -- Better Workflow {{{

@@ -157,6 +157,7 @@ vim.api.nvim_set_hl(0, "BufferCurrentMod", {bg = "#5FB0FC", fg = "#101317" })
 vim.api.nvim_set_hl(0, "BufferCurrentSign", {bg = "#5FB0FC"})
 vim.api.nvim_set_hl(0, "BufferCurrentIcon", {fg = "#101317"})
 vim.api.nvim_set_hl(0, "EndOfBuffer", {bg = "#0f0f0f"})
+vim.api.nvim_set_hl(0, "String", {fg= "#6485E8"})
 -- }}}
 
 -- Autocmds {{{
