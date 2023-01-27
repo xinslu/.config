@@ -93,7 +93,7 @@ require('nvim_comment').setup()
 
 -- barbar {{{
 require 'bufferline'.setup {
-    icons = 'numbers',
+    icons = 'both',
     icon_close_tab_modified = '●',
     no_name_title = "unnamed",
     icon_separator_inactive = '',
@@ -137,11 +137,10 @@ vim.api.nvim_set_hl(0, "Normal", { bg = "#0f0f0f" })
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
 vim.api.nvim_set_hl(0, "Comment", { default = true, italic = true })
-vim.api.nvim_set_hl(0, "BufferCurrent", { bg = "#5FB0FC", fg = "#101317", bold = true })
-vim.api.nvim_set_hl(0, "BufferCurrentIndex", { bg = "#5FB0FC", fg = "#101317" })
-vim.api.nvim_set_hl(0, "BufferCurrentMod", { bg = "#5FB0FC", fg = "#101317" })
-vim.api.nvim_set_hl(0, "BufferCurrentSign", { bg = "#5FB0FC" })
-vim.api.nvim_set_hl(0, "BufferCurrentIcon", { fg = "#101317" })
+vim.api.nvim_set_hl(0, "BufferCurrent", { bg = "#0f0f0f" })
+vim.api.nvim_set_hl(0, "BufferCurrentIndex", { bg = "#0f0f0f"})
+vim.api.nvim_set_hl(0, "BufferCurrentMod", { bg = "#0f0f0f"})
+vim.api.nvim_set_hl(0, "BufferCurrentSign", { bg = "#0f0f0f" })
 vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "#0f0f0f" })
 vim.api.nvim_set_hl(0, "String", { fg = "#6485E8" })
 vim.api.nvim_set_hl(0, "IndentBlanklineContextChar", { fg = "#5FB0FC" })
