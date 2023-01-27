@@ -46,6 +46,9 @@ function M.openTerm()
     if vim.bo.filetype == 'rust' then
         cmd = cmd .. " rustc " .. file 
     end
+    if vim.bo.filetype == 'haskell' then
+        cmd = cmd .. " ghc " .. file 
+    end
     vim.cmd(cmd)
 end
 

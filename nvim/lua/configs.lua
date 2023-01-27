@@ -1,8 +1,8 @@
 local set = vim.opt
-local cmd = vim.cmd 
+local cmd = vim.cmd
 local map = require("utils").map
 
--- {{{ Global Configs 
+-- {{{ Global Configs
 vim.g.mapleader = " "
 vim.g.netrw_keepdir = 0
 vim.g.netrw_banner = 0
@@ -43,6 +43,7 @@ vim.o.hidden = true
 vim.opt.showtabline = 2
 vim.opt.fillchars:append("eob: ")
 vim.lsp.set_log_level("debug")
+vim.g.python3_host_prog = "python3"
 --- }}}
 
 -- Formatting {{{
@@ -55,21 +56,6 @@ vim.cmd("filetype on")
 vim.g.vimtex_view_method = 'zathura'
 vim.g.vimtex_syntax_enabled = 1
 vim.g.vimtex_quickfix_enabled = 0
--- }}}
-
--- indent-blankline {{{
-    vim.opt.list = true
-    require("indent_blankline").setup {
-        show_end_of_line = true,
-    }
--- }}}
-
--- blankline {{{
-    require("indent_blankline").setup {
-        show_end_of_line = true,
-        space_char_blankline = " ",
-        show_current_context_start = true,
-    }
 -- }}}
 
 -- nvim-terminal {{{
@@ -88,9 +74,9 @@ require('nvim-terminal').setup({
 -- staline {{{
 require('staline').setup({
     sections = {
-        left = { '- ', '-mode', 'left_sep_double', ' ', 'branch' },
-        mid  = { 'file_name' },
-        right = { 'lsp' ,'right_sep_double', '-line_column' },
+        left  = { '- ', '-mode', 'left_sep_double', ' ', 'branch' },
+        mid   = { 'file_name' },
+        right = { 'lsp', 'right_sep_double', '-line_column' },
     },
     mode_colors = {
         n = "#5FB0FC",
@@ -102,7 +88,7 @@ require('staline').setup({
 -- }}}
 
 -- nvim-comment {{{
-    require('nvim_comment').setup()
+require('nvim_comment').setup()
 -- }}}
 
 -- barbar {{{
@@ -125,7 +111,7 @@ require("trouble").setup {
 require("indent_blankline").setup {
     space_char_blankline = " ",
     show_current_context = true,
-    show_current_context_start = true,
+    show_current_context_start = false,
 }
 -- }}}
 
@@ -144,20 +130,22 @@ require('git-conflict').setup()
 -- }}}
 
 -- Highlights {{{
-vim.g.sonokai_diagnostic_virtual_text  = 'colored'
+vim.g.sonokai_diagnostic_virtual_text = 'colored'
 vim.g.sonokai_disable_terminal_colors = 1
 vim.cmd.colorscheme("sonokai")
 vim.api.nvim_set_hl(0, "Normal", { bg = "#0f0f0f" })
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
-vim.api.nvim_set_hl(0, "Comment", {default = true, italic = true})
-vim.api.nvim_set_hl(0, "BufferCurrent", {bg = "#5FB0FC", fg = "#101317", bold = true})
-vim.api.nvim_set_hl(0, "BufferCurrentIndex", {bg = "#5FB0FC",  fg = "#101317" })
-vim.api.nvim_set_hl(0, "BufferCurrentMod", {bg = "#5FB0FC", fg = "#101317" })
-vim.api.nvim_set_hl(0, "BufferCurrentSign", {bg = "#5FB0FC"})
-vim.api.nvim_set_hl(0, "BufferCurrentIcon", {fg = "#101317"})
-vim.api.nvim_set_hl(0, "EndOfBuffer", {bg = "#0f0f0f"})
-vim.api.nvim_set_hl(0, "String", {fg= "#6485E8"})
+vim.api.nvim_set_hl(0, "Comment", { default = true, italic = true })
+vim.api.nvim_set_hl(0, "BufferCurrent", { bg = "#5FB0FC", fg = "#101317", bold = true })
+vim.api.nvim_set_hl(0, "BufferCurrentIndex", { bg = "#5FB0FC", fg = "#101317" })
+vim.api.nvim_set_hl(0, "BufferCurrentMod", { bg = "#5FB0FC", fg = "#101317" })
+vim.api.nvim_set_hl(0, "BufferCurrentSign", { bg = "#5FB0FC" })
+vim.api.nvim_set_hl(0, "BufferCurrentIcon", { fg = "#101317" })
+vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "#0f0f0f" })
+vim.api.nvim_set_hl(0, "String", { fg = "#6485E8" })
+vim.api.nvim_set_hl(0, "IndentBlanklineContextChar", { fg = "#5FB0FC" })
+vim.api.nvim_set_hl(0, "IndentBlanklineContextStart", { underline = false })
 -- }}}
 
 -- Autocmds {{{
@@ -181,28 +169,28 @@ vim.api.nvim_create_autocmd("FileType", {
     end,
     pattern = "netrw",
     group = ft,
- })
+})
 vim.api.nvim_create_autocmd("FileType", {
     callback = function()
         vim.api.nvim_buf_set_keymap(0, "n", "h", "-", { silent = true })
     end,
     pattern = "netrw",
     group = ft,
- })
+})
 vim.api.nvim_create_autocmd("FileType", {
     callback = function()
         vim.api.nvim_buf_set_keymap(0, "n", "a", "%", { silent = true })
     end,
     pattern = "netrw",
     group = ft,
- })
+})
 
 local qf = vim.api.nvim_create_augroup("qf", { clear = false })
 vim.api.nvim_create_autocmd("FileType", {
     command = "setlocal nobuflisted",
     pattern = "qf",
     group = qf,
- })
+})
 -- }}}
 
 -- Keymaps {{{
@@ -243,7 +231,7 @@ map('n', 'gr', require('telescope.builtin').lsp_references)
 map('n', '<C-b>', require("utils").openTerm)
 map('n', '<C-f>',
     function()
-        require('telescope.builtin').grep_string({ search = vim.fn.input('Grep For > ')})
+        require('telescope.builtin').grep_string({ search = vim.fn.input('Grep For > ') })
     end)
 -- }}}
 -- }}}

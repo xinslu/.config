@@ -1,17 +1,11 @@
-#
 # wm independent hotkeys
-#
 
 # terminal emulator
 super + Return
-	st
+	alacritty
 
 super + shift + Return
-	st lf
-
-
-super + shift + @space
-    tabbed -r 2 st -w ''
+	alacritty --command lf
 
 # program launcher
 super + @space
@@ -174,4 +168,3 @@ super+shift+a
 
 super+control+q
     ~/.config/bspwm/lock.sh
-

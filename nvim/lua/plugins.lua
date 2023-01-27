@@ -13,7 +13,7 @@ return require('packer').startup(function(use)
     -- Theme
     use 'sainnhe/sonokai'
 
--- AutoCompletion {{{
+    -- AutoCompletion {{{
     use {
         "hrsh7th/nvim-cmp",
         after = "lspkind-nvim",
@@ -24,10 +24,12 @@ return require('packer').startup(function(use)
     use { "hrsh7th/cmp-nvim-lua", after = "nvim-cmp" }
     use { "hrsh7th/cmp-path", after = "nvim-cmp" }
     use 'L3MON4D3/LuaSnip'
-    use { "saadparwaiz1/cmp_luasnip", after = { 'nvim-cmp'} }
--- }}}
+    use { "saadparwaiz1/cmp_luasnip", after = { 'nvim-cmp' } }
+    use { 'hrsh7th/cmp-buffer', after = { 'nvim-cmp' } }
+    use { 'hrsh7th/cmp-cmdline', after = { 'nvim-cmp' } }
+    -- }}}
 
--- lsp {{{
+    -- lsp {{{
     use({ "neovim/nvim-lspconfig", config = [[require('lang.lsp')]] })
     use 'williamboman/nvim-lsp-installer'
     use({ "onsails/lspkind-nvim", event = "VimEnter" })
@@ -36,15 +38,15 @@ return require('packer').startup(function(use)
         "folke/trouble.nvim",
         requires = "kyazdani42/nvim-web-devicons",
     }
--- }}}
+    -- }}}
 
--- Git {{{
+    -- Git {{{
     use({ "rbong/vim-flog", requires = "tpope/vim-fugitive", cmd = { "Flog" } })
     use 'airblade/vim-gitgutter'
-    use 'akinsho/git-conflict.nvim' 
--- }}}
+    use 'akinsho/git-conflict.nvim'
+    -- }}}
 
--- Language Specific {{{
+    -- Language Specific {{{
     use 'maxmellon/vim-jsx-pretty'
     use 'rust-lang/rust.vim'
     use 'prettier/vim-prettier'
@@ -56,9 +58,9 @@ return require('packer').startup(function(use)
     use 'vimwiki/vimwiki'
     use 'wuelnerdotexe/vim-astro'
     use 'folke/neodev.nvim'
--- }}}
+    -- }}}
 
--- treesitter {{{
+    -- treesitter {{{
     use {
         'nvim-treesitter/nvim-treesitter',
         run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
@@ -68,9 +70,17 @@ return require('packer').startup(function(use)
         after = 'nvim-treesitter',
     }
     use 'nvim-treesitter/playground'
--- }}}
+    -- }}}
 
 -- Better Workflow {{{
+    use {
+        "iurimateus/luasnip-latex-snippets.nvim",
+        requires = { "L3MON4D3/LuaSnip", "lervag/vimtex" },
+        config = function()
+            require 'luasnip-latex-snippets'.setup()
+        end,
+        ft = "tex",
+    }
     use {
         'nvim-telescope/telescope.nvim',
         requires = { { 'nvim-lua/plenary.nvim' } },
@@ -79,7 +89,7 @@ return require('packer').startup(function(use)
     use 's1n7ax/nvim-terminal'
     use 'lukas-reineke/indent-blankline.nvim'
     use "gbprod/cutlass.nvim"
--- }}}
+    -- }}}
 
 end)
 -- vim:ts=4:sw=4:ai:foldmethod=marker:foldlevel=0:

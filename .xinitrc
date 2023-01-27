@@ -9,11 +9,10 @@ else
     xrandr --dpi 96
 fi
 
-/usr/bin/xidlehook --not-when-fullscreen --timer 180 '~/.config/bspwm/lock.sh' '' &
+/usr/bin/xidlehook --not-when-fullscreen --timer 180 '~/.config/bspwm/lock.sh' '' --timer 60 'sudo systemctl suspend' '' &
 picom --config ~/.config/picom/picom.conf --backend glx &
 feh --bg-fill ~/Downloads/spaceman-bg.jpg &
 flameshot &
 dunst &
 xsetroot -cursor_name left_ptr 
-# dwmblocks &
 exec bspwm
