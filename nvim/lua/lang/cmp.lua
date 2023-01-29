@@ -63,10 +63,10 @@ cmp.setup({
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
     }),
     sources = {
-        { name = 'luasnip' }, -- For luasnip
-        { name = 'nvim_lsp', max_item_count = 20 }, -- For nvim-lsp
-        { name = 'nvim_lua' }, -- for nvim lua function
-        { name = 'path' }, -- for path completion
+        { name = 'luasnip' }, 
+        { name = 'nvim_lsp', max_item_count = 20 }, 
+        { name = 'nvim_lua' },
+        { name = 'path' }, 
         { name = 'nvim_lsp_signature_help' }
     },
     completion = {

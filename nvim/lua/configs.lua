@@ -15,7 +15,7 @@ set.shiftwidth = 4
 set.softtabstop = 4
 set.expandtab = true
 set.autoindent = true
-set.cursorline = false
+set.cursorline = true
 set.hidden = true
 set.wrap = false
 set.errorbells = false
@@ -42,7 +42,6 @@ vim.g.wildmode = "list:longest,full"
 vim.o.hidden = true
 vim.opt.showtabline = 2
 vim.opt.fillchars:append("eob: ")
-vim.lsp.set_log_level("debug")
 vim.g.python3_host_prog = "python3"
 --- }}}
 
@@ -71,20 +70,24 @@ require('nvim-terminal').setup({
 })
 --}}}
 
--- staline {{{
-require('staline').setup({
+-- lualine {{{
+require('lualine').setup {
+    options = {
+        theme = 'sonokai',
+        always_divide_middle = true,
+        globalstatus = true,
+        component_separators = { left = '', right = '' },
+        section_separators = { left = '', right = '' },
+    },
     sections = {
-        left  = { '- ', '-mode', 'left_sep_double', ' ', 'branch' },
-        mid   = { 'file_name' },
-        right = { 'lsp', 'right_sep_double', '-line_column' },
+        lualine_a = { { 'mode' } },
+        lualine_b = {{'branch', icon = {'', color={fg='green'}} } },
+        lualine_c = {'diff'},
+        lualine_x = {},
+        lualine_y = { 'diagnostics' },
+        lualine_z = { 'location' }
     },
-    mode_colors = {
-        n = "#5FB0FC",
-    },
-    defaults = {
-        line_column = "%l:%c",
-    }
-})
+}
 -- }}}
 
 -- nvim-comment {{{
@@ -132,14 +135,18 @@ require('git-conflict').setup()
 -- Highlights {{{
 vim.g.sonokai_diagnostic_virtual_text = 'colored'
 vim.g.sonokai_disable_terminal_colors = 1
+vim.g.sonokai_dim_inactive_windows = 0
+vim.g.sonokai_show_eob = 0
+vim.g.sonokai_better_performance = 1
 vim.cmd.colorscheme("sonokai")
 vim.api.nvim_set_hl(0, "Normal", { bg = "#0f0f0f" })
+vim.api.nvim_set_hl(0, "NormalNC", { bg = "#0f0f0f" })
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
 vim.api.nvim_set_hl(0, "Comment", { default = true, italic = true })
 vim.api.nvim_set_hl(0, "BufferCurrent", { bg = "#0f0f0f" })
-vim.api.nvim_set_hl(0, "BufferCurrentIndex", { bg = "#0f0f0f"})
-vim.api.nvim_set_hl(0, "BufferCurrentMod", { bg = "#0f0f0f"})
+vim.api.nvim_set_hl(0, "BufferCurrentIndex", { bg = "#0f0f0f" })
+vim.api.nvim_set_hl(0, "BufferCurrentMod", { bg = "#0f0f0f" })
 vim.api.nvim_set_hl(0, "BufferCurrentSign", { bg = "#0f0f0f" })
 vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "#0f0f0f" })
 vim.api.nvim_set_hl(0, "String", { fg = "#6485E8" })

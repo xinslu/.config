@@ -5,10 +5,11 @@ return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
 
     -- Status Line
-    use 'tamton-aquib/staline.nvim'
+    use 'nvim-lualine/lualine.nvim'
 
     -- Buffer Line
-    use 'romgrk/barbar.nvim'
+    use 'nvim-tree/nvim-web-devicons'
+    use {'romgrk/barbar.nvim', wants = 'nvim-web-devicons'}
 
     -- Theme
     use 'sainnhe/sonokai'
