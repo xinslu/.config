@@ -15,4 +15,5 @@ feh --bg-fill ~/Downloads/spaceman-bg.jpg &
 flameshot &
 dunst &
 xsetroot -cursor_name left_ptr 
+[ -f ~/.xprofile ] && . ~/.xprofile
 exec bspwm

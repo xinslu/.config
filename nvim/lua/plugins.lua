@@ -5,7 +5,7 @@ return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
 
     -- Status Line
-    use 'nvim-lualine/lualine.nvim'
+    use 'tamton-aquib/staline.nvim'
 
     -- Buffer Line
     use 'nvim-tree/nvim-web-devicons'
@@ -43,7 +43,7 @@ return require('packer').startup(function(use)
 
     -- Git {{{
     use({ "rbong/vim-flog", requires = "tpope/vim-fugitive", cmd = { "Flog" } })
-    use 'airblade/vim-gitgutter'
+    use 'lewis6991/gitsigns.nvim'
     use 'akinsho/git-conflict.nvim'
     -- }}}
 
@@ -59,6 +59,7 @@ return require('packer').startup(function(use)
     use 'vimwiki/vimwiki'
     use 'wuelnerdotexe/vim-astro'
     use 'folke/neodev.nvim'
+    use 'ziglang/zig.vim'
     -- }}}
 
     -- treesitter {{{
@@ -74,14 +75,6 @@ return require('packer').startup(function(use)
     -- }}}
 
 -- Better Workflow {{{
-    use {
-        "iurimateus/luasnip-latex-snippets.nvim",
-        requires = { "L3MON4D3/LuaSnip", "lervag/vimtex" },
-        config = function()
-            require 'luasnip-latex-snippets'.setup()
-        end,
-        ft = "tex",
-    }
     use {
         'nvim-telescope/telescope.nvim',
         requires = { { 'nvim-lua/plenary.nvim' } },

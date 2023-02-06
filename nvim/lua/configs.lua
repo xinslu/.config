@@ -38,9 +38,9 @@ set.completeopt = 'menuone,noselect'
 set.laststatus = 3
 vim.g.wildmenu = true
 vim.g.wildignorecase = true
+vim.o.showcmd = false
 vim.g.wildmode = "list:longest,full"
 vim.o.hidden = true
-vim.opt.showtabline = 2
 vim.opt.fillchars:append("eob: ")
 vim.g.python3_host_prog = "python3"
 --- }}}
@@ -49,87 +49,47 @@ vim.g.python3_host_prog = "python3"
 vim.cmd("filetype on")
 -- }}}
 
--- Plugins {{{
-
--- vim-tex {{{
-vim.g.vimtex_view_method = 'zathura'
-vim.g.vimtex_syntax_enabled = 1
-vim.g.vimtex_quickfix_enabled = 0
+-- Keymaps {{{
+-- Key remaps {{{
+map('n', '<C-j>', '<C-W>j')
+map('n', '<C-k>', '<C-W>k')
+map('n', '<C-l>', '<C-W>l')
+map('n', '<C-h>', '<C-W>h')
+map('t', '<Esc>', '<C-\\><C-n>')
+map("n", "E", "ea")
+map("n", "<space>fe", cmd.Explore)
+map("n", "<A-s>", cmd.w)
+map("n", "<A-q>", cmd.q)
+map("n", "<A-e>", cmd.quitall)
+map('n', '<CR>', cmd.noh)
 -- }}}
 
--- nvim-terminal {{{
-require('nvim-terminal').setup({
-    window = {
-        position = 'botright',
-        split = 'sp',
-        height = 8,
-    },
-    toggle_keymap = '<leader>t',
-    increase_height_keymap = '<leader>=',
-    decrease_height_keymap = '<leader>-',
-})
---}}}
-
--- lualine {{{
-require('lualine').setup {
-    options = {
-        theme = 'sonokai',
-        always_divide_middle = true,
-        globalstatus = true,
-        component_separators = { left = '', right = '' },
-        section_separators = { left = '', right = '' },
-    },
-    sections = {
-        lualine_a = { { 'mode' } },
-        lualine_b = {{'branch', icon = {'', color={fg='green'}} } },
-        lualine_c = {'diff'},
-        lualine_x = {},
-        lualine_y = { 'diagnostics' },
-        lualine_z = { 'location' }
-    },
-}
+-- Function Keybinds {{{
+map("n", "<A-1>", function() cmd.BufferGoto(1) end)
+map("n", "<A-2>", function() cmd.BufferGoto(2) end)
+map("n", "<A-3>", function() cmd.BufferGoto(3) end)
+map("n", "<A-4>", function() cmd.BufferGoto(4) end)
+map("n", "<A-5>", function() cmd.BufferGoto(5) end)
+map("n", "<A-6>", function() cmd.BufferGoto(6) end)
+map("n", "<A-7>", function() cmd.BufferGoto(7) end)
+map("n", "<A-8>", function() cmd.BufferGoto(8) end)
+map("n", "<A-9>", function() cmd.BufferGoto(9) end)
+map("n", "<A-0>", cmd.BufferLast)
+map("n", "<A-p>", cmd.BufferPin)
+map("n", "<A-w>", cmd.BufferClose)
+map("n", "<A-p>", cmd.BufferPick)
+map("n", " xx", cmd.Trouble)
+map("n", " xx", "<cmd>TroubleToggle<cr>")
+map("n", " xd", "<cmd>TroubleToggle document_diagnostics<cr>")
+map("n", " xw", "<cmd>TroubleToggle workspace_diagnostics<cr>")
+map('n', '<C-s>', require('telescope.builtin').find_files)
+map('n', 'gr', require('telescope.builtin').lsp_references)
+map('n', '<C-b>', require("utils").openTerm)
+map('n', '<C-f>',
+    function()
+        require('telescope.builtin').grep_string({ search = vim.fn.input('Grep For > ') })
+    end)
 -- }}}
-
--- nvim-comment {{{
-require('nvim_comment').setup()
--- }}}
-
--- barbar {{{
-require 'bufferline'.setup {
-    icons = 'both',
-    icon_close_tab_modified = '●',
-    no_name_title = "unnamed",
-    icon_separator_inactive = '',
-    icon_separator_active = '',
-}
--- }}}
-
--- Trouble {{{
-require("trouble").setup {
-    mode = "quickfix"
-}
--- }}}
-
--- indent-blankline {{{
-require("indent_blankline").setup {
-    space_char_blankline = " ",
-    show_current_context = true,
-    show_current_context_start = false,
-}
--- }}}
-
--- cutlass {{{
-require("cutlass").setup({
-    cut_key = "m",
-    override_del = nil,
-    exclude = {},
-})
--- }}}
-
--- git-conflict {{{
-require('git-conflict').setup()
--- }}}
-
 -- }}}
 
 -- Highlights {{{
@@ -146,6 +106,8 @@ vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
 vim.api.nvim_set_hl(0, "Comment", { default = true, italic = true })
 vim.api.nvim_set_hl(0, "BufferCurrent", { bg = "#0f0f0f" })
 vim.api.nvim_set_hl(0, "BufferCurrentIndex", { bg = "#0f0f0f" })
+vim.api.nvim_set_hl(0, "StatusLine", { bg = "#0f0f0f",  fg = "#0f0f0f" })
+-- vim.api.nvim_set_hl(0, "StatusLineNC", { bg = "#0f0f0f",  fg = "#0f0f0f" })
 vim.api.nvim_set_hl(0, "BufferCurrentMod", { bg = "#0f0f0f" })
 vim.api.nvim_set_hl(0, "BufferCurrentSign", { bg = "#0f0f0f" })
 vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "#0f0f0f" })
@@ -199,47 +161,86 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 -- }}}
 
--- Keymaps {{{
--- Key remaps {{{
-map('n', '<C-j>', '<C-W>j')
-map('n', '<C-k>', '<C-W>k')
-map('n', '<C-l>', '<C-W>l')
-map('n', '<C-h>', '<C-W>h')
-map('t', '<Esc>', '<C-\\><C-n>')
-map("n", "E", "ea")
-map("n", "<space>fe", cmd.Explore)
-map("n", "<A-s>", cmd.w)
-map("n", "<A-q>", cmd.q)
-map("n", "<A-e>", cmd.quitall)
-map('n', '<CR>', cmd.noh)
+-- Plugins {{{
+
+-- vim-tex {{{
+vim.g.vimtex_view_method = 'zathura'
+vim.g.vimtex_syntax_enabled = 1
+vim.g.vimtex_quickfix_enabled = 0
 -- }}}
 
--- Function Keybinds {{{
-map("n", "<A-1>", function() cmd.BufferGoto(1) end)
-map("n", "<A-2>", function() cmd.BufferGoto(2) end)
-map("n", "<A-3>", function() cmd.BufferGoto(3) end)
-map("n", "<A-4>", function() cmd.BufferGoto(4) end)
-map("n", "<A-5>", function() cmd.BufferGoto(5) end)
-map("n", "<A-6>", function() cmd.BufferGoto(6) end)
-map("n", "<A-7>", function() cmd.BufferGoto(7) end)
-map("n", "<A-8>", function() cmd.BufferGoto(8) end)
-map("n", "<A-9>", function() cmd.BufferGoto(9) end)
-map("n", "<A-0>", cmd.BufferLast)
-map("n", "<A-p>", cmd.BufferPin)
-map("n", "<A-w>", cmd.BufferClose)
-map("n", "<A-p>", cmd.BufferPick)
-map("n", " xx", cmd.Trouble)
-map("n", " xx", "<cmd>TroubleToggle<cr>")
-map("n", " xd", "<cmd>TroubleToggle document_diagnostics<cr>")
-map("n", " xw", "<cmd>TroubleToggle workspace_diagnostics<cr>")
-map('n', '<C-s>', require('telescope.builtin').find_files)
-map('n', 'gr', require('telescope.builtin').lsp_references)
-map('n', '<C-b>', require("utils").openTerm)
-map('n', '<C-f>',
-    function()
-        require('telescope.builtin').grep_string({ search = vim.fn.input('Grep For > ') })
-    end)
+-- nvim-terminal {{{
+require('nvim-terminal').setup({
+    window = {
+        position = 'botright',
+        split = 'sp',
+        height = 8,
+    },
+    toggle_keymap = '<leader>t',
+    increase_height_keymap = '<leader>=',
+    decrease_height_keymap = '<leader>-',
+})
+--}}}
+
+-- staline {{{
+require "staline".setup {
+	sections = {
+		left = { },
+		mid = {},
+		right = {'branch', ' ', 'line_column' }
+	},
+	defaults = {
+        fg = "#7f8490",
+		true_colors = false,
+		branch_symbol = " "
+	}
+}
 -- }}}
+
+-- nvim-comment {{{
+require('nvim_comment').setup()
+-- }}}
+
+-- barbar {{{
+require 'bufferline'.setup {
+    icons = 'both',
+    icon_close_tab_modified = '●',
+    no_name_title = "unnamed",
+    icon_separator_inactive = '',
+    icon_separator_active = '',
+}
+-- }}}
+
+-- Trouble {{{
+require("trouble").setup {
+    mode = "quickfix"
+}
+-- }}}
+
+-- indent-blankline {{{
+require("indent_blankline").setup {
+    space_char_blankline = " ",
+    show_current_context = true,
+    show_current_context_start = false,
+}
+-- }}}
+
+-- cutlass {{{
+require("cutlass").setup({
+    cut_key = "m",
+    override_del = nil,
+    exclude = {},
+})
+-- }}}
+
+-- git-conflict {{{
+require('git-conflict').setup()
+-- }}}
+
+-- gitsigns {{{
+require('gitsigns').setup()
+-- }}}
+
 -- }}}
 
 -- vim:ts=4:sw=4:ai:foldmethod=marker:foldlevel=0:
