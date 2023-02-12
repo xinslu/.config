@@ -4,14 +4,11 @@ return require('packer').startup(function(use)
 
     use 'wbthomason/packer.nvim'
 
-    -- Status Line
+    -- Status and Buffer Line
     use 'tamton-aquib/staline.nvim'
 
-    -- Buffer Line
-    use 'nvim-tree/nvim-web-devicons'
-    use {'romgrk/barbar.nvim', wants = 'nvim-web-devicons'}
-
     -- Theme
+    use 'nvim-tree/nvim-web-devicons'
     use 'sainnhe/sonokai'
 
     -- AutoCompletion {{{
@@ -32,34 +29,29 @@ return require('packer').startup(function(use)
 
     -- lsp {{{
     use({ "neovim/nvim-lspconfig", config = [[require('lang.lsp')]] })
-    use 'williamboman/nvim-lsp-installer'
+    use "williamboman/mason.nvim"
     use({ "onsails/lspkind-nvim", event = "VimEnter" })
     use "ray-x/lsp_signature.nvim"
-    use {
-        "folke/trouble.nvim",
-        requires = "kyazdani42/nvim-web-devicons",
-    }
     -- }}}
 
     -- Git {{{
     use({ "rbong/vim-flog", requires = "tpope/vim-fugitive", cmd = { "Flog" } })
-    use 'lewis6991/gitsigns.nvim'
+    use 'airblade/vim-gitgutter'
     use 'akinsho/git-conflict.nvim'
     -- }}}
 
     -- Language Specific {{{
-    use 'maxmellon/vim-jsx-pretty'
-    use 'rust-lang/rust.vim'
-    use 'prettier/vim-prettier'
-    use 'fatih/vim-go'
-    use 'darrikonn/vim-gofmt'
-    use 'simrat39/rust-tools.nvim'
-    use 'lervag/vimtex'
+    use { 'maxmellon/vim-jsx-pretty', ft = "javascriptreact" }
+    use { 'rust-lang/rust.vim', ft = "rust" }
+    use { 'prettier/vim-prettier', ft = "javascript" }
+    use { 'fatih/vim-go', ft = "go" }
+    use { 'darrikonn/vim-gofmt', ft = "go" }
+    use { 'simrat39/rust-tools.nvim' }
+    use { 'lervag/vimtex', ft = "tex" }
     use 'p00f/clangd_extensions.nvim'
     use 'vimwiki/vimwiki'
-    use 'wuelnerdotexe/vim-astro'
+    use { 'wuelnerdotexe/vim-astro', ft="astro" }
     use 'folke/neodev.nvim'
-    use 'ziglang/zig.vim'
     -- }}}
 
     -- treesitter {{{
@@ -80,7 +72,6 @@ return require('packer').startup(function(use)
         requires = { { 'nvim-lua/plenary.nvim' } },
     }
     use 'terrortylor/nvim-comment'
-    use 's1n7ax/nvim-terminal'
     use 'lukas-reineke/indent-blankline.nvim'
     use "gbprod/cutlass.nvim"
     -- }}}

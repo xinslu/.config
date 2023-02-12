@@ -5,20 +5,7 @@ local pid = vim.fn.getpid()
 local cmd = vim.cmd -- execute Vim commands
 local utils = require("utils")
 
--- Setup installer & lsp configs
-local typescript_ok, typescript = pcall(require, 'typescript')
-local lsp_installer_ok, lsp_installer = pcall(require, 'nvim-lsp-installer')
-
-if not lsp_installer_ok then
-    return
-end
-
-lsp_installer.setup {
-    ensure_installed = { "bashls", "cssls", "graphql", "html", "jsonls", "sumneko_lua", "tailwindcss",
-        "tsserver", "vetur", "vuels", "rust_analyzer", "eslint", "gopls", "dockerls", "omnisharp", "pylsp",
-        "clangd", "jdtls" },
-    automatic_installation = true,
-}
+require("mason").setup()
 
 local custom_attach = function(client, bufnr)
     -- Mappings.
@@ -46,7 +33,8 @@ local custom_attach = function(client, bufnr)
     vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
     vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, opts)
     vim.keymap.set('n', '<space>f', vim.lsp.buf.format, opts)
-    vim.keymap.set('n', '<space>ff', vim.diagnostic.open_float, opts)
+    vim.keymap.set('n', '<space>fd', function() require("telescope.builtin").diagnostics({ bufnr = 0 }) end, opts)
+    vim.keymap.set('n', '<space>wd', require("telescope.builtin").diagnostics, opts)
 
     -- Set some key bindings conditional on server capabilities
     if client.server_capabilities.document_formatting then
@@ -61,7 +49,7 @@ local capabilities = lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local lspconfig = require("lspconfig")
-local lsps = { "pyright", "bashls", "eslint", "jdtls", "gopls", "texlab", "dockerls", "html", "hls", "zls"}
+local lsps = { "pyright", "bashls", "eslint", "jdtls", "gopls", "texlab", "dockerls", "html", "hls" }
 for _, lsp_name in ipairs(lsps) do
     lspconfig[lsp_name].setup {
         on_attach = custom_attach,
@@ -81,7 +69,7 @@ require("clangd_extensions").setup({
 
 require("neodev").setup({})
 
-lspconfig.sumneko_lua.setup({
+lspconfig.lua_ls.setup({
     on_attach = custom_attach,
     settings = {
         Lua = {
@@ -89,7 +77,7 @@ lspconfig.sumneko_lua.setup({
                 -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
                 version = "LuaJIT",
                 -- Setup your lua path
-                path = {"?.lua", "?/init.lua", "?/?.lua"}
+                path = { "?.lua", "?/init.lua", "?/?.lua" }
             },
             diagnostics = {
                 -- Get the language server to recognize the `vim` global
@@ -130,13 +118,13 @@ lspconfig.omnisharp.setup {
 local rt = require("rust-tools")
 
 rt.setup({
-  server = {
-    on_attach = function(_, bufnr)
-      vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
-      -- Code action groups
-      vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
-    end,
-  },
+    server = {
+        on_attach = function(_, bufnr)
+            vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
+            -- Code action groups
+            vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
+        end,
+    },
 })
 
 -- Change diagnostic signs.

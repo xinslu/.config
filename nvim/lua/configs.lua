@@ -1,6 +1,7 @@
 local set = vim.opt
 local cmd = vim.cmd
 local map = require("utils").map
+local changeBuffer = require("utils").changeBuffer
 
 -- {{{ Global Configs
 vim.g.mapleader = " "
@@ -43,6 +44,7 @@ vim.g.wildmode = "list:longest,full"
 vim.o.hidden = true
 vim.opt.fillchars:append("eob: ")
 vim.g.python3_host_prog = "python3"
+vim.opt.showtabline = 2
 --- }}}
 
 -- Formatting {{{
@@ -60,28 +62,19 @@ map("n", "E", "ea")
 map("n", "<space>fe", cmd.Explore)
 map("n", "<A-s>", cmd.w)
 map("n", "<A-q>", cmd.q)
+map("n", "<A-w>", cmd.bd)
+map("n", "<A-Q>", "<cmd>q!<cr>")
 map("n", "<A-e>", cmd.quitall)
 map('n', '<CR>', cmd.noh)
+map('n', '<space>t', "<cmd>botright 7split | terminal<cr>")
+map('n', '<space>=', "<cmd>horizontal resize +5<cr>")
+map('n', '<space>-', "<cmd>horizontal resize -5<cr>")
 -- }}}
 
 -- Function Keybinds {{{
-map("n", "<A-1>", function() cmd.BufferGoto(1) end)
-map("n", "<A-2>", function() cmd.BufferGoto(2) end)
-map("n", "<A-3>", function() cmd.BufferGoto(3) end)
-map("n", "<A-4>", function() cmd.BufferGoto(4) end)
-map("n", "<A-5>", function() cmd.BufferGoto(5) end)
-map("n", "<A-6>", function() cmd.BufferGoto(6) end)
-map("n", "<A-7>", function() cmd.BufferGoto(7) end)
-map("n", "<A-8>", function() cmd.BufferGoto(8) end)
-map("n", "<A-9>", function() cmd.BufferGoto(9) end)
-map("n", "<A-0>", cmd.BufferLast)
-map("n", "<A-p>", cmd.BufferPin)
-map("n", "<A-w>", cmd.BufferClose)
-map("n", "<A-p>", cmd.BufferPick)
-map("n", " xx", cmd.Trouble)
-map("n", " xx", "<cmd>TroubleToggle<cr>")
-map("n", " xd", "<cmd>TroubleToggle document_diagnostics<cr>")
-map("n", " xw", "<cmd>TroubleToggle workspace_diagnostics<cr>")
+for i = 1, 9 do
+    map("n", "<A-" .. i .. ">", function() changeBuffer(i) end)
+end
 map('n', '<C-s>', require('telescope.builtin').find_files)
 map('n', 'gr', require('telescope.builtin').lsp_references)
 map('n', '<C-b>', require("utils").openTerm)
@@ -106,8 +99,7 @@ vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
 vim.api.nvim_set_hl(0, "Comment", { default = true, italic = true })
 vim.api.nvim_set_hl(0, "BufferCurrent", { bg = "#0f0f0f" })
 vim.api.nvim_set_hl(0, "BufferCurrentIndex", { bg = "#0f0f0f" })
-vim.api.nvim_set_hl(0, "StatusLine", { bg = "#0f0f0f",  fg = "#0f0f0f" })
--- vim.api.nvim_set_hl(0, "StatusLineNC", { bg = "#0f0f0f",  fg = "#0f0f0f" })
+vim.api.nvim_set_hl(0, "StatusLine", { bg = "#0f0f0f", fg = "#0f0f0f" })
 vim.api.nvim_set_hl(0, "BufferCurrentMod", { bg = "#0f0f0f" })
 vim.api.nvim_set_hl(0, "BufferCurrentSign", { bg = "#0f0f0f" })
 vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "#0f0f0f" })
@@ -119,7 +111,7 @@ vim.api.nvim_set_hl(0, "IndentBlanklineContextStart", { underline = false })
 -- Autocmds {{{
 local group = vim.api.nvim_create_augroup("rc", { clear = false })
 vim.api.nvim_create_autocmd("TermOpen",
-    { command = "setlocal nobuflisted nonumber norelativenumber", group = group })
+    { command = "set nobuflisted bufhidden=hide nonumber norelativenumber", group = group })
 
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
 vim.api.nvim_create_autocmd('TextYankPost', {
@@ -169,31 +161,18 @@ vim.g.vimtex_syntax_enabled = 1
 vim.g.vimtex_quickfix_enabled = 0
 -- }}}
 
--- nvim-terminal {{{
-require('nvim-terminal').setup({
-    window = {
-        position = 'botright',
-        split = 'sp',
-        height = 8,
-    },
-    toggle_keymap = '<leader>t',
-    increase_height_keymap = '<leader>=',
-    decrease_height_keymap = '<leader>-',
-})
---}}}
-
 -- staline {{{
 require "staline".setup {
-	sections = {
-		left = { },
-		mid = {},
-		right = {'branch', ' ', 'line_column' }
-	},
-	defaults = {
+    sections = {
+        left = {},
+        mid = {},
+        right = { 'branch', ' ', 'line_column' }
+    },
+    defaults = {
         fg = "#7f8490",
-		true_colors = false,
-		branch_symbol = " "
-	}
+        true_colors = false,
+        branch_symbol = " "
+    }
 }
 -- }}}
 
@@ -201,19 +180,15 @@ require "staline".setup {
 require('nvim_comment').setup()
 -- }}}
 
--- barbar {{{
-require 'bufferline'.setup {
-    icons = 'both',
-    icon_close_tab_modified = '●',
-    no_name_title = "unnamed",
-    icon_separator_inactive = '',
-    icon_separator_active = '',
-}
--- }}}
-
--- Trouble {{{
-require("trouble").setup {
-    mode = "quickfix"
+-- stabline {{{
+require('stabline').setup {
+    stab_bg = "#222327",
+    stab_left = " ",
+    exclude_fts = { 'netrw', 'dashboard', 'lir', 'terminal' },
+    font_active = "none",
+    numbers = function(bufn, n)
+        return n .. ' '
+    end
 }
 -- }}}
 
@@ -235,10 +210,6 @@ require("cutlass").setup({
 
 -- git-conflict {{{
 require('git-conflict').setup()
--- }}}
-
--- gitsigns {{{
-require('gitsigns').setup()
 -- }}}
 
 -- }}}
