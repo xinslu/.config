@@ -11,7 +11,7 @@ fi
 
 /usr/bin/xidlehook --not-when-fullscreen --timer 180 '~/.config/bspwm/lock.sh' '' &
 picom --config ~/.config/picom/picom.conf --backend glx &
-feh --bg-fill ~/Downloads/spaceman-bg.jpg &
+feh --bg-fill ~/Downloads/bladerunner.jpg &
 flameshot &
 dunst &
 xsetroot -cursor_name left_ptr 

@@ -43,11 +43,10 @@ return require('packer').startup(function(use)
     -- Language Specific {{{
     use { 'maxmellon/vim-jsx-pretty', ft = "javascriptreact" }
     use { 'rust-lang/rust.vim', ft = "rust" }
-    use { 'prettier/vim-prettier', ft = "javascript" }
     use { 'fatih/vim-go', ft = "go" }
     use { 'darrikonn/vim-gofmt', ft = "go" }
     use { 'simrat39/rust-tools.nvim' }
-    use { 'lervag/vimtex', ft = "tex" }
+    use 'lervag/vimtex'
     use 'p00f/clangd_extensions.nvim'
     use 'vimwiki/vimwiki'
     use { 'wuelnerdotexe/vim-astro', ft="astro" }
@@ -58,12 +57,8 @@ return require('packer').startup(function(use)
     use {
         'nvim-treesitter/nvim-treesitter',
         run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
+        config = [[require('lang.treesitter')]]
     }
-    use { 
-        'nvim-treesitter/nvim-treesitter-textobjects',
-        after = 'nvim-treesitter',
-    }
-    use 'nvim-treesitter/playground'
     -- }}}
 
 -- Better Workflow {{{
