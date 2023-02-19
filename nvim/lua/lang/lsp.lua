@@ -14,7 +14,6 @@ local custom_attach = function(client, bufnr)
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
     vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
     vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
-    vim.keymap.set("n", "<C-]>", vim.lsp.buf.definition, opts)
     vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
     if client.server_capabilities.signature_help then
         vim.keymap.set("n", "<C-[>", vim.lsp.buf.signature_help, opts)

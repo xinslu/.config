@@ -59,6 +59,7 @@ return require('packer').startup(function(use)
         run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
         config = [[require('lang.treesitter')]]
     }
+    use 'nvim-treesitter/playground'
     -- }}}
 
 -- Better Workflow {{{
