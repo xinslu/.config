@@ -1,76 +1,90 @@
-vim.cmd [[packadd packer.nvim]]
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
-return require('packer').startup(function(use)
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable",
+    lazypath,
+  })
+end
 
-    use 'wbthomason/packer.nvim'
+vim.opt.rtp:prepend(lazypath)
+
+require("lazy").setup({
 
     -- Status and Buffer Line
-    use 'tamton-aquib/staline.nvim'
+     'tamton-aquib/staline.nvim',
 
     -- Theme
-    use 'nvim-tree/nvim-web-devicons'
-    use 'sainnhe/sonokai'
+     'nvim-tree/nvim-web-devicons',
+     'sainnhe/sonokai',
 
     -- AutoCompletion {{{
-    use {
+     {
         "hrsh7th/nvim-cmp",
         after = "lspkind-nvim",
-        requires = { { "L3MON4D3/LuaSnip" } },
-        config = [[require('lang.cmp')]]
-    }
-    use { "hrsh7th/cmp-nvim-lsp", after = "nvim-cmp" }
-    use { "hrsh7th/cmp-nvim-lua", after = "nvim-cmp" }
-    use { "hrsh7th/cmp-path", after = "nvim-cmp" }
-    use 'L3MON4D3/LuaSnip'
-    use { "saadparwaiz1/cmp_luasnip", after = { 'nvim-cmp' } }
-    use { 'hrsh7th/cmp-buffer', after = { 'nvim-cmp' } }
-    use { 'hrsh7th/cmp-cmdline', after = { 'nvim-cmp' } }
+        dependencies = { { "L3MON4D3/LuaSnip" } },
+        config = function() require('lang.cmp') end,
+    },
+     { "hrsh7th/cmp-nvim-lsp", after = "nvim-cmp" },
+     { "hrsh7th/cmp-nvim-lua", after = "nvim-cmp" },
+     { "hrsh7th/cmp-path", after = "nvim-cmp" },
+     'L3MON4D3/LuaSnip',
+     { "saadparwaiz1/cmp_luasnip", after = { 'nvim-cmp' } },
+     { 'hrsh7th/cmp-buffer', after = { 'nvim-cmp' } },
+     { 'hrsh7th/cmp-cmdline', after = { 'nvim-cmp' } },
     -- }}}
 
     -- lsp {{{
-    use({ "neovim/nvim-lspconfig", config = [[require('lang.lsp')]] })
-    use "williamboman/mason.nvim"
-    use({ "onsails/lspkind-nvim", event = "VimEnter" })
-    use "ray-x/lsp_signature.nvim"
+    { "neovim/nvim-lspconfig", config = function() 
+		require('lang.lsp') 
+	end, 
+	},
+     "williamboman/mason.nvim",
+    { "onsails/lspkind-nvim", event = "VimEnter" },
+     "ray-x/lsp_signature.nvim",
     -- }}}
 
     -- Git {{{
-    use({ "rbong/vim-flog", requires = "tpope/vim-fugitive", cmd = { "Flog" } })
-    use 'airblade/vim-gitgutter'
-    use 'akinsho/git-conflict.nvim'
+    ({ "rbong/vim-flog", dependencies = "tpope/vim-fugitive", cmd = { "Flog" } }),
+     'airblade/vim-gitgutter',
+     'akinsho/git-conflict.nvim',
     -- }}}
 
     -- Language Specific {{{
-    use { 'maxmellon/vim-jsx-pretty', ft = "javascriptreact" }
-    use { 'rust-lang/rust.vim', ft = "rust" }
-    use { 'fatih/vim-go', ft = "go" }
-    use { 'darrikonn/vim-gofmt', ft = "go" }
-    use { 'simrat39/rust-tools.nvim' }
-    use 'lervag/vimtex'
-    use 'p00f/clangd_extensions.nvim'
-    use 'vimwiki/vimwiki'
-    use { 'wuelnerdotexe/vim-astro', ft="astro" }
-    use 'folke/neodev.nvim'
+     { 'maxmellon/vim-jsx-pretty', ft = "javascriptreact" },
+     { 'rust-lang/rust.vim', ft = "rust" },
+     { 'fatih/vim-go', ft = "go" },
+     { 'darrikonn/vim-gofmt', ft = "go" },
+     { 'simrat39/rust-tools.nvim' },
+     { 'lervag/vimtex', ft = "tex" },
+    { 'p00f/clangd_extensions.nvim' },
+     'vimwiki/vimwiki',
+     { 'wuelnerdotexe/vim-astro', ft="astro" },
+     'folke/neodev.nvim',
     -- }}}
 
     -- treesitter {{{
-    use {
+     {
         'nvim-treesitter/nvim-treesitter',
-        run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
-        config = [[require('lang.treesitter')]]
-    }
-    use 'nvim-treesitter/playground'
+        build = ":TSUpdate",
+        config = function() 
+            require('lang.treesitter')
+        end, 
+    },
     -- }}}
 
 -- Better Workflow {{{
-    use {
+     {
         'nvim-telescope/telescope.nvim',
-        requires = { { 'nvim-lua/plenary.nvim' } },
-    }
-    use 'terrortylor/nvim-comment'
-    use 'lukas-reineke/indent-blankline.nvim'
-    use "gbprod/cutlass.nvim"
+        dependencies = { { 'nvim-lua/plenary.nvim' } },
+    },
+     'terrortylor/nvim-comment',
+     'lukas-reineke/indent-blankline.nvim',
+     "gbprod/cutlass.nvim",
     -- }}}
-
-end)
+})
 -- vim:ts=4:sw=4:ai:foldmethod=marker:foldlevel=0:
