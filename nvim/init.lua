@@ -175,6 +175,7 @@ require "staline".setup {
         right = { 'branch', ' ', 'line_column' }
     },
     defaults = {
+        line_column = "%l:%c",
         fg = "#7f8490",
         true_colors = false,
         branch_symbol = " "
