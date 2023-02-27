@@ -2,7 +2,7 @@
 My Config Files for Arch Linux. Check the macos branch for my macos configs.
 
 # Screenshot
-![image](https://user-images.githubusercontent.com/69013394/216127949-60e769f7-1c12-4205-991d-f9e51220013a.png)
+![image](https://user-images.githubusercontent.com/69013394/221663467-41e241ed-3847-4887-a61b-4dd85e38bc48.png)
 
 # Technologies
 This repo is entirely maintained by me according to my preferences, there were a lot of tools that I used and stopped that still have dotfiles on here
@@ -18,6 +18,4 @@ This repo is entirely maintained by me according to my preferences, there were a
     - alacritty, fast and snappy terminal
     - zsh, z-shell (bash but better, but also slightly slower)
     - nvim, text editor
-    - ranger, terminal file manager
-    - neofetch, fetch script that makes me look like a haxor man
-    - Powerlevel10k, fast and configurable prompt
+    - lf, terminal file manager
