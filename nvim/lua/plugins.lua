@@ -25,17 +25,17 @@ require("lazy").setup({
     -- AutoCompletion {{{
      {
         "hrsh7th/nvim-cmp",
-        after = "lspkind-nvim",
         dependencies = { { "L3MON4D3/LuaSnip" } },
         config = function() require('lang.cmp') end,
+        event = { "InsertEnter", "CmdlineEnter" },
     },
-     { "hrsh7th/cmp-nvim-lsp", after = "nvim-cmp" },
-     { "hrsh7th/cmp-nvim-lua", after = "nvim-cmp" },
-     { "hrsh7th/cmp-path", after = "nvim-cmp" },
-     'L3MON4D3/LuaSnip',
-     { "saadparwaiz1/cmp_luasnip", after = { 'nvim-cmp' } },
-     { 'hrsh7th/cmp-buffer', after = { 'nvim-cmp' } },
-     { 'hrsh7th/cmp-cmdline', after = { 'nvim-cmp' } },
+     { "hrsh7th/cmp-nvim-lsp", dependencies = "nvim-cmp", event = "LspAttach" },
+     { "hrsh7th/cmp-nvim-lua", dependencies = "nvim-cmp", ft = "lua" },
+     { "hrsh7th/cmp-path", dependencies = "nvim-cmp", event = "InsertCharPre" },
+     { 'L3MON4D3/LuaSnip', dependencies = "nvim-cmp", event = "InsertCharPre" },
+     { "saadparwaiz1/cmp_luasnip", dependencies = { 'nvim-cmp' }, event = "InsertCharPre"},
+     { 'hrsh7th/cmp-buffer', dependencies = { 'nvim-cmp' }, event = "InsertCharPre" },
+     { 'hrsh7th/cmp-cmdline', dependencies = { 'nvim-cmp' }, event = "CmdlineEnter" },
     -- }}}
 
     -- lsp {{{
@@ -61,10 +61,10 @@ require("lazy").setup({
      { 'darrikonn/vim-gofmt', ft = "go" },
      { 'simrat39/rust-tools.nvim' },
      { 'lervag/vimtex', ft = "tex" },
-    { 'p00f/clangd_extensions.nvim' },
+     { 'p00f/clangd_extensions.nvim', ft = {"c", "cpp"} },
      'vimwiki/vimwiki',
      { 'wuelnerdotexe/vim-astro', ft="astro" },
-     'folke/neodev.nvim',
+     {'folke/neodev.nvim', ft="lua" },
     -- }}}
 
     -- treesitter {{{
@@ -73,7 +73,7 @@ require("lazy").setup({
         build = ":TSUpdate",
         config = function() 
             require('lang.treesitter')
-        end, 
+        end,
     },
     -- }}}
 
@@ -86,5 +86,7 @@ require("lazy").setup({
      'lukas-reineke/indent-blankline.nvim',
      "gbprod/cutlass.nvim",
     -- }}}
+
 })
+
 -- vim:ts=4:sw=4:ai:foldmethod=marker:foldlevel=0:

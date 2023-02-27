@@ -1,8 +1,8 @@
-require("plugins")
 local set = vim.opt
 local cmd = vim.cmd
 local map = require("utils").map
 local changeBuffer = require("utils").changeBuffer
+require("plugins")
 
 -- {{{ Global Configs
 vim.g.mapleader = " "
@@ -107,11 +107,6 @@ vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "#0f0f0f" })
 vim.api.nvim_set_hl(0, "String", { fg = "#6485E8" })
 vim.api.nvim_set_hl(0, "IndentBlanklineContextChar", { fg = "#5FB0FC" })
 vim.api.nvim_set_hl(0, "IndentBlanklineContextStart", { underline = false })
-vim.api.nvim_set_hl(0, "Type", { bold = true })
-vim.api.nvim_set_hl(0, "TypeDef", { bold = true })
-local hl = vim.api.nvim_get_hl_by_name("@type", true)
-hl.bold = true
-vim.api.nvim_set_hl(0, "@type", hl) 
 -- }}}
 
 -- Autocmds {{{

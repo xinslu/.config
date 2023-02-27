@@ -53,7 +53,6 @@ function M.openTerm()
     vim.cmd(cmd)
 end
 
-
 function M.changeBuffer(code)
     local buffers = vim.api.nvim_list_bufs()
     local loaded_buffer = {}

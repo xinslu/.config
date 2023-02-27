@@ -1,5 +1,4 @@
 require 'nvim-treesitter.configs'.setup {
-    ensure_installed = { "c", "rust", "javascript", "typescript", "help" },
     sync_install = false,
     auto_install = true,
     indent = { enable = true, disable = { 'python' } },

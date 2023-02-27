@@ -184,11 +184,11 @@ vim.diagnostic.config({
     underline = false,
     signs = true,
     virtual_text = {
-        prefix = '●', -- Could be '■', '▎', 'x'
+        prefix = '●',
         severity = { min = vim.diagnostic.severity.WARN }
     },
     severity_sort = true,
     float = {
-        source = "always", -- Or "if_many"
+        source = "always",
     },
 })
