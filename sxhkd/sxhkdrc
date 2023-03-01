@@ -146,10 +146,10 @@ XF86AudioPause
     playerctl --all-players play-pause
 
 XF86AudioNext
-    playerctl --player=spotify next
+    playerctl --player=ncspot next
 
 XF86AudioPrev
-    playerctl --player=spotify previous
+    playerctl --player=ncspot previous
 
 Print
     flameshot full -c

@@ -27,6 +27,7 @@ alias ls='ls --color=auto'
 alias gs='git status'
 alias tabbed-st="tabbed -r 2 st -w ''"
 alias weather="curl 'wttr.in/Atlanta?m'"
+alias ncspot="/home/kinshukphalke/ncspot/target/release/ncspot"
 [ -f /opt/miniconda3/etc/profile.d/conda.sh ] && source /opt/miniconda3/etc/profile.d/conda.sh
 
 ### EVALS ###
@@ -47,7 +48,7 @@ setopt hist_ignore_dups
 function parse_git_branch {
     git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
 }
-export PS1="%F{4}%B%~%b%f %F{8}\$(parse_git_branch)%f %F{2}❯%f "
+export PS1="%F{12}%B%~%b%f %F{8}\$(parse_git_branch)%f %F{2}❯%f "
 bindkey -e
 
 ## LF ###

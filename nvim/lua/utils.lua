@@ -1,5 +1,4 @@
 local fn = vim.fn
-local buf 
 
 -- inspect something
 function inspect(item)
