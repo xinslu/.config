@@ -2,7 +2,6 @@ local set = vim.opt
 local cmd = vim.cmd
 local map = require("utils").map
 local changeBuffer = require("utils").changeBuffer
-require("plugins")
 
 -- {{{ Global Configs
 vim.g.mapleader = " "
@@ -51,6 +50,8 @@ vim.opt.showtabline = 2
 -- Formatting {{{
 vim.cmd("filetype on")
 -- }}}
+
+require("plugins")
 
 -- Keymaps {{{
 -- Key remaps {{{
@@ -178,10 +179,6 @@ require "staline".setup {
 }
 -- }}}
 
--- nvim-comment {{{
-require('nvim_comment').setup()
--- }}}
-
 -- stabline {{{
 require('stabline').setup {
     stab_bg = "#222327",
@@ -200,18 +197,6 @@ require("indent_blankline").setup {
     show_current_context = true,
     show_current_context_start = false,
 }
--- }}}
-
--- cutlass {{{
-require("cutlass").setup({
-    cut_key = "m",
-    override_del = nil,
-    exclude = {},
-})
--- }}}
-
--- git-conflict {{{
-require('git-conflict').setup()
 -- }}}
 
 -- }}}

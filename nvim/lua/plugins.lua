@@ -26,7 +26,7 @@ require("lazy").setup({
     -- AutoCompletion {{{
     {
         "hrsh7th/nvim-cmp",
-        dependencies = { { "L3MON4D3/LuaSnip", 'hrsh7th/cmp-buffer', 'hrsh7th/cmp-cmdline', "hrsh7th/cmp-path", "saadparwaiz1/cmp_luasnip" } },
+        dependencies = { { "L3MON4D3/LuaSnip", 'hrsh7th/cmp-buffer', 'hrsh7th/cmp-cmdline', "hrsh7th/cmp-path", "saadparwaiz1/cmp_luasnip", "rafamadriz/friendly-snippets" } },
         config = function() require('lang.cmp') end,
         event = { "InsertEnter", "CmdlineEnter" },
     },
@@ -46,20 +46,20 @@ require("lazy").setup({
     -- }}}
 
     -- Git {{{
-    ({ "rbong/vim-flog", dependencies = "tpope/vim-fugitive", cmd = { "Flog" } }),
+    { "rbong/vim-flog",           dependencies = "tpope/vim-fugitive", cmd = { "Flog" } },
     'airblade/vim-gitgutter',
-    'akinsho/git-conflict.nvim',
+    { 'akinsho/git-conflict.nvim', config = true },
     -- }}}
 
     -- Language Specific {{{
-    { 'maxmellon/vim-jsx-pretty', ft = "javascriptreact" },
-    { 'rust-lang/rust.vim',       ft = "rust" },
-    { 'fatih/vim-go',             ft = "go" },
-    { 'darrikonn/vim-gofmt',      ft = "go" },
-    { 'lervag/vimtex',            ft = "tex" },
-    { 'vimwiki/vimwiki',          ft = "vimwiki" },
-    { 'wuelnerdotexe/vim-astro',  ft = "astro" },
-    { 'folke/neodev.nvim',        config = true,         ft = "lua", event = "LspAttach" },
+    { 'maxmellon/vim-jsx-pretty',  ft = "javascriptreact" },
+    { 'rust-lang/rust.vim',        ft = "rust" },
+    { 'fatih/vim-go',              ft = "go" },
+    { 'darrikonn/vim-gofmt',       ft = "go" },
+    { 'lervag/vimtex',             ft = "tex" },
+    { 'vimwiki/vimwiki',           ft = "vimwiki" },
+    { 'wuelnerdotexe/vim-astro',   ft = "astro" },
+    { 'folke/neodev.nvim',         config = true,         ft = "lua", event = "LspAttach" },
     { 'simrat39/rust-tools.nvim', config = function()
         local rt = require("rust-tools")
         rt.setup({
@@ -97,9 +97,15 @@ require("lazy").setup({
         'nvim-telescope/telescope.nvim',
         dependencies = { { 'nvim-lua/plenary.nvim' } },
     },
-    { 'terrortylor/nvim-comment',            event = "BufAdd" },
+    { 'terrortylor/nvim-comment', config = function()
+        require('nvim_comment').setup({ comment_empty = false })
+    end },
     { 'lukas-reineke/indent-blankline.nvim', event = "BufAdd" },
-    { "gbprod/cutlass.nvim",                 event = "InsertCharPre" },
+    { "gbprod/cutlass.nvim", config = function()
+        require("cutlass").setup({
+            cut_key = "m",
+        })
+    end },
     -- }}}
 
 })
