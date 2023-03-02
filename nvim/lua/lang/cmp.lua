@@ -63,7 +63,7 @@ cmp.setup({
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
     }),
     sources = {
-        { name = 'luasnip' },
+        { name = 'luasnip', max_item_count = 20 },
         { name = 'nvim_lsp', max_item_count = 20 },
         { name = 'nvim_lua' },
         { name = 'path' },
@@ -79,12 +79,6 @@ cmp.setup({
     formatting = {
         format = lspkind.cmp_format({
             mode = "symbol_text",
-            menu = ({
-                nvim_lsp = "[LSP]",
-                luasnip = "[Snip]",
-                nvim_lua = "[Lua]",
-                path = "[Path]",
-            }),
         }),
     },
     sorting = {

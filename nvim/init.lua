@@ -61,7 +61,6 @@ map('n', '<C-l>', '<C-W>l')
 map('n', '<C-h>', '<C-W>h')
 map('t', '<Esc>', '<C-\\><C-n>')
 map("n", "E", "ea")
-map("n", "<space>fe", cmd.Explore)
 map("n", "<A-s>", cmd.w)
 map("n", "<A-q>", cmd.q)
 map("n", "<A-w>", cmd.bd)
@@ -84,6 +83,8 @@ map('n', '<C-f>',
     function()
         require('telescope.builtin').grep_string({ search = vim.fn.input('Grep For > ') })
     end)
+
+map("n", "<space>fe", require "telescope".extensions.file_browser.file_browser)
 -- }}}
 -- }}}
 
@@ -95,8 +96,8 @@ vim.g.sonokai_show_eob = 0
 vim.g.sonokai_better_performance = 1
 vim.cmd.colorscheme("sonokai")
 vim.api.nvim_set_hl(0, "Normal", { bg = "#0f0f0f" })
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#0f0f0f"})
 vim.api.nvim_set_hl(0, "NormalNC", { bg = "#0f0f0f" })
-vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
 vim.api.nvim_set_hl(0, "Comment", { default = true, italic = true })
 vim.api.nvim_set_hl(0, "BufferCurrent", { bg = "#0f0f0f" })
@@ -108,6 +109,40 @@ vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "#0f0f0f" })
 vim.api.nvim_set_hl(0, "String", { fg = "#6485E8" })
 vim.api.nvim_set_hl(0, "IndentBlanklineContextChar", { fg = "#5FB0FC" })
 vim.api.nvim_set_hl(0, "IndentBlanklineContextStart", { underline = false })
+
+-- Telescope {{{
+local TelescopePrompt = {
+    TelescopePromptNormal = {
+        bg = '#2c2e34',
+    },
+    TelescopeSelection = {
+        bg = '#2c2e34',
+    },
+    TelescopePromptBorder = {
+        bg = '#2c2e34',
+        fg = '#2c2e34',
+    },
+    TelescopeBorder = {
+        bg = '#0f0f0f',
+        fg = '#0f0f0f',
+    },
+    TelescopePromptTitle = {
+        fg = '#0f0f0f',
+        bg = '#f39660',
+    },
+    TelescopePreviewTitle = {
+        fg = '#0f0f0f',
+        bg = '#76cce0',
+    },
+    TelescopeResultsTitle = {
+        fg = '#0f0f0f',
+        bg = '#fc5d7c',
+    },
+}
+for hl, col in pairs(TelescopePrompt) do
+    vim.api.nvim_set_hl(0, hl, col)
+end
+-- }}}
 -- }}}
 
 -- Autocmds {{{
@@ -122,29 +157,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     end,
     group = highlight_group,
     pattern = '*',
-})
-
-local ft = vim.api.nvim_create_augroup("netrw", { clear = false })
-vim.api.nvim_create_autocmd("FileType", {
-    callback = function()
-        vim.api.nvim_buf_set_keymap(0, "n", "l", "<CR>", { silent = true })
-    end,
-    pattern = "netrw",
-    group = ft,
-})
-vim.api.nvim_create_autocmd("FileType", {
-    callback = function()
-        vim.api.nvim_buf_set_keymap(0, "n", "h", "-", { silent = true })
-    end,
-    pattern = "netrw",
-    group = ft,
-})
-vim.api.nvim_create_autocmd("FileType", {
-    callback = function()
-        vim.api.nvim_buf_set_keymap(0, "n", "a", "%", { silent = true })
-    end,
-    pattern = "netrw",
-    group = ft,
 })
 
 local qf = vim.api.nvim_create_augroup("qf", { clear = false })

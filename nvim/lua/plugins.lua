@@ -95,7 +95,25 @@ require("lazy").setup({
     -- Better Workflow {{{
     {
         'nvim-telescope/telescope.nvim',
-        dependencies = { { 'nvim-lua/plenary.nvim' } },
+        dependencies = { { 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope-file-browser.nvim' } },
+        config = function()
+            require("telescope").setup({
+                defaults = {
+                    prompt_prefix = "   ",
+                    selection_caret = "   ",
+                    entry_prefix = "    ",
+                    initial_mode = "normal",
+                },
+                extensions = {
+                    file_browser = {
+                        hijack_netrw = true,
+                        display_stat = {},
+                        git_status = false,
+                    },
+                },
+            })
+            require("telescope").load_extension "file_browser"
+        end,
     },
     { 'terrortylor/nvim-comment', config = function()
         require('nvim_comment').setup({ comment_empty = false })
