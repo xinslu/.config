@@ -95,7 +95,7 @@ require("lazy").setup({
     -- Better Workflow {{{
     {
         'nvim-telescope/telescope.nvim',
-        dependencies = { { 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope-file-browser.nvim' } },
+        dependencies = { { 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope-file-browser.nvim', 'debugloop/telescope-undo.nvim' } },
         config = function()
             require("telescope").setup({
                 defaults = {
@@ -113,12 +113,14 @@ require("lazy").setup({
                 },
             })
             require("telescope").load_extension "file_browser"
+            require("telescope").load_extension("undo")
         end,
     },
     { 'terrortylor/nvim-comment', config = function()
         require('nvim_comment').setup({ comment_empty = false })
     end },
     { 'lukas-reineke/indent-blankline.nvim', event = "BufAdd" },
+    { 'kylechui/nvim-surround',              config = true,   event = "InsertCharPre" },
     { "gbprod/cutlass.nvim", config = function()
         require("cutlass").setup({
             cut_key = "m",

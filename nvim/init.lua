@@ -51,8 +51,6 @@ vim.opt.showtabline = 2
 vim.cmd("filetype on")
 -- }}}
 
-require("plugins")
-
 -- Keymaps {{{
 -- Key remaps {{{
 map('n', '<C-j>', '<C-W>j')
@@ -72,6 +70,8 @@ map('n', '<space>=', "<cmd>horizontal resize +5<cr>")
 map('n', '<space>-', "<cmd>horizontal resize -5<cr>")
 -- }}}
 
+require("plugins")
+
 -- Function Keybinds {{{
 for i = 1, 9 do
     map("n", "<A-" .. i .. ">", function() changeBuffer(i) end)
@@ -85,6 +85,7 @@ map('n', '<C-f>',
     end)
 
 map("n", "<space>fe", require "telescope".extensions.file_browser.file_browser)
+map("n", "<leader>u", require "telescope".extensions.undo.undo)
 -- }}}
 -- }}}
 

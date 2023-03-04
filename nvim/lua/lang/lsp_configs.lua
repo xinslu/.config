@@ -1,8 +1,10 @@
 local fn = vim.fn
+local api = vim.api
 local lsp = vim.lsp
 local M = {}
 
 local custom_attach = function(client, bufnr)
+    -- Mappings.
     local opts = { silent = true, buffer = bufnr }
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
