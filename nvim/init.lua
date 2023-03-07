@@ -96,17 +96,17 @@ vim.g.sonokai_dim_inactive_windows = 0
 vim.g.sonokai_show_eob = 0
 vim.g.sonokai_better_performance = 1
 vim.cmd.colorscheme("sonokai")
-vim.api.nvim_set_hl(0, "Normal", { bg = "#0f0f0f" })
-vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#0f0f0f"})
-vim.api.nvim_set_hl(0, "NormalNC", { bg = "#0f0f0f" })
+vim.api.nvim_set_hl(0, "Normal", { bg = "#141414" })
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#141414"})
+vim.api.nvim_set_hl(0, "NormalNC", { bg = "#141414" })
 vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
 vim.api.nvim_set_hl(0, "Comment", { default = true, italic = true })
-vim.api.nvim_set_hl(0, "BufferCurrent", { bg = "#0f0f0f" })
-vim.api.nvim_set_hl(0, "BufferCurrentIndex", { bg = "#0f0f0f" })
-vim.api.nvim_set_hl(0, "StatusLine", { bg = "#0f0f0f", fg = "#0f0f0f" })
-vim.api.nvim_set_hl(0, "BufferCurrentMod", { bg = "#0f0f0f" })
-vim.api.nvim_set_hl(0, "BufferCurrentSign", { bg = "#0f0f0f" })
-vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "#0f0f0f" })
+vim.api.nvim_set_hl(0, "BufferCurrent", { bg = "#141414" })
+vim.api.nvim_set_hl(0, "BufferCurrentIndex", { bg = "#141414" })
+vim.api.nvim_set_hl(0, "StatusLine", { bg = "#141414", fg = "#141414" })
+vim.api.nvim_set_hl(0, "BufferCurrentMod", { bg = "#141414" })
+vim.api.nvim_set_hl(0, "BufferCurrentSign", { bg = "#141414" })
+vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "#141414" })
 vim.api.nvim_set_hl(0, "String", { fg = "#6485E8" })
 vim.api.nvim_set_hl(0, "IndentBlanklineContextChar", { fg = "#5FB0FC" })
 vim.api.nvim_set_hl(0, "IndentBlanklineContextStart", { underline = false })
@@ -124,19 +124,19 @@ local TelescopePrompt = {
         fg = '#2c2e34',
     },
     TelescopeBorder = {
-        bg = '#0f0f0f',
-        fg = '#0f0f0f',
+        bg = '#141414',
+        fg = '#141414',
     },
     TelescopePromptTitle = {
-        fg = '#0f0f0f',
+        fg = '#141414',
         bg = '#f39660',
     },
     TelescopePreviewTitle = {
-        fg = '#0f0f0f',
+        fg = '#141414',
         bg = '#76cce0',
     },
     TelescopeResultsTitle = {
-        fg = '#0f0f0f',
+        fg = '#141414',
         bg = '#fc5d7c',
     },
 }
