@@ -26,7 +26,9 @@ require("lazy").setup({
     -- AutoCompletion {{{
     {
         "hrsh7th/nvim-cmp",
-        dependencies = { { "L3MON4D3/LuaSnip", 'hrsh7th/cmp-buffer', 'hrsh7th/cmp-cmdline', "hrsh7th/cmp-path", "saadparwaiz1/cmp_luasnip", "rafamadriz/friendly-snippets" } },
+        dependencies = {
+            { "L3MON4D3/LuaSnip", 'hrsh7th/cmp-buffer', 'hrsh7th/cmp-cmdline', "hrsh7th/cmp-path",
+                "saadparwaiz1/cmp_luasnip", "rafamadriz/friendly-snippets" } },
         config = function() require('lang.cmp') end,
         event = { "InsertEnter", "CmdlineEnter" },
     },
@@ -35,9 +37,11 @@ require("lazy").setup({
     -- }}}
 
     -- lsp {{{
-    { "neovim/nvim-lspconfig", config = function()
-        require('lang.lsp')
-    end,
+    {
+        "neovim/nvim-lspconfig",
+        config = function()
+            require('lang.lsp')
+        end,
         event = "BufAdd",
     },
     { "williamboman/mason.nvim",  config = true },
@@ -60,25 +64,33 @@ require("lazy").setup({
     { 'vimwiki/vimwiki',           ft = "vimwiki" },
     { 'wuelnerdotexe/vim-astro',   ft = "astro" },
     { 'folke/neodev.nvim',         config = true,         ft = "lua", event = "LspAttach" },
-    { 'simrat39/rust-tools.nvim', config = function()
-        local rt = require("rust-tools")
-        rt.setup({
-            server = {
-                on_attach = configs.custom_attach,
-                capabilities = configs.capabilities,
-                single_file_support = true
-            },
-        })
-    end, ft = "rust" },
-    { 'p00f/clangd_extensions.nvim', config = function()
-        require("clangd_extensions").setup({
-            server = {
-                on_attach = configs.custom_attach,
-                capabilities = configs.capabilities,
-                single_file_support = true
-            }
-        })
-    end, ft = { "c", "cpp" } },
+    {
+        'simrat39/rust-tools.nvim',
+        config = function()
+            local rt = require("rust-tools")
+            rt.setup({
+                server = {
+                    on_attach = configs.custom_attach,
+                    capabilities = configs.capabilities,
+                    single_file_support = true
+                },
+            })
+        end,
+        ft = "rust"
+    },
+    {
+        'p00f/clangd_extensions.nvim',
+        config = function()
+            require("clangd_extensions").setup({
+                server = {
+                    on_attach = configs.custom_attach,
+                    capabilities = configs.capabilities,
+                    single_file_support = true
+                }
+            })
+        end,
+        ft = { "c", "cpp" }
+    },
     -- }}}
 
     -- treesitter {{{
@@ -95,7 +107,8 @@ require("lazy").setup({
     -- Better Workflow {{{
     {
         'nvim-telescope/telescope.nvim',
-        dependencies = { { 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope-file-browser.nvim', 'debugloop/telescope-undo.nvim' } },
+        dependencies = {
+            { 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope-file-browser.nvim', 'debugloop/telescope-undo.nvim' } },
         config = function()
             require("telescope").setup({
                 defaults = {
@@ -112,20 +125,25 @@ require("lazy").setup({
                     },
                 },
             })
-            require("telescope").load_extension "file_browser"
             require("telescope").load_extension("undo")
         end,
     },
-    { 'terrortylor/nvim-comment', config = function()
-        require('nvim_comment').setup({ comment_empty = false })
-    end },
+    {
+        'terrortylor/nvim-comment',
+        config = function()
+            require('nvim_comment').setup({ comment_empty = false })
+        end
+    },
     { 'lukas-reineke/indent-blankline.nvim', event = "BufAdd" },
     { 'kylechui/nvim-surround',              config = true,   event = "InsertCharPre" },
-    { "gbprod/cutlass.nvim", config = function()
-        require("cutlass").setup({
-            cut_key = "m",
-        })
-    end },
+    {
+        "gbprod/cutlass.nvim",
+        config = function()
+            require("cutlass").setup({
+                cut_key = "m",
+            })
+        end
+    },
     -- }}}
 
 })

@@ -4,7 +4,6 @@ local lsp = vim.lsp
 local M = {}
 
 local custom_attach = function(client, bufnr)
-    -- Mappings.
     local opts = { silent = true, buffer = bufnr }
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
@@ -30,14 +29,6 @@ local custom_attach = function(client, bufnr)
     vim.keymap.set('n', '<space>f', vim.lsp.buf.format, opts)
     vim.keymap.set('n', '<space>fd', function() require("telescope.builtin").diagnostics({ bufnr = 0 }) end, opts)
     vim.keymap.set('n', '<space>wd', require("telescope.builtin").diagnostics, opts)
-
-    -- Set some key bindings conditional on server capabilities
-    if client.server_capabilities.document_formatting then
-        vim.keymap.set("n", "<space>f", vim.lsp.buf.formatting_sync, opts)
-    end
-    if client.server_capabilities.document_range_formatting then
-        vim.keymap.set("x", "<space>f", vim.lsp.buf.range_formatting, opts)
-    end
 end
 
 M.custom_attach = custom_attach

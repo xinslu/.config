@@ -31,8 +31,7 @@ alias ncspot="/home/kinshukphalke/ncspot/target/release/ncspot"
 [ -f /opt/miniconda3/etc/profile.d/conda.sh ] && source /opt/miniconda3/etc/profile.d/conda.sh
 
 ### EVALS ###
-eval $(thefuck --alias)
-eval $(env TERM=xterm256-color dircolors)
+# eval $(env TERM=xterm256-color dircolors)
 
 ### OPTIONS ###
 unsetopt menu_complete
@@ -48,7 +47,7 @@ setopt hist_ignore_dups
 function parse_git_branch {
     git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
 }
-export PS1="%F{12}%B%~%b%f %F{8}\$(parse_git_branch)%f %F{2}❯%f "
+export PS1="%F{6}%B%~%b%f %F{8}\$(parse_git_branch)%f %F{7}❯%f "
 bindkey -e
 
 ## LF ###

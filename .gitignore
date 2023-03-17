@@ -2,9 +2,9 @@
 !*/
 !nvim/**
 !polybar/**
-!i3/**
 !ranger/**
 !rofi/**
+!tabbed/**
 !.gitignore
 !.zshenv
 !.zshrc
