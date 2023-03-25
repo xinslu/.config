@@ -2,7 +2,7 @@
 
 # terminal emulator
 super + Return
-	tabbed -r 2 st -w ''
+	tabbed alacritty --embed
 
 super + shift + Return
 	alacritty --command lf
