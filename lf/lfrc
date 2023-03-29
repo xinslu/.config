@@ -6,8 +6,8 @@ set drawbox
 
 set previewer ctpv
 set cleaner ctpv
-# &ctpv -s $id
-# &ctpvquit $id
+&ctpv -s $id
+&ctpvquit $id
 
 set shellopts '-eu'
 
