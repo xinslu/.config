@@ -21,7 +21,7 @@ alias gaa="git add ."
 alias gp="git push"
 alias todo="cd ~/vimwiki/ && nvim todos/todo.wiki"
 alias r="lfcd"
-alias e="exa"
+alias e="exa --group-directories-first"
 alias n="nvim"
 alias ls='ls --color=auto'
 alias gs='git status'

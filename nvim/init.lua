@@ -25,6 +25,7 @@ set.hlsearch = true
 set.smartindent = true
 set.scrolloff = 8
 set.signcolumn = "yes:1"
+set.conceallevel = 2
 set.mouse = 'a'
 set.clipboard = "unnamedplus"
 set.ignorecase = true
@@ -32,7 +33,6 @@ set.smartcase = true
 set.completeopt = 'menu,noselect'
 vim.g.yoinkIncludeDeleteOperations = 1
 vim.wo.number = true
--- vim.wo.relativenumber = true
 vim.opt.list = true
 set.undofile = true
 set.completeopt = 'menuone,noselect'
@@ -93,25 +93,26 @@ map("n", "<leader>u", require "telescope".extensions.undo.undo)
 
 -- Highlights {{{
 vim.g.sonokai_diagnostic_virtual_text = 'colored'
+vim.g.sonokai_style = 'atlantis'
 vim.g.sonokai_disable_terminal_colors = 1
 vim.g.sonokai_dim_inactive_windows = 0
 vim.g.sonokai_show_eob = 0
 vim.g.sonokai_better_performance = 1
-vim.cmd.colorscheme("sonokai")
-vim.api.nvim_set_hl(0, "Normal", { bg = "#0f0f0f" })
-vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#0f0f0f"})
-vim.api.nvim_set_hl(0, "NormalNC", { bg = "#0f0f0f" })
-vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
-vim.api.nvim_set_hl(0, "Comment", { default = true, italic = true })
-vim.api.nvim_set_hl(0, "BufferCurrent", { bg = "#0f0f0f" })
-vim.api.nvim_set_hl(0, "BufferCurrentIndex", { bg = "#0f0f0f" })
-vim.api.nvim_set_hl(0, "StatusLine", { bg = "#0f0f0f", fg = "#0f0f0f" })
-vim.api.nvim_set_hl(0, "BufferCurrentMod", { bg = "#0f0f0f" })
-vim.api.nvim_set_hl(0, "BufferCurrentSign", { bg = "#0f0f0f" })
-vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "#0f0f0f" })
-vim.api.nvim_set_hl(0, "String", { fg = "#6485E8" })
-vim.api.nvim_set_hl(0, "IndentBlanklineContextChar", { fg = "#5FB0FC" })
-vim.api.nvim_set_hl(0, "IndentBlanklineContextStart", { underline = false })
+vim.g.sonokai_enable_italic = 1
+set.background = "light"
+vim.cmd.colorscheme("everforest")
+-- vim.api.nvim_set_hl(0, "Normal", { bg = "#191919" })
+-- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#191919"})
+-- vim.api.nvim_set_hl(0, "NormalNC", { bg = "#191919" })
+-- vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
+-- vim.api.nvim_set_hl(0, "Comment", { default = true, italic = true })
+-- vim.api.nvim_set_hl(0, "BufferCurrent", { bg = "#191919" })
+-- vim.api.nvim_set_hl(0, "BufferCurrentIndex", { bg = "#191919" })
+-- vim.api.nvim_set_hl(0, "StatusLine", { bg = "#191919", fg = "#191919" })
+-- vim.api.nvim_set_hl(0, "BufferCurrentMod", { bg = "#191919" })
+-- vim.api.nvim_set_hl(0, "BufferCurrentSign", { bg = "#191919" })
+-- vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "#191919" })
+-- vim.api.nvim_set_hl(0, "String", { fg = "#6485E8" })
 
 -- Telescope {{{
 local TelescopePrompt = {
@@ -126,19 +127,19 @@ local TelescopePrompt = {
         fg = '#2c2e34',
     },
     TelescopeBorder = {
-        bg = '#0f0f0f',
-        fg = '#0f0f0f',
+        bg = '#191919',
+        fg = '#191919',
     },
     TelescopePromptTitle = {
-        fg = '#0f0f0f',
+        fg = '#191919',
         bg = '#f39660',
     },
     TelescopePreviewTitle = {
-        fg = '#0f0f0f',
+        fg = '#191919',
         bg = '#76cce0',
     },
     TelescopeResultsTitle = {
-        fg = '#0f0f0f',
+        fg = '#191919',
         bg = '#fc5d7c',
     },
 }
@@ -168,14 +169,25 @@ vim.api.nvim_create_autocmd("FileType", {
     pattern = "qf",
     group = qf,
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+    command = "setlocal formatprg=prettier\\ --single-quote\\ --trailing-comma\\ es5\\ --parser\\ flow",
+    pattern = {"javascript", "javascriptreact"},
+})
 -- }}}
 
 -- Plugins {{{
 
 -- vim-tex {{{
+vim.g.tex_fast = "bMpr"
+vim.g.tex_conceal = ""
 vim.g.vimtex_view_method = 'zathura'
 vim.g.vimtex_syntax_enabled = 1
 vim.g.vimtex_quickfix_enabled = 0
+vim.g.vimtex_matchparen_enabled = 0
+vim.g.vimtex_indent_enabled = 0
+vim.g.vimtex_complete_enable = 0
+vim.g.vimtex_indent_bib_enabled = 0
 -- }}}
 
 -- staline {{{

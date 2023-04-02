@@ -22,6 +22,7 @@ require("lazy").setup({
     -- Theme
     'nvim-tree/nvim-web-devicons',
     'sainnhe/sonokai',
+    'sainnhe/everforest',
 
     -- AutoCompletion {{{
     {
@@ -100,7 +101,7 @@ require("lazy").setup({
         config = function()
             require('lang.treesitter')
         end,
-        event = "BufAdd",
+        event = "BufAdd"
     },
     -- }}}
 
@@ -135,7 +136,6 @@ require("lazy").setup({
         end
     },
     { 'lukas-reineke/indent-blankline.nvim', event = "BufAdd" },
-    { 'kylechui/nvim-surround',              config = true,   event = "InsertCharPre" },
     {
         "gbprod/cutlass.nvim",
         config = function()
