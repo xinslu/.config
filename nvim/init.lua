@@ -92,13 +92,13 @@ map("n", "<leader>u", require "telescope".extensions.undo.undo)
 -- }}}
 
 -- Highlights {{{
-vim.g.sonokai_diagnostic_virtual_text = 'colored'
-vim.g.sonokai_style = 'atlantis'
-vim.g.sonokai_disable_terminal_colors = 1
-vim.g.sonokai_dim_inactive_windows = 0
-vim.g.sonokai_show_eob = 0
-vim.g.sonokai_better_performance = 1
-vim.g.sonokai_enable_italic = 1
+-- vim.g.sonokai_diagnostic_virtual_text = 'colored'
+-- vim.g.sonokai_style = 'atlantis'
+-- vim.g.sonokai_disable_terminal_colors = 1
+-- vim.g.sonokai_dim_inactive_windows = 0
+-- vim.g.sonokai_show_eob = 0
+-- vim.g.sonokai_better_performance = 1
+-- vim.g.sonokai_enable_italic = 1
 set.background = "light"
 vim.cmd.colorscheme("everforest")
 -- vim.api.nvim_set_hl(0, "Normal", { bg = "#191919" })
@@ -109,6 +109,7 @@ vim.cmd.colorscheme("everforest")
 -- vim.api.nvim_set_hl(0, "BufferCurrent", { bg = "#191919" })
 -- vim.api.nvim_set_hl(0, "BufferCurrentIndex", { bg = "#191919" })
 -- vim.api.nvim_set_hl(0, "StatusLine", { bg = "#191919", fg = "#191919" })
+vim.api.nvim_set_hl(0, "StatusLine", { bg = "#f3ead3" })
 -- vim.api.nvim_set_hl(0, "BufferCurrentMod", { bg = "#191919" })
 -- vim.api.nvim_set_hl(0, "BufferCurrentSign", { bg = "#191919" })
 -- vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "#191919" })
@@ -116,18 +117,18 @@ vim.cmd.colorscheme("everforest")
 
 -- Telescope {{{
 local TelescopePrompt = {
-    TelescopePromptNormal = {
-        bg = '#2c2e34',
-    },
+    -- TelescopePromptNormal = {
+    --     bg = '#2c2e34',
+    -- },
     TelescopeSelection = {
-        bg = '#2c2e34',
+        -- bg = '#2c2e34',
     },
     TelescopePromptBorder = {
-        bg = '#2c2e34',
+        -- bg = '#2c2e34',
         fg = '#2c2e34',
     },
     TelescopeBorder = {
-        bg = '#191919',
+        -- bg = '#191919',
         fg = '#191919',
     },
     TelescopePromptTitle = {
@@ -208,7 +209,7 @@ require "staline".setup {
 
 -- stabline {{{
 require('stabline').setup {
-    stab_bg = "#222327",
+    -- stab_bg = "#222327",
     stab_left = " ",
     exclude_fts = { 'netrw', 'dashboard', 'lir', 'terminal' },
     font_active = "none",

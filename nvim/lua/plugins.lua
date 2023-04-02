@@ -21,8 +21,16 @@ require("lazy").setup({
 
     -- Theme
     'nvim-tree/nvim-web-devicons',
-    'sainnhe/sonokai',
-    'sainnhe/everforest',
+    {
+        'neanias/everforest-nvim',
+        config = function()
+            require("everforest").setup({
+                background = "soft",
+                italics = true,
+                disable_italic_comments = true,
+            })
+        end
+    },
 
     -- AutoCompletion {{{
     {
