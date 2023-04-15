@@ -12,12 +12,6 @@ local custom_attach = function(client, bufnr)
     vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
     if client.server_capabilities.signature_help then
         vim.keymap.set("n", "<C-[>", vim.lsp.buf.signature_help, opts)
-        require "lsp_signature".on_attach({
-            bind = true,
-            handler_opts = {
-                border = "rounded"
-            }
-        }, bufnr)
     end
     vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, opts)
     vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, opts)
@@ -29,6 +23,7 @@ local custom_attach = function(client, bufnr)
     vim.keymap.set('n', '<space>f', vim.lsp.buf.format, opts)
     vim.keymap.set('n', '<space>fd', function() require("telescope.builtin").diagnostics({ bufnr = 0 }) end, opts)
     vim.keymap.set('n', '<space>wd', require("telescope.builtin").diagnostics, opts)
+    -- client.server_capabilities.semanticTokensProvider = nil
 end
 
 M.custom_attach = custom_attach

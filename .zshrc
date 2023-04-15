@@ -23,6 +23,7 @@ alias todo="cd ~/vimwiki/ && nvim todos/todo.wiki"
 alias r="lfcd"
 alias e="exa --group-directories-first"
 alias n="nvim"
+alias aloha="ls --color=auto -aloh"
 alias ls='ls --color=auto'
 alias gs='git status'
 alias tabbed-st="tabbed -r 2 st -w ''"

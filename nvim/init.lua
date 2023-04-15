@@ -84,63 +84,58 @@ map('n', '<C-f>',
         require('telescope.builtin').grep_string({ search = vim.fn.input('Grep For > ') })
     end)
 
-map("n", "<space>fe", function ()
-   require "telescope".extensions.file_browser.file_browser({path ="%:p:h", select_buffer=true})
-end)
+map('n', '<C-g>',
+    function()
+        require('telescope.builtin').git_commits()
+    end)
+map("n", "<space>fe",cmd.Explore)
 map("n", "<leader>u", require "telescope".extensions.undo.undo)
 -- }}}
 -- }}}
 
 -- Highlights {{{
--- vim.g.sonokai_diagnostic_virtual_text = 'colored'
--- vim.g.sonokai_style = 'atlantis'
--- vim.g.sonokai_disable_terminal_colors = 1
--- vim.g.sonokai_dim_inactive_windows = 0
--- vim.g.sonokai_show_eob = 0
--- vim.g.sonokai_better_performance = 1
--- vim.g.sonokai_enable_italic = 1
-set.background = "light"
-vim.cmd.colorscheme("everforest")
--- vim.api.nvim_set_hl(0, "Normal", { bg = "#191919" })
--- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#191919"})
--- vim.api.nvim_set_hl(0, "NormalNC", { bg = "#191919" })
--- vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
--- vim.api.nvim_set_hl(0, "Comment", { default = true, italic = true })
--- vim.api.nvim_set_hl(0, "BufferCurrent", { bg = "#191919" })
--- vim.api.nvim_set_hl(0, "BufferCurrentIndex", { bg = "#191919" })
--- vim.api.nvim_set_hl(0, "StatusLine", { bg = "#191919", fg = "#191919" })
-vim.api.nvim_set_hl(0, "StatusLine", { bg = "#f3ead3" })
--- vim.api.nvim_set_hl(0, "BufferCurrentMod", { bg = "#191919" })
--- vim.api.nvim_set_hl(0, "BufferCurrentSign", { bg = "#191919" })
--- vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "#191919" })
--- vim.api.nvim_set_hl(0, "String", { fg = "#6485E8" })
+vim.g.sonokai_diagnostic_virtual_text = 'colored'
+vim.g.sonokai_disable_terminal_colors = 1
+vim.g.sonokai_enable_italic = 1
+vim.g.sonokai_better_performance = 1
+vim.cmd.colorscheme("sonokai")
+vim.api.nvim_set_hl(0, "Normal", { bg = "#0f0f0f" })
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#0f0f0f"})
+vim.api.nvim_set_hl(0, "NormalNC", { bg = "#0f0f0f" })
+vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
+vim.api.nvim_set_hl(0, "BufferCurrent", { bg = "#0f0f0f" })
+vim.api.nvim_set_hl(0, "BufferCurrentIndex", { bg = "#0f0f0f" })
+vim.api.nvim_set_hl(0, "StatusLine", { bg = "#0f0f0f", fg = "#0f0f0f" })
+vim.api.nvim_set_hl(0, "BufferCurrentMod", { bg = "#0f0f0f" })
+vim.api.nvim_set_hl(0, "BufferCurrentSign", { bg = "#0f0f0f" })
+vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "#0f0f0f" })
 
 -- Telescope {{{
 local TelescopePrompt = {
-    -- TelescopePromptNormal = {
-    --     bg = '#2c2e34',
-    -- },
+    TelescopePromptNormal = {
+        bg = '#2c2e34',
+    },
     TelescopeSelection = {
-        -- bg = '#2c2e34',
+        bg = '#2c2e34',
     },
     TelescopePromptBorder = {
-        -- bg = '#2c2e34',
+        bg = '#2c2e34',
         fg = '#2c2e34',
     },
     TelescopeBorder = {
-        -- bg = '#191919',
-        fg = '#191919',
+        bg = '#0f0f0f',
+        fg = '#0f0f0f',
     },
     TelescopePromptTitle = {
-        fg = '#191919',
+        fg = '#0f0f0f',
         bg = '#f39660',
     },
     TelescopePreviewTitle = {
-        fg = '#191919',
+        fg = '#0f0f0f',
         bg = '#76cce0',
     },
     TelescopeResultsTitle = {
-        fg = '#191919',
+        fg = '#0f0f0f',
         bg = '#fc5d7c',
     },
 }
@@ -169,6 +164,16 @@ vim.api.nvim_create_autocmd("FileType", {
     command = "setlocal nobuflisted",
     pattern = "qf",
     group = qf,
+})
+local ft = vim.api.nvim_create_augroup("netrw", { clear = false })
+vim.api.nvim_create_autocmd("FileType", {
+    callback = function()
+        vim.api.nvim_buf_set_keymap(0, "n", "l", "<CR>", { silent = true })
+        vim.api.nvim_buf_set_keymap(0, "n", "h", "-", { silent = true })
+        vim.api.nvim_buf_set_keymap(0, "n", "a", "%", { silent = true })
+    end,
+    pattern = "netrw",
+    group = ft,
 })
 
 vim.api.nvim_create_autocmd("FileType", {
@@ -209,7 +214,7 @@ require "staline".setup {
 
 -- stabline {{{
 require('stabline').setup {
-    -- stab_bg = "#222327",
+    stab_bg = "#222327",
     stab_left = " ",
     exclude_fts = { 'netrw', 'dashboard', 'lir', 'terminal' },
     font_active = "none",

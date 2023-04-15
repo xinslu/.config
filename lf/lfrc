@@ -5,7 +5,7 @@ set icons true
 set drawbox
 
 set previewer ctpv
-set cleaner ctpv
+set cleaner ctpvclear
 &ctpv -s $id
 &ctpvquit $id
 
