@@ -1,125 +1,152 @@
-vim.cmd [[packadd packer.nvim]]
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+local configs = require("lang.lsp_configs")
 
-return require('packer').startup(function()
-    use 'wbthomason/packer.nvim'
-    use {
-        'kyazdani42/nvim-tree.lua',
-        config = [[require('configs.nvim-tree')]]
-
-    }
-    use {
-        'nvim-lualine/lualine.nvim',
-        requires = { 'kyazdani42/nvim-web-devicons', opt = true },
-        config = [[require('configs.lualine')]]
-    }
-    use {
-        'romgrk/barbar.nvim',
-        config = [[require('configs.barbar')]]
-    }
-    use {
-        'nvim-telescope/telescope.nvim',
-        requires = { { 'nvim-lua/plenary.nvim' } },
-        config = [[require('configs.telescope')]]
-    }
-
-    use 'gruvbox-community/gruvbox'
-    use({
-        "gelguy/wilder.nvim",
-        requires = { { "romgrk/fzy-lua-native" } },
-        setup = [[vim.cmd('packadd wilder.nvim')]],
-        config = [[require('configs.wilder')]]
+if not vim.loop.fs_stat(lazypath) then
+    vim.fn.system({
+        "git",
+        "clone",
+        "--filter=blob:none",
+        "https://github.com/folke/lazy.nvim.git",
+        "--branch=stable",
+        lazypath,
     })
+end
 
-    use({ "onsails/lspkind-nvim", event = "VimEnter" })
-    -- auto-completion engine
-    use {
+vim.opt.rtp:prepend(lazypath)
+
+require("lazy").setup({
+
+    -- Status and Buffer Line
+    'tamton-aquib/staline.nvim',
+
+    -- Theme
+    'nvim-tree/nvim-web-devicons',
+    'sainnhe/sonokai',
+    'tiagovla/tokyodark.nvim',
+
+    -- AutoCompletion {{{
+    {
         "hrsh7th/nvim-cmp",
-        after = "lspkind-nvim",
-        requires = { { "SirVer/ultisnips" } },
-        config = [[require('configs.cmp')]]
-    }
+        dependencies = {
+            { "L3MON4D3/LuaSnip", 'hrsh7th/cmp-buffer', 'hrsh7th/cmp-cmdline', "hrsh7th/cmp-path",
+                "saadparwaiz1/cmp_luasnip", "rafamadriz/friendly-snippets" } },
+        config = function() require('lang.cmp') end,
+        event = { "InsertEnter", "CmdlineEnter" },
+    },
+    { "hrsh7th/cmp-nvim-lsp", dependencies = "nvim-cmp", event = "LspAttach" },
+    { "hrsh7th/cmp-nvim-lua", dependencies = "nvim-cmp", ft = "lua",         event = "InsertCharPre" },
+    -- }}}
 
-    -- nvim-cmp completion sources
-    use { "hrsh7th/cmp-nvim-lsp", after = "nvim-cmp" }
-    use { "hrsh7th/cmp-nvim-lua", after = "nvim-cmp" }
-    use { "hrsh7th/cmp-path", after = "nvim-cmp" }
-    use { "hrsh7th/cmp-buffer", after = "nvim-cmp" }
-    use { "hrsh7th/cmp-omni", after = "nvim-cmp" }
-    use { "quangnguyen30192/cmp-nvim-ultisnips", after = { 'nvim-cmp', 'ultisnips' } }
-    use { "hrsh7th/cmp-emoji", after = 'nvim-cmp' }
-    use({ "neovim/nvim-lspconfig", after = "cmp-nvim-lsp", config = [[require('configs.lsp')]] })
-    use 'williamboman/nvim-lsp-installer'
-
-    -- Git command inside vim
-    use({ "tpope/vim-fugitive" })
-
-    -- Better git log display
-    use({ "rbong/vim-flog", requires = "tpope/vim-fugitive", cmd = { "Flog" } })
-
-
-    -- Better git commit experience
-    use({ "rhysd/committia.vim", opt = true, setup = [[vim.cmd('packadd committia.vim')]] })
-
-    use 'terrortylor/nvim-comment'
-    -- Highlighters
-    use 'maxmellon/vim-jsx-pretty'
-    use 'rust-lang/rust.vim'
-    use 'prettier/vim-prettier'
-    use 'fatih/vim-go'
-    use 'darrikonn/vim-gofmt'
-
-    use {
-        "folke/trouble.nvim",
-        requires = "kyazdani42/nvim-web-devicons",
+    -- lsp {{{
+    {
+        "neovim/nvim-lspconfig",
         config = function()
-            require("trouble").setup {}
-        end
-    }
+            require('lang.lsp')
+        end,
+        event = "BufAdd",
+    },
+    { "williamboman/mason.nvim",  config = true },
+    { "onsails/lspkind-nvim",     event = "InsertCharPre" },
+    { "ray-x/lsp_signature.nvim", event = "InsertCharPre" },
+    -- }}}
 
-    use {
-        's1n7ax/nvim-terminal',
-        config = [[require('configs.terminal')]]
-    }
-    use 'simrat39/rust-tools.nvim'
-    use 'airblade/vim-gitgutter'
-    use({ 'lervag/vimtex'
-    })
-    use 'dag/vim-fish'
-    use { 'lukas-reineke/indent-blankline.nvim',
+    -- Git {{{
+    { "rbong/vim-flog",           dependencies = "tpope/vim-fugitive", cmd = { "Flog" } },
+    'airblade/vim-gitgutter',
+    { 'akinsho/git-conflict.nvim', config = true },
+    -- }}}
+
+    -- Language Specific {{{
+    { 'maxmellon/vim-jsx-pretty',  ft = "javascriptreact" },
+    { 'rust-lang/rust.vim',        ft = "rust" },
+    { 'fatih/vim-go',              ft = "go" },
+    { 'darrikonn/vim-gofmt',       ft = "go" },
+    { 'lervag/vimtex',             ft = "tex" },
+    { 'vimwiki/vimwiki',           ft = "vimwiki" },
+    { 'wuelnerdotexe/vim-astro',   ft = "astro" },
+    { 'folke/neodev.nvim',         config = true,         ft = "lua", event = "LspAttach" },
+    {
+        'simrat39/rust-tools.nvim',
         config = function()
-            require("indent_blankline").setup {
-                show_end_of_line = true,
-                space_char_blankline = " ",
-                show_current_context_start = true,
-            }
-        end
-    }
-    use 'sharkdp/fd'
+            local rt = require("rust-tools")
+            rt.setup({
+                server = {
+                    on_attach = configs.custom_attach,
+                    capabilities = configs.capabilities,
+                    single_file_support = true
+                },
+            })
+        end,
+        ft = "rust"
+    },
+    {
+        'p00f/clangd_extensions.nvim',
+        config = function()
+            require("clangd_extensions").setup({
+                server = {
+                    on_attach = configs.custom_attach,
+                    capabilities = configs.capabilities,
+                    single_file_support = true
+                }
+            })
+        end,
+        ft = { "c", "cpp" }
+    },
+    -- }}}
 
-    use { 'akinsho/git-conflict.nvim', config = function()
-        require('git-conflict').setup()
-    end }
-    use {
+    -- treesitter {{{
+    {
         'nvim-treesitter/nvim-treesitter',
-        run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
-    }
-    use 'tpope/vim-surround'
-    use({
+        build = ":TSUpdate",
+        config = function()
+            require('lang.treesitter')
+        end,
+        event = "BufAdd",
+    },
+    -- }}}
+
+    -- Better Workflow {{{
+    {
+        'nvim-telescope/telescope.nvim',
+        dependencies = {
+            { 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope-file-browser.nvim', 'debugloop/telescope-undo.nvim' } },
+        config = function()
+            require("telescope").setup({
+                defaults = {
+                    prompt_prefix = "   ",
+                    selection_caret = "   ",
+                    entry_prefix = "    ",
+                    initial_mode = "normal",
+                },
+                extensions = {
+                    file_browser = {
+                        hijack_netrw = true,
+                        display_stat = {},
+                        git_status = false,
+                    },
+                },
+            })
+            require("telescope").load_extension("undo")
+        end,
+    },
+    {
+        'terrortylor/nvim-comment',
+        config = function()
+            require('nvim_comment').setup({ comment_empty = false })
+        end
+    },
+    { 'lukas-reineke/indent-blankline.nvim', event = "BufAdd" },
+    { 'kylechui/nvim-surround',              config = true,   event = "InsertCharPre" },
+    {
         "gbprod/cutlass.nvim",
         config = function()
             require("cutlass").setup({
                 cut_key = "m",
-                override_del = nil,
-                exclude = {},
             })
         end
-    })
-    use 'svermeulen/vim-yoink'
-    use 'kyazdani42/nvim-web-devicons'
-    -- use {
-    --     'akinsho/bufferline.nvim',
-    --     tag = "v2.*",
-    --     requires = 'kyazdani42/nvim-web-devicons',
-    --     config = [[require('configs.bufferline')]]
-    -- }
-end)
+    },
+    -- }}}
+
+})
+
+-- vim:ts=4:sw=4:ai:foldmethod=marker:foldlevel=0:
