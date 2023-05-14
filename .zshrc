@@ -1,5 +1,5 @@
 ### EXPORTS ###
-export PATH="$HOME/.cabal/bin:$HOME/.ghcup/bin:$HOME/go/bin:/home/kinshukphalke/.local/bin:$PATH:/opt"
+export PATH="$HOME/.cabal/bin:$HOME/.ghcup/bin:$HOME/go/bin:/home/kinshukphalke/.local/bin:$PATH:/opt:$HOME/.cargo/bin"
 export ACLOCAL_PATH="/usr/local/share/aclocal:$ACLOCAL_PATH"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -12,10 +12,10 @@ SAVEHIST=10000
 HISTFILE=~/.zsh_history
 
 ### ALIASES ###
-alias grouch="python ~/Documents/grouch/src/tracker.py spring"
+alias grouch="python ~/Documents/grouch/src/tracker.py fall"
 alias cn="cd ~/.config/nvim && nvim ~/.config/nvim/init.lua"
 alias wiki="cd ~/vimwiki/ && nvim index.wiki"
-alias circuitsim='java  --module-path /usr/lib/jvm/java-19-openjdk/lib/javafx.base.jar:/usr/lib/jvm/java-19-openjdk/lib/javafx.controls.jar:/usr/lib/jvm/java-19-openjdk/lib/javafx.graphics.jar --add-modules=javafx.controls -jar ~/Downloads/CircuitSim1.8.2.jar' 
+alias circuitsim='java  --module-path /usr/lib/jvm/java-19-openjdk/lib/javafx.base.jar:/usr/lib/jvm/java-19-openjdk/lib/javafx.controls.jar:/usr/lib/jvm/java-19-openjdk/lib/javafx.graphics.jar --add-modules=javafx.controls -jar ~/Downloads/CircuitSim1.8.2.jar'
 alias gcam="git commit -am"
 alias gaa="git add ."
 alias gp="git push"
@@ -29,10 +29,9 @@ alias gs='git status'
 alias tabbed-st="tabbed -r 2 st -w ''"
 alias weather="curl 'wttr.in/Atlanta?m'"
 alias ncspot="/home/kinshukphalke/ncspot/target/release/ncspot"
+alias rip="shutdown \"now\""
 [ -f /opt/miniconda3/etc/profile.d/conda.sh ] && source /opt/miniconda3/etc/profile.d/conda.sh
 
-### EVALS ###
-# eval $(env TERM=xterm256-color dircolors)
 
 ### OPTIONS ###
 unsetopt menu_complete

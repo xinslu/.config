@@ -88,7 +88,7 @@ map('n', '<C-g>',
     function()
         require('telescope.builtin').git_commits()
     end)
-map("n", "<space>fe",cmd.Explore)
+map("n", "<space>fe", cmd.Explore)
 map("n", "<leader>u", require "telescope".extensions.undo.undo)
 -- }}}
 -- }}}
@@ -96,19 +96,21 @@ map("n", "<leader>u", require "telescope".extensions.undo.undo)
 -- Highlights {{{
 vim.g.sonokai_diagnostic_virtual_text = 'colored'
 vim.g.sonokai_disable_terminal_colors = 1
+vim.g.sonokai_diagnostic_text_highlight = 1
+vim.g.sonokai_diagnostic_line_highlight = 1
 vim.g.sonokai_enable_italic = 1
 vim.g.sonokai_better_performance = 1
 vim.cmd.colorscheme("sonokai")
-vim.api.nvim_set_hl(0, "Normal", { bg = "#0f0f0f" })
-vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#0f0f0f"})
-vim.api.nvim_set_hl(0, "NormalNC", { bg = "#0f0f0f" })
+vim.api.nvim_set_hl(0, "Normal", { bg = "#0e0e0e" })
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#0e0e0e" })
+vim.api.nvim_set_hl(0, "NormalNC", { bg = "#0e0e0e" })
 vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
-vim.api.nvim_set_hl(0, "BufferCurrent", { bg = "#0f0f0f" })
-vim.api.nvim_set_hl(0, "BufferCurrentIndex", { bg = "#0f0f0f" })
-vim.api.nvim_set_hl(0, "StatusLine", { bg = "#0f0f0f", fg = "#0f0f0f" })
-vim.api.nvim_set_hl(0, "BufferCurrentMod", { bg = "#0f0f0f" })
-vim.api.nvim_set_hl(0, "BufferCurrentSign", { bg = "#0f0f0f" })
-vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "#0f0f0f" })
+vim.api.nvim_set_hl(0, "BufferCurrent", { bg = "#0e0e0e" })
+vim.api.nvim_set_hl(0, "BufferCurrentIndex", { bg = "#0e0e0e" })
+vim.api.nvim_set_hl(0, "StatusLine", { bg = "#0e0e0e", fg = "#0e0e0e" })
+vim.api.nvim_set_hl(0, "BufferCurrentMod", { bg = "#0e0e0e" })
+vim.api.nvim_set_hl(0, "BufferCurrentSign", { bg = "#0e0e0e" })
+vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "#0e0e0e" })
 
 -- Telescope {{{
 local TelescopePrompt = {
@@ -123,19 +125,19 @@ local TelescopePrompt = {
         fg = '#2c2e34',
     },
     TelescopeBorder = {
-        bg = '#0f0f0f',
-        fg = '#0f0f0f',
+        bg = '#0e0e0e',
+        fg = '#0e0e0e',
     },
     TelescopePromptTitle = {
-        fg = '#0f0f0f',
+        fg = '#0e0e0e',
         bg = '#f39660',
     },
     TelescopePreviewTitle = {
-        fg = '#0f0f0f',
+        fg = '#0e0e0e',
         bg = '#76cce0',
     },
     TelescopeResultsTitle = {
-        fg = '#0f0f0f',
+        fg = '#0e0e0e',
         bg = '#fc5d7c',
     },
 }
@@ -178,7 +180,7 @@ vim.api.nvim_create_autocmd("FileType", {
 
 vim.api.nvim_create_autocmd("FileType", {
     command = "setlocal formatprg=prettier\\ --single-quote\\ --trailing-comma\\ es5\\ --parser\\ flow",
-    pattern = {"javascript", "javascriptreact"},
+    pattern = { "javascript", "javascriptreact" },
 })
 -- }}}
 
@@ -218,7 +220,7 @@ require('stabline').setup {
     stab_left = " ",
     exclude_fts = { 'netrw', 'dashboard', 'lir', 'terminal' },
     font_active = "none",
-    numbers = function(bufn, n)
+    numbers = function(_, n)
         return n .. ' '
     end
 }

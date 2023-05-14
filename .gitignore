@@ -21,3 +21,4 @@
 !.zshprofile
 !.github/**
 !scripts/**
+!wezterm/**
