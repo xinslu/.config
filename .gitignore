@@ -4,7 +4,6 @@
 !polybar/**
 !ranger/**
 !rofi/**
-!tabbed/**
 !.gitignore
 !.zshenv
 !.zshrc
