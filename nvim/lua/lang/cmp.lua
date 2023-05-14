@@ -6,7 +6,6 @@ end
 
 local luasnip = require("luasnip")
 local cmp = require 'cmp'
-local lspkind = require 'lspkind'
 
 local types = require("luasnip.util.types")
 
@@ -32,7 +31,7 @@ cmp.setup({
         end,
     },
     mapping = cmp.mapping.preset.insert({
-        ["<Tab>"] = cmp.mapping(function(fallback)
+        ["<C-j>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_next_item()
             elseif luasnip.expand_or_jumpable() then
@@ -43,8 +42,7 @@ cmp.setup({
                 fallback()
             end
         end, { "i", "s" }),
-
-        ["<S-Tab>"] = cmp.mapping(function(fallback)
+        ["<C-k>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_prev_item()
             elseif luasnip.jumpable( -1) then
@@ -75,11 +73,6 @@ cmp.setup({
     },
     view = {
         entries = 'custom',
-    },
-    formatting = {
-        format = lspkind.cmp_format({
-            mode = "symbol_text",
-        }),
     },
     sorting = {
         comparators = {

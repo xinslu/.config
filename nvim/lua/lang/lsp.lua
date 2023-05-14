@@ -2,7 +2,7 @@ local configs = require("lang.lsp_configs")
 
 local lspconfig = require("lspconfig")
 
-local lsps = { "pyright", "bashls", "eslint", "jdtls", "gopls", "texlab", "dockerls", "html", "hls", "tsserver" }
+local lsps = { "pyright", "bashls", "eslint", "jdtls", "gopls", "texlab", "dockerls", "html", "hls", "tsserver", "clangd" }
 
 for _, lsp_name in ipairs(lsps) do
     lspconfig[lsp_name].setup {
@@ -11,6 +11,9 @@ for _, lsp_name in ipairs(lsps) do
         single_file_support = true,
     }
 end
+
+require("neodev").setup({
+})
 
 
 lspconfig.lua_ls.setup({
@@ -50,8 +53,7 @@ lspconfig.eslint.setup {
         workingDirectory = {
             mode = "location"
         }
-    },
-}
+    }, }
 
 lspconfig.jsonls.setup {
     on_attach = configs.custom_attach,

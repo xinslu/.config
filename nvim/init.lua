@@ -25,6 +25,7 @@ set.hlsearch = true
 set.smartindent = true
 set.scrolloff = 8
 set.signcolumn = "yes:1"
+set.conceallevel = 2
 set.mouse = 'a'
 set.clipboard = "unnamedplus"
 set.ignorecase = true
@@ -32,7 +33,6 @@ set.smartcase = true
 set.completeopt = 'menu,noselect'
 vim.g.yoinkIncludeDeleteOperations = 1
 vim.wo.number = true
--- vim.wo.relativenumber = true
 vim.opt.list = true
 set.undofile = true
 set.completeopt = 'menuone,noselect'
@@ -84,30 +84,31 @@ map('n', '<C-f>',
         require('telescope.builtin').grep_string({ search = vim.fn.input('Grep For > ') })
     end)
 
-map("n", "<space>fe", function ()
-   require "telescope".extensions.file_browser.file_browser({path ="%:p:h", select_buffer=true})
-end)
+map('n', '<C-g>',
+    function()
+        require('telescope.builtin').git_commits()
+    end)
+map("n", "<space>fe",cmd.Explore)
 map("n", "<leader>u", require "telescope".extensions.undo.undo)
 -- }}}
 -- }}}
 
 -- Highlights {{{
-vim.g.tokyodark_color_gamma = "0.9"
-vim.cmd.colorscheme("tokyodark")
+vim.g.sonokai_diagnostic_virtual_text = 'colored'
+vim.g.sonokai_disable_terminal_colors = 1
+vim.g.sonokai_enable_italic = 1
+vim.g.sonokai_better_performance = 1
+vim.cmd.colorscheme("sonokai")
 vim.api.nvim_set_hl(0, "Normal", { bg = "#0f0f0f" })
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#0f0f0f"})
 vim.api.nvim_set_hl(0, "NormalNC", { bg = "#0f0f0f" })
 vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
-vim.api.nvim_set_hl(0, "Comment", { default = true, italic = true })
 vim.api.nvim_set_hl(0, "BufferCurrent", { bg = "#0f0f0f" })
 vim.api.nvim_set_hl(0, "BufferCurrentIndex", { bg = "#0f0f0f" })
 vim.api.nvim_set_hl(0, "StatusLine", { bg = "#0f0f0f", fg = "#0f0f0f" })
 vim.api.nvim_set_hl(0, "BufferCurrentMod", { bg = "#0f0f0f" })
 vim.api.nvim_set_hl(0, "BufferCurrentSign", { bg = "#0f0f0f" })
 vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "#0f0f0f" })
-vim.api.nvim_set_hl(0, "String", { fg = "#6485E8" })
-vim.api.nvim_set_hl(0, "IndentBlanklineContextChar", { fg = "#5FB0FC" })
-vim.api.nvim_set_hl(0, "IndentBlanklineContextStart", { underline = false })
 
 -- Telescope {{{
 local TelescopePrompt = {
@@ -164,14 +165,35 @@ vim.api.nvim_create_autocmd("FileType", {
     pattern = "qf",
     group = qf,
 })
+local ft = vim.api.nvim_create_augroup("netrw", { clear = false })
+vim.api.nvim_create_autocmd("FileType", {
+    callback = function()
+        vim.api.nvim_buf_set_keymap(0, "n", "l", "<CR>", { silent = true })
+        vim.api.nvim_buf_set_keymap(0, "n", "h", "-", { silent = true })
+        vim.api.nvim_buf_set_keymap(0, "n", "a", "%", { silent = true })
+    end,
+    pattern = "netrw",
+    group = ft,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+    command = "setlocal formatprg=prettier\\ --single-quote\\ --trailing-comma\\ es5\\ --parser\\ flow",
+    pattern = {"javascript", "javascriptreact"},
+})
 -- }}}
 
 -- Plugins {{{
 
 -- vim-tex {{{
+vim.g.tex_fast = "bMpr"
+vim.g.tex_conceal = ""
 vim.g.vimtex_view_method = 'zathura'
 vim.g.vimtex_syntax_enabled = 1
 vim.g.vimtex_quickfix_enabled = 0
+vim.g.vimtex_matchparen_enabled = 0
+vim.g.vimtex_indent_enabled = 0
+vim.g.vimtex_complete_enable = 0
+vim.g.vimtex_indent_bib_enabled = 0
 -- }}}
 
 -- staline {{{

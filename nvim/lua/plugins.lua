@@ -22,7 +22,6 @@ require("lazy").setup({
     -- Theme
     'nvim-tree/nvim-web-devicons',
     'sainnhe/sonokai',
-    'tiagovla/tokyodark.nvim',
 
     -- AutoCompletion {{{
     {
@@ -43,24 +42,17 @@ require("lazy").setup({
         config = function()
             require('lang.lsp')
         end,
-        event = "BufAdd",
+        event = "BufEnter",
     },
     { "williamboman/mason.nvim",  config = true },
-    { "onsails/lspkind-nvim",     event = "InsertCharPre" },
-    { "ray-x/lsp_signature.nvim", event = "InsertCharPre" },
     -- }}}
 
     -- Git {{{
-    { "rbong/vim-flog",           dependencies = "tpope/vim-fugitive", cmd = { "Flog" } },
-    'airblade/vim-gitgutter',
+    {'lewis6991/gitsigns.nvim', config = true },
     { 'akinsho/git-conflict.nvim', config = true },
     -- }}}
 
     -- Language Specific {{{
-    { 'maxmellon/vim-jsx-pretty',  ft = "javascriptreact" },
-    { 'rust-lang/rust.vim',        ft = "rust" },
-    { 'fatih/vim-go',              ft = "go" },
-    { 'darrikonn/vim-gofmt',       ft = "go" },
     { 'lervag/vimtex',             ft = "tex" },
     { 'vimwiki/vimwiki',           ft = "vimwiki" },
     { 'wuelnerdotexe/vim-astro',   ft = "astro" },
@@ -101,7 +93,7 @@ require("lazy").setup({
         config = function()
             require('lang.treesitter')
         end,
-        event = "BufAdd",
+        event = "BufAdd"
     },
     -- }}}
 
@@ -109,7 +101,7 @@ require("lazy").setup({
     {
         'nvim-telescope/telescope.nvim',
         dependencies = {
-            { 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope-file-browser.nvim', 'debugloop/telescope-undo.nvim' } },
+            { 'nvim-lua/plenary.nvim', 'debugloop/telescope-undo.nvim' } },
         config = function()
             require("telescope").setup({
                 defaults = {
@@ -117,13 +109,6 @@ require("lazy").setup({
                     selection_caret = "   ",
                     entry_prefix = "    ",
                     initial_mode = "normal",
-                },
-                extensions = {
-                    file_browser = {
-                        hijack_netrw = true,
-                        display_stat = {},
-                        git_status = false,
-                    },
                 },
             })
             require("telescope").load_extension("undo")
@@ -136,16 +121,7 @@ require("lazy").setup({
         end
     },
     { 'lukas-reineke/indent-blankline.nvim', event = "BufAdd" },
-    { 'kylechui/nvim-surround',              config = true,   event = "InsertCharPre" },
-    {
-        "gbprod/cutlass.nvim",
-        config = function()
-            require("cutlass").setup({
-                cut_key = "m",
-            })
-        end
-    },
-    -- }}}
+-- }}}
 
 })
 
