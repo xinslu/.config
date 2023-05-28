@@ -31,10 +31,10 @@ set.clipboard = "unnamedplus"
 set.ignorecase = true
 set.smartcase = true
 set.completeopt = 'menu,noselect'
-vim.g.yoinkIncludeDeleteOperations = 1
 vim.wo.number = true
 vim.opt.list = true
 set.undofile = true
+set.relativenumber = true
 set.completeopt = 'menuone,noselect'
 set.laststatus = 3
 vim.g.wildmenu = true
@@ -68,6 +68,10 @@ map('n', '<CR>', cmd.noh)
 map('n', '<space>t', "<cmd>botright 7split | terminal<cr>")
 map('n', '<space>=', "<cmd>horizontal resize +5<cr>")
 map('n', '<space>-', "<cmd>horizontal resize -5<cr>")
+map('n', 'm', "d")
+map('n', 'mm', "dd")
+map('x', 'd', "\"_d")
+map('n', 'd', "\"_d")
 -- }}}
 
 require("plugins")
@@ -110,6 +114,7 @@ vim.api.nvim_set_hl(0, "BufferCurrentIndex", { bg = "#0e0e0e" })
 vim.api.nvim_set_hl(0, "StatusLine", { bg = "#0e0e0e", fg = "#0e0e0e" })
 vim.api.nvim_set_hl(0, "BufferCurrentMod", { bg = "#0e0e0e" })
 vim.api.nvim_set_hl(0, "BufferCurrentSign", { bg = "#0e0e0e" })
+vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "#0e0e0e" })
 vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "#0e0e0e" })
 
 -- Telescope {{{

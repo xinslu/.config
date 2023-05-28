@@ -48,7 +48,6 @@ require("lazy").setup({
     -- }}}
 
     -- Git {{{
-    {'lewis6991/gitsigns.nvim', config = true },
     { 'akinsho/git-conflict.nvim', config = true },
     -- }}}
 
