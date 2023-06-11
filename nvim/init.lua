@@ -68,10 +68,10 @@ map('n', '<CR>', cmd.noh)
 map('n', '<space>t', "<cmd>botright 7split | terminal<cr>")
 map('n', '<space>=', "<cmd>horizontal resize +5<cr>")
 map('n', '<space>-', "<cmd>horizontal resize -5<cr>")
-map('n', 'm', "d")
+map({'x', 'n', 'v'}, 'm', "d")
 map('n', 'mm', "dd")
-map('x', 'd', "\"_d")
-map('n', 'd', "\"_d")
+map({'x', 'n', 'v'}, 'd', "\"_d")
+map({'x', 'n', 'v'}, 'c', "\"_c")
 -- }}}
 
 require("plugins")

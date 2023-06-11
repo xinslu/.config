@@ -1,6 +1,7 @@
 ### EXPORTS ###
-export PATH="$HOME/.cabal/bin:$HOME/.ghcup/bin:$HOME/go/bin:/home/kinshukphalke/.local/bin:$PATH:/opt:$HOME/.cargo/bin"
+export PATH="/opt/cuda11.8/bin:$HOME/.cabal/bin:$HOME/.ghcup/bin:$HOME/go/bin:/home/kinshukphalke/.local/bin:$PATH:/opt:$HOME/.cargo/bin"
 export ACLOCAL_PATH="/usr/local/share/aclocal:$ACLOCAL_PATH"
+export CUDA_HOME="opt/cuda"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

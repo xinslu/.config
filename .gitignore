@@ -20,4 +20,4 @@
 !.zshprofile
 !.github/**
 !scripts/**
-!wezterm/**
+!tabbed/**
