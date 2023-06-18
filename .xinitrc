@@ -11,7 +11,7 @@ else
 fi
 
 /usr/bin/xidlehook --not-when-fullscreen --timer 180 '~/.config/scripts/lock.sh' '' &
-feh --bg-fill ~/Downloads/od_space02_gruvbox-Dark-mode-Light-mode.png &
+feh --bg-fill ~/Downloads/bladerunner.jpg &
 flameshot &
 dunst &
 xsetroot -cursor_name left_ptr
