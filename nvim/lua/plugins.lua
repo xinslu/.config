@@ -16,11 +16,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 
-    -- Status and Buffer Line
-    'tamton-aquib/staline.nvim',
-
     -- Theme
-    'nvim-tree/nvim-web-devicons',
     'sainnhe/sonokai',
 
     -- AutoCompletion {{{
@@ -45,10 +41,6 @@ require("lazy").setup({
         event = "BufEnter",
     },
     { "williamboman/mason.nvim",  config = true },
-    -- }}}
-
-    -- Git {{{
-    { 'akinsho/git-conflict.nvim', config = true },
     -- }}}
 
     -- Language Specific {{{

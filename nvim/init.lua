@@ -1,6 +1,6 @@
 local set = vim.opt
 local cmd = vim.cmd
-local map = require("utils").map
+local utils = require("utils")
 local changeBuffer = require("utils").changeBuffer
 
 -- {{{ Global Configs
@@ -34,7 +34,6 @@ set.completeopt = 'menu,noselect'
 vim.wo.number = true
 vim.opt.list = true
 set.undofile = true
-set.relativenumber = true
 set.completeopt = 'menuone,noselect'
 set.laststatus = 3
 vim.g.wildmenu = true
@@ -53,47 +52,47 @@ vim.cmd("filetype on")
 
 -- Keymaps {{{
 -- Key remaps {{{
-map('n', '<C-j>', '<C-W>j')
-map('n', '<C-k>', '<C-W>k')
-map('n', '<C-l>', '<C-W>l')
-map('n', '<C-h>', '<C-W>h')
-map('t', '<Esc>', '<C-\\><C-n>')
-map("n", "E", "ea")
-map("n", "<A-s>", cmd.w)
-map("n", "<A-q>", cmd.q)
-map("n", "<A-w>", cmd.bd)
-map("n", "<A-Q>", "<cmd>q!<cr>")
-map("n", "<A-e>", cmd.quitall)
-map('n', '<CR>', cmd.noh)
-map('n', '<space>t', "<cmd>botright 7split | terminal<cr>")
-map('n', '<space>=', "<cmd>horizontal resize +5<cr>")
-map('n', '<space>-', "<cmd>horizontal resize -5<cr>")
-map({'x', 'n', 'v'}, 'm', "d")
-map('n', 'mm', "dd")
-map({'x', 'n', 'v'}, 'd', "\"_d")
-map({'x', 'n', 'v'}, 'c', "\"_c")
+utils.map('n', '<C-j>', '<C-W>j')
+utils.map('n', '<C-k>', '<C-W>k')
+utils.map('n', '<C-l>', '<C-W>l')
+utils.map('n', '<C-h>', '<C-W>h')
+utils.map('t', '<Esc>', '<C-\\><C-n>')
+utils.map("n", "E", "ea")
+utils.map("n", "<A-s>", cmd.w)
+utils.map("n", "<A-q>", cmd.q)
+utils.map("n", "<A-w>", cmd.bd)
+utils.map("n", "<A-Q>", "<cmd>q!<cr>")
+utils.map("n", "<A-e>", cmd.quitall)
+utils.map('n', '<CR>', cmd.noh)
+utils.map('n', '<space>t', "<cmd>botright 7split | terminal<cr>")
+utils.map('n', '<space>=', "<cmd>horizontal resize +5<cr>")
+utils.map('n', '<space>-', "<cmd>horizontal resize -5<cr>")
+utils.map({'x', 'n', 'v'}, 'm', "d")
+utils.map('n', 'mm', "dd")
+utils.map({'x', 'n', 'v'}, 'd', "\"_d")
+utils.map({'x', 'n', 'v'}, 'c', "\"_c")
 -- }}}
 
 require("plugins")
 
 -- Function Keybinds {{{
 for i = 1, 9 do
-    map("n", "<A-" .. i .. ">", function() changeBuffer(i) end)
+    utils.map("n", "<A-" .. i .. ">", function() changeBuffer(i) end)
 end
-map('n', '<C-s>', require('telescope.builtin').find_files)
-map('n', 'gr', require('telescope.builtin').lsp_references)
-map('n', '<C-b>', require("utils").openTerm)
-map('n', '<C-f>',
+utils.map('n', '<C-s>', require('telescope.builtin').find_files)
+utils.map('n', 'gr', require('telescope.builtin').lsp_references)
+utils.map('n', '<C-b>', require("utils").openTerm)
+utils.map('n', '<C-f>',
     function()
         require('telescope.builtin').grep_string({ search = vim.fn.input('Grep For > ') })
     end)
 
-map('n', '<C-g>',
+utils.map('n', '<C-g>',
     function()
         require('telescope.builtin').git_commits()
     end)
-map("n", "<space>fe", cmd.Explore)
-map("n", "<leader>u", require "telescope".extensions.undo.undo)
+utils.map("n", "<space>fe", cmd.Explore)
+utils.map("n", "<leader>u", require "telescope".extensions.undo.undo)
 -- }}}
 -- }}}
 
@@ -116,6 +115,8 @@ vim.api.nvim_set_hl(0, "BufferCurrentMod", { bg = "#0e0e0e" })
 vim.api.nvim_set_hl(0, "BufferCurrentSign", { bg = "#0e0e0e" })
 vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "#0e0e0e" })
 vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "#0e0e0e" })
+vim.api.nvim_set_hl(0, "StatusLine", { bg = "#0e0e0e", fg = "#9ed072" })
+vim.api.nvim_set_hl(0, "TabLineSel", { bg = "#0e0e0e", fg = "white" })
 
 -- Telescope {{{
 local TelescopePrompt = {
@@ -166,6 +167,15 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     pattern = '*',
 })
 
+vim.api.nvim_create_autocmd({'BufEnter', 'BufLeave'}, {
+    callback = function()
+        vim.o.statusline = "%= %= " .. (utils.update_branch()) .. " %l:%c"
+        vim.o.tabline = utils.tabline()
+    end,
+    group = highlight_group,
+    pattern = '*',
+})
+
 local qf = vim.api.nvim_create_augroup("qf", { clear = false })
 vim.api.nvim_create_autocmd("FileType", {
     command = "setlocal nobuflisted",
@@ -203,32 +213,16 @@ vim.g.vimtex_complete_enable = 0
 vim.g.vimtex_indent_bib_enabled = 0
 -- }}}
 
--- staline {{{
-require "staline".setup {
-    sections = {
-        left = {},
-        mid = {},
-        right = { 'branch', ' ', 'line_column' }
-    },
-    defaults = {
-        line_column = "%l:%c",
-        fg = "#7f8490",
-        true_colors = true,
-        branch_symbol = " "
-    }
-}
--- }}}
-
 -- stabline {{{
-require('stabline').setup {
-    stab_bg = "#222327",
-    stab_left = " ",
-    exclude_fts = { 'netrw', 'dashboard', 'lir', 'terminal' },
-    font_active = "none",
-    numbers = function(_, n)
-        return n .. ' '
-    end
-}
+-- require('stabline').setup {
+--     stab_bg = "#222327",
+--     stab_left = " ",
+--     exclude_fts = { 'netrw', 'dashboard', 'lir', 'terminal' },
+--     font_active = "none",
+--     numbers = function(_, n)
+--         return n .. ' '
+--     end
+-- }
 -- }}}
 
 -- indent-blankline {{{
