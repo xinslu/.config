@@ -39,10 +39,10 @@ function M.openTerm()
         cmd = cmd .. " python " .. file
     end
     if vim.bo.filetype == 'rust' then
-        cmd = cmd .. " rustc " .. file 
+        cmd = cmd .. " rustc " .. file
     end
     if vim.bo.filetype == 'haskell' then
-        cmd = cmd .. " ghc " .. file 
+        cmd = cmd .. " ghc " .. file
     end
     vim.cmd(cmd)
 end
@@ -79,14 +79,11 @@ function M.tabline()
     local tabline = "%#Tabline#"
     for _, buf in pairs(vim.api.nvim_list_bufs()) do
         if vim.api.nvim_buf_is_valid(buf) and vim.api.nvim_buf_is_loaded(buf) then
-
             local f_name = vim.api.nvim_buf_get_name(buf):match("^.+[\\/](.+)$") or ""
-
             if (vim.tbl_contains(exclude_fts, vim.bo[buf].ft) or f_name == "") then
                 goto next
             else
                 f_name = " ".. f_name .." " end
-
             tabline = tabline.. "%#Tabline"..((vim.api.nvim_get_current_buf() == buf) and "Sel" or "Inactive").."# " .. counter .. f_name
             counter = counter + 1
         end
