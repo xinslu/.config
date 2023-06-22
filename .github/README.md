@@ -2,7 +2,7 @@
 My Config Files for Arch Linux. Check the macos branch for my macos configs.
 
 # Screenshot
-![image](https://user-images.githubusercontent.com/69013394/221663467-41e241ed-3847-4887-a61b-4dd85e38bc48.png)
+![image](https://github.com/xinslu/.config/assets/69013394/b6674579-6467-4acc-8a6c-6528fea40839)
 
 # Technologies
 This repo is entirely maintained by me according to my preferences, there were a lot of tools that I used and stopped that still have dotfiles on here
