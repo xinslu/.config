@@ -10,6 +10,7 @@ export NVM_DIR="$HOME/.nvm"
 ### CONFIGS ###
 TREE_IGNORE="cache|log|logs|node_modules|vendor"
 SAVEHIST=10000
+HISTSIZE=2000
 HISTFILE=~/.zsh_history
 
 ### ALIASES ###
