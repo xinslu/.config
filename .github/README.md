@@ -15,7 +15,7 @@ This repo is entirely maintained by me according to my preferences, there were a
     - dunst, notification daemon
 - Terminal Related
     - yay, AUR helper
-    - alacritty, fast and snappy terminal
+    - st, fast and snappy terminal with minimal features
     - zsh, z-shell (bash but better, but also slightly slower)
     - nvim, text editor
     - lf, terminal file manager
