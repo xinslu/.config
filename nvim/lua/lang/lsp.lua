@@ -12,10 +12,6 @@ for _, lsp_name in ipairs(lsps) do
     }
 end
 
-require("neodev").setup({
-})
-
-
 lspconfig.lua_ls.setup({
     on_attach = configs.custom_attach,
     settings = {

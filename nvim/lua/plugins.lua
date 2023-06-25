@@ -18,6 +18,7 @@ require("lazy").setup({
 
     -- Theme
     'sainnhe/sonokai',
+    'sainnhe/edge',
 
     -- AutoCompletion {{{
     {
@@ -47,7 +48,6 @@ require("lazy").setup({
     { 'lervag/vimtex',             ft = "tex" },
     { 'vimwiki/vimwiki',           ft = "vimwiki" },
     { 'wuelnerdotexe/vim-astro',   ft = "astro" },
-    { 'folke/neodev.nvim',         config = true,         ft = "lua", event = "LspAttach" },
     {
         'simrat39/rust-tools.nvim',
         config = function()

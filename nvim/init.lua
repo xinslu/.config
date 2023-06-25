@@ -9,7 +9,7 @@ vim.g.netrw_keepdir = 0
 vim.g.netrw_banner = 0
 vim.g.astro_typescript = 'enable'
 vim.g.netrw_liststyle = 3
--- set.termguicolors = true
+set.termguicolors = true
 set.guicursor = ""
 set.tabstop = 4
 set.shiftwidth = 4
@@ -98,12 +98,12 @@ utils.map("n", "<leader>u", require "telescope".extensions.undo.undo)
 
 -- Highlights {{{
 vim.g.sonokai_diagnostic_virtual_text = 'colored'
-vim.g.sonokai_disable_terminal_colors = 1
 vim.g.sonokai_diagnostic_text_highlight = 1
 vim.g.sonokai_diagnostic_line_highlight = 1
 vim.g.sonokai_enable_italic = 1
 vim.g.sonokai_better_performance = 1
 vim.cmd.colorscheme("sonokai")
+
 vim.api.nvim_set_hl(0, "Normal", { bg = "#0e0e0e" })
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#0e0e0e" })
 vim.api.nvim_set_hl(0, "NormalNC", { bg = "#0e0e0e" })
@@ -115,8 +115,13 @@ vim.api.nvim_set_hl(0, "BufferCurrentMod", { bg = "#0e0e0e" })
 vim.api.nvim_set_hl(0, "BufferCurrentSign", { bg = "#0e0e0e" })
 vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "#0e0e0e" })
 vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "#0e0e0e" })
-vim.api.nvim_set_hl(0, "StatusLine", { bg = "#0e0e0e", fg = "#9ed072" })
-vim.api.nvim_set_hl(0, "TabLineSel", { bg = "#0e0e0e", fg = "white" })
+vim.api.nvim_set_hl(0, "StatusLine", { bg = "", fg = "#9ed072" })
+vim.api.nvim_set_hl(0, "TabLineSel", { bg = "", fg = "white", bold= true })
+vim.api.nvim_set_hl(0, "TabLineInactive", { bg = "#202020", fg="grey"})
+vim.api.nvim_set_hl(0, "Folded", { bg = "#141414", fg="grey" })
+vim.api.nvim_set_hl(0, "TabLineFill", { bg = "#272727", fg = "white" })
+vim.api.nvim_set_hl(0, "CursorLine", { bg = "#181818"})
+vim.api.nvim_set_hl(0, "CursorLineFold", { fg = "grey"})
 
 -- Telescope {{{
 local TelescopePrompt = {
@@ -202,6 +207,7 @@ vim.api.nvim_create_autocmd("FileType", {
 -- Plugins {{{
 
 -- vim-tex {{{
+vim.g.vimtex_compiler_enabled = false
 vim.g.tex_fast = "bMpr"
 vim.g.tex_conceal = ""
 vim.g.vimtex_view_method = 'zathura'
@@ -211,18 +217,6 @@ vim.g.vimtex_matchparen_enabled = 0
 vim.g.vimtex_indent_enabled = 0
 vim.g.vimtex_complete_enable = 0
 vim.g.vimtex_indent_bib_enabled = 0
--- }}}
-
--- stabline {{{
--- require('stabline').setup {
---     stab_bg = "#222327",
---     stab_left = " ",
---     exclude_fts = { 'netrw', 'dashboard', 'lir', 'terminal' },
---     font_active = "none",
---     numbers = function(_, n)
---         return n .. ' '
---     end
--- }
 -- }}}
 
 -- indent-blankline {{{
