@@ -18,7 +18,6 @@ require("lazy").setup({
 
     -- Theme
     'sainnhe/sonokai',
-    'sainnhe/edge',
 
     -- AutoCompletion {{{
     {

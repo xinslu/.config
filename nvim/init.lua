@@ -67,10 +67,10 @@ utils.map('n', '<CR>', cmd.noh)
 utils.map('n', '<space>t', "<cmd>botright 7split | terminal<cr>")
 utils.map('n', '<space>=', "<cmd>horizontal resize +5<cr>")
 utils.map('n', '<space>-', "<cmd>horizontal resize -5<cr>")
-utils.map({'x', 'n', 'v'}, 'm', "d")
+utils.map({ 'x', 'n', 'v' }, 'm', "d")
 utils.map('n', 'mm', "dd")
-utils.map({'x', 'n', 'v'}, 'd', "\"_d")
-utils.map({'x', 'n', 'v'}, 'c', "\"_c")
+utils.map({ 'x', 'n', 'v' }, 'd', "\"_d")
+utils.map({ 'x', 'n', 'v' }, 'c', "\"_c")
 -- }}}
 
 require("plugins")
@@ -116,12 +116,12 @@ vim.api.nvim_set_hl(0, "BufferCurrentSign", { bg = "#0e0e0e" })
 vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "#0e0e0e" })
 vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "#0e0e0e" })
 vim.api.nvim_set_hl(0, "StatusLine", { bg = "", fg = "#9ed072" })
-vim.api.nvim_set_hl(0, "TabLineSel", { bg = "", fg = "white", bold= true })
-vim.api.nvim_set_hl(0, "TabLineInactive", { bg = "#202020", fg="grey"})
-vim.api.nvim_set_hl(0, "Folded", { bg = "#141414", fg="grey" })
+vim.api.nvim_set_hl(0, "TabLineSel", { bg = "", fg = "white", bold = true })
+vim.api.nvim_set_hl(0, "TabLineInactive", { bg = "#202020", fg = "grey" })
+vim.api.nvim_set_hl(0, "Folded", { bg = "#141414", fg = "grey" })
 vim.api.nvim_set_hl(0, "TabLineFill", { bg = "#272727", fg = "white" })
-vim.api.nvim_set_hl(0, "CursorLine", { bg = "#181818"})
-vim.api.nvim_set_hl(0, "CursorLineFold", { fg = "grey"})
+vim.api.nvim_set_hl(0, "CursorLine", { bg = "#181818" })
+vim.api.nvim_set_hl(0, "CursorLineFold", { fg = "grey" })
 
 -- Telescope {{{
 local TelescopePrompt = {
@@ -172,7 +172,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     pattern = '*',
 })
 
-vim.api.nvim_create_autocmd({'BufEnter', 'BufLeave'}, {
+vim.api.nvim_create_autocmd({ 'BufEnter', 'BufLeave' }, {
     callback = function()
         vim.o.statusline = "%= %= " .. (utils.update_branch()) .. " %l:%c"
         vim.o.tabline = utils.tabline()
