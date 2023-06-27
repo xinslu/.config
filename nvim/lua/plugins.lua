@@ -17,7 +17,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 
     -- Theme
-    'sainnhe/sonokai',
+    'Alexis12119/nightly.nvim',
 
     -- AutoCompletion {{{
     {

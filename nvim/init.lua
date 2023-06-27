@@ -97,12 +97,18 @@ utils.map("n", "<leader>u", require "telescope".extensions.undo.undo)
 -- }}}
 
 -- Highlights {{{
-vim.g.sonokai_diagnostic_virtual_text = 'colored'
-vim.g.sonokai_diagnostic_text_highlight = 1
-vim.g.sonokai_diagnostic_line_highlight = 1
-vim.g.sonokai_enable_italic = 1
-vim.g.sonokai_better_performance = 1
-vim.cmd.colorscheme("sonokai")
+require("nightly").setup({
+  transparent = false,
+  styles = {
+    comments = { italic = true },
+    functions = { italic = false },
+    variables = { italic = false },
+    keywords = { italic = true },
+  },
+  highlights = {},
+})
+
+vim.cmd.colorscheme("nightly")
 
 vim.api.nvim_set_hl(0, "Normal", { bg = "#0e0e0e" })
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#0e0e0e" })
@@ -121,19 +127,48 @@ vim.api.nvim_set_hl(0, "TabLineInactive", { bg = "#202020", fg = "grey" })
 vim.api.nvim_set_hl(0, "Folded", { bg = "#141414", fg = "grey" })
 vim.api.nvim_set_hl(0, "TabLineFill", { bg = "#272727", fg = "white" })
 vim.api.nvim_set_hl(0, "CursorLine", { bg = "#181818" })
+vim.api.nvim_set_hl(0, "MsgArea", { bg = "#0e0e0e" })
+vim.api.nvim_set_hl(0, "MoreMsg", { bg = "#0e0e0e" })
+vim.api.nvim_set_hl(0, "ModeMsg", { bg = "#0e0e0e" })
+vim.api.nvim_set_hl(0, "ErrorMsg", { bg = "#0e0e0e" })
+vim.api.nvim_set_hl(0, "MsgSeparator", { bg = "#0e0e0e" })
+vim.api.nvim_set_hl(0, "LspFloatWinNormal", { bg = "#181818" })
 vim.api.nvim_set_hl(0, "CursorLineFold", { fg = "grey" })
+vim.api.nvim_set_hl(0, "CursorLineFold", { fg = "grey" })
+vim.api.nvim_set_hl(0, "@number", { fg = "#f39660" })
+vim.api.nvim_set_hl(0, "Pmenu", { bg = "#181818" })
+vim.api.nvim_set_hl(0, "PmenuSbar", { bg = "#272727" })
+vim.api.nvim_set_hl(0, "PmenuThumb", { bg = "#202020" })
 
 -- Telescope {{{
 local TelescopePrompt = {
     TelescopePromptNormal = {
-        bg = '#2c2e34',
+        bg = '#272727',
+    },
+    TelescopeResultsNormal = {
+        bg = '#181818',
+    },
+    TelescopePreviewNormal = {
+        bg = '#121212',
+    },
+    TelescopePromptPrefix = {
+        bg = '#272727',
+        fg = '#f39660',
     },
     TelescopeSelection = {
-        bg = '#2c2e34',
+        bg = '#272727',
     },
     TelescopePromptBorder = {
-        bg = '#2c2e34',
-        fg = '#2c2e34',
+        bg = '#272727',
+        fg = '#272727',
+    },
+    TelescopeResultsBorder = {
+        bg = '#181818',
+        fg = '#181818',
+    },
+    TelescopePreviewBorder = {
+        bg = '#121212',
+        fg = '#121212',
     },
     TelescopeBorder = {
         bg = '#0e0e0e',
