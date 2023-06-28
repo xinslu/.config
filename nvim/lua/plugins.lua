@@ -16,9 +16,6 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 
-    -- Theme
-    'Alexis12119/nightly.nvim',
-
     -- AutoCompletion {{{
     {
         "hrsh7th/nvim-cmp",
@@ -79,6 +76,7 @@ require("lazy").setup({
     -- treesitter {{{
     {
         'nvim-treesitter/nvim-treesitter',
+        -- dependencies = {'nvim-treesitter/playground'},
         build = ":TSUpdate",
         config = function()
             require('lang.treesitter')
@@ -88,6 +86,7 @@ require("lazy").setup({
     -- }}}
 
     -- Better Workflow {{{
+    {"norcalli/nvim-colorizer.lua", setup = true},
     {
         'nvim-telescope/telescope.nvim',
         dependencies = {
