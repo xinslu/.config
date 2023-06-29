@@ -2,10 +2,10 @@
 
 # terminal emulator
 super + Return
-	tabbed -r 2 st -w ''
+	tabbed alacritty --embed
 
 super + shift + Return
-	st -e lf
+	alacritty --command lf
 
 # program launcher
 super + @space
