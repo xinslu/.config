@@ -31,6 +31,7 @@ alias gs='git status'
 alias tabbed-st="tabbed -r 2 st -w ''"
 alias weather="curl 'wttr.in/Atlanta?m'"
 alias ncspot="/home/kinshukphalke/ncspot/target/release/ncspot"
+alias money="/home/kinshukphalke/pittcsc.sh"
 alias rip="shutdown \"now\""
 [ -f /opt/miniconda3/etc/profile.d/conda.sh ] && source /opt/miniconda3/etc/profile.d/conda.sh
 

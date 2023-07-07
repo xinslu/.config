@@ -230,7 +230,7 @@ function theme.setup()
     ["@text.uri"] = { fg = p.color3, underline = true },
     ["@text.warning"] = { fg = p.color0, bg = p.color1 },
     ["@type"] = { fg = p.color4 },
-    ["@type.builtin"] = { fg = p.color3 },
+    ["@type.builtin"] = { fg = p.color4 },
     ["@variable"] = { fg = p.foreground },
     ["@variable.builtin"] = { fg = p.color4 },
 
