@@ -20,9 +20,10 @@ require("lazy").setup({
     {
         "hrsh7th/nvim-cmp",
         dependencies = {
-            { "L3MON4D3/LuaSnip", 'hrsh7th/cmp-buffer', 'hrsh7th/cmp-cmdline', "hrsh7th/cmp-path",
+            { "L3MON4D3/LuaSnip", "hrsh7th/cmp-path",
                 "saadparwaiz1/cmp_luasnip", "rafamadriz/friendly-snippets" } },
         config = function() require('lang.cmp') end,
+        lazy = true,
         event = { "InsertEnter", "CmdlineEnter" },
     },
     { "hrsh7th/cmp-nvim-lsp", dependencies = "nvim-cmp", event = "LspAttach" },
@@ -37,7 +38,6 @@ require("lazy").setup({
         end,
         event = "BufEnter",
     },
-    { "williamboman/mason.nvim",  config = true },
     -- }}}
 
     -- Language Specific {{{
@@ -80,12 +80,12 @@ require("lazy").setup({
         config = function()
             require('lang.treesitter')
         end,
+        lazy = true,
         event = "BufAdd"
     },
     -- }}}
 
     -- Better Workflow {{{
-    {"norcalli/nvim-colorizer.lua", setup = true},
     {
         'nvim-telescope/telescope.nvim',
         dependencies = {
@@ -108,7 +108,6 @@ require("lazy").setup({
             require('nvim_comment').setup({ comment_empty = false })
         end
     },
-    { 'lukas-reineke/indent-blankline.nvim', event = "BufAdd" },
 -- }}}
 
 })

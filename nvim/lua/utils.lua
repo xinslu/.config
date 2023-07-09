@@ -1,6 +1,4 @@
 local fn = vim.fn
-local redirect = vim.fn.has('win32') == 1 and "nul" or "/dev/null"
-local exclude_fts={'NvimTree', 'help', 'dashboard', 'lir', 'alpha', '[Scratch]', '[No Name]'}
 
 -- inspect something
 function inspect(item)
@@ -60,36 +58,6 @@ function M.changeBuffer(code)
         end
     end
     vim.cmd.buffer(loaded_buffer[code-1])
-end
-
-
-function M.update_branch()
-    local cmd = io.popen('git branch --show-current 2>' .. redirect)
-    local branch = ''
-    if cmd ~= nil then
-        branch = cmd:read("*l") or cmd:read("*a")
-        cmd:close()
-    end
-
-    return branch ~= "" and "" .. branch or ""
-end
-
-function M.tabline()
-    local counter = 1
-    local tabline = "%#Tabline#"
-    for _, buf in pairs(vim.api.nvim_list_bufs()) do
-        if vim.api.nvim_buf_is_valid(buf) and vim.api.nvim_buf_is_loaded(buf) then
-            local f_name = vim.api.nvim_buf_get_name(buf):match("^.+[\\/](.+)$") or ""
-            if (vim.tbl_contains(exclude_fts, vim.bo[buf].ft) or f_name == "") then
-                goto next
-            else
-                f_name = " ".. f_name .." " end
-            tabline = tabline.. "%#Tabline"..((vim.api.nvim_get_current_buf() == buf) and "Sel" or "Inactive").."# " .. counter .. f_name
-            counter = counter + 1
-        end
-        ::next::
-    end
-    return tabline.."%#Stabline#%=".. ""
 end
 
 return M

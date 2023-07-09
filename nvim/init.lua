@@ -34,14 +34,13 @@ set.completeopt = 'menu,noselect'
 vim.wo.number = true
 vim.opt.list = true
 set.undofile = true
-set.completeopt = 'menuone,noselect'
 set.laststatus = 3
-vim.g.wildmenu = true
-vim.g.wildignorecase = true
-vim.o.showcmd = false
-vim.g.wildmode = "list:longest,full"
-vim.o.hidden = true
-vim.opt.fillchars:append("eob: ")
+vim.opt.wildmenu = true
+vim.opt.wildignorecase = true
+vim.opt.wildmode = "longest:full,full"
+vim.opt.wildoptions = "pum,fuzzy"
+vim.opt.listchars:append("tab:│ ")
+vim.opt.listchars:append("leadmultispace:│   ")
 vim.g.python3_host_prog = "python3"
 vim.opt.showtabline = 2
 --- }}}
@@ -97,9 +96,7 @@ utils.map("n", "<leader>u", require "telescope".extensions.undo.undo)
 -- }}}
 -- }}}
 
--- Highlights {{{
-require("theme").setup()
--- }}}
+require("theme").theme_setup()
 
 -- Autocmds {{{
 local group = vim.api.nvim_create_augroup("rc", { clear = false })
@@ -110,15 +107,6 @@ local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = t
 vim.api.nvim_create_autocmd('TextYankPost', {
     callback = function()
         vim.highlight.on_yank()
-    end,
-    group = highlight_group,
-    pattern = '*',
-})
-
-vim.api.nvim_create_autocmd({ 'BufEnter', 'BufLeave' }, {
-    callback = function()
-        vim.o.statusline = "%= %= " .. (utils.update_branch()) .. " %l:%c"
-        vim.o.tabline = utils.tabline()
     end,
     group = highlight_group,
     pattern = '*',
@@ -162,16 +150,7 @@ vim.g.vimtex_complete_enable = 0
 vim.g.vimtex_indent_bib_enabled = 0
 -- }}}
 
--- indent-blankline {{{
-require("indent_blankline").setup {
-    space_char_blankline = " ",
-    show_current_context = true,
-    show_current_context_start = false,
-}
 -- }}}
 
-require'colorizer'.setup()
-
--- }}}
 
 -- vim:ts=4:sw=4:ai:foldmethod=marker:foldlevel=0:
