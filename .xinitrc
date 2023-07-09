@@ -11,8 +11,7 @@ else
 fi
 
 /usr/bin/xidlehook --not-when-fullscreen --timer 180 '~/.config/scripts/lock.sh' '' &
-feh --bg-fill ~/Downloads/sunset.jpg &
-flameshot &
+feh --bg-fill ~/Downloads/cyberpunk &
 dunst &
 xsetroot -cursor_name left_ptr
 [ -f ~/.xprofile ] && . ~/.xprofile

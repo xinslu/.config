@@ -76,7 +76,6 @@ require("lazy").setup({
     -- treesitter {{{
     {
         'nvim-treesitter/nvim-treesitter',
-        -- dependencies = {'nvim-treesitter/playground'},
         build = ":TSUpdate",
         config = function()
             require('lang.treesitter')
