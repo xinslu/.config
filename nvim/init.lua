@@ -95,8 +95,8 @@ utils.map("n", "<space>fe", cmd.Explore)
 utils.map("n", "<leader>u", require "telescope".extensions.undo.undo)
 -- }}}
 -- }}}
-
-require("theme").theme_setup()
+--
+vim.cmd.colorscheme("graphite")
 
 -- Autocmds {{{
 local group = vim.api.nvim_create_augroup("rc", { clear = false })

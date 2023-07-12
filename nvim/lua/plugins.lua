@@ -80,8 +80,6 @@ require("lazy").setup({
         config = function()
             require('lang.treesitter')
         end,
-        lazy = true,
-        event = "BufAdd"
     },
     -- }}}
 
