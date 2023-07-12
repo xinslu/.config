@@ -95,7 +95,7 @@ utils.map("n", "<space>fe", cmd.Explore)
 utils.map("n", "<leader>u", require "telescope".extensions.undo.undo)
 -- }}}
 -- }}}
---
+
 vim.cmd.colorscheme("graphite")
 
 -- Autocmds {{{
@@ -129,10 +129,6 @@ vim.api.nvim_create_autocmd("FileType", {
     group = ft,
 })
 
-vim.api.nvim_create_autocmd("FileType", {
-    command = "setlocal formatprg=prettier\\ --single-quote\\ --trailing-comma\\ es5\\ --parser\\ flow",
-    pattern = { "javascript", "javascriptreact" },
-})
 -- }}}
 
 -- Plugins {{{
