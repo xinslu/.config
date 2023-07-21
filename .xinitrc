@@ -1,5 +1,6 @@
 #!/bin/sh
-# xrandr --setprovideroutputsource modesetting NVIDIA-0
+xrandr --setprovideroutputsource modesetting NVIDIA-0
+xrandr -q > /tmp/bruh.txt
 NUM=$(xrandr -q | grep -w connected | wc -l)
 if [ $NUM = "2" ]
 then
@@ -8,6 +9,7 @@ then
 else
     xrandr --auto
     xrandr --dpi 96
+    picom --config ~/.config/picom/picom.conf --experimental-backend &
 fi
 
 /usr/bin/xidlehook --not-when-fullscreen --timer 180 '~/.config/scripts/lock.sh' '' &

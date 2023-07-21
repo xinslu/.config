@@ -116,6 +116,8 @@ local function theme_setup()
         Structure = { fg = p.color6 },
         Substitute = { fg = p.black, bg = p.color9 },
         TabLine = { fg = p.color2, bg = p.bg },
+        TabLineSelCount = { fg = p.color2, bg = p.bg },
+        TabLineInactiveCount = { fg = p.color2, bg = p.bg1 },
         TabLineFill = { fg = p.foreground, bg = p.bg4 },
         TabLineSel = { fg = p.foreground, bg = p.bg },
         TabLineInactive = { fg = p.grey, bg = p.bg1 },

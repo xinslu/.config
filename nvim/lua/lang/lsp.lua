@@ -2,7 +2,7 @@ local configs = require("lang.lsp_configs")
 
 local lspconfig = require("lspconfig")
 
-local lsps = { "pyright", "bashls", "eslint", "gopls", "texlab", "dockerls", "html", "tsserver", "clangd" }
+local lsps = { "pyright", "bashls", "eslint", "gopls", "texlab", "dockerls", "html", "tsserver", "clangd", "zls" }
 
 for _, lsp_name in ipairs(lsps) do
     lspconfig[lsp_name].setup {
