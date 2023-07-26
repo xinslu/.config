@@ -1,4 +1,4 @@
-local exclude_fts={'NvimTree', 'help', 'dashboard', 'lir', 'alpha', '[Scratch]', '[No Name]'}
+local exclude_fts={'NvimTree', 'help', 'dashboard', 'lir', 'alpha', '[Scratch]', '[No Name]', 'netrw'}
 
 local function tabline_setup()
     local counter = 1

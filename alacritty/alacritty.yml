@@ -9,14 +9,14 @@ window:
 
 font:
   normal:
-    family: JetBrainsMono Nerd Font
+    family: Iosevka Nerd Font
   italic:
-    family: JetBrainsMono Nerd Font
+    family: Iosevka Nerd Font
   bold:
-    family: JetBrainsMono Nerd Font
+    family: Iosevka Nerd Font
 
   offset:
-   x: -1
+   x: 0
    y: 0
 
   glyph_offset:
