@@ -152,10 +152,10 @@ XF86AudioPrev
     playerctl --player=spotify previous
 
 Print
-    maim -b 3 -c "255,255,255" | xclip -selection clipboard -t image/png && dunstify "Screenshot taken"
+    flameshot full -c
 
 shift+Print
-    maim -s -b 3 -c "255,255,255" | xclip -selection clipboard -t image/png && dunstify "Screen Area Captured"
+    flameshot gui -c
 
 super+shift+p
     ~/.config/scripts/connect_q30.sh

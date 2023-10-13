@@ -69,7 +69,7 @@ lfcd () {
 }
 
 ### PLUGINS ###
-source /home/kinshukphalke/zsh-history-substring-search/zsh-history-substring-search.zsh
+source ~/zsh-history-substring-search/zsh-history-substring-search.zsh
 source ~/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
