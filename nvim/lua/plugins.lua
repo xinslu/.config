@@ -36,7 +36,7 @@ require("lazy").setup({
         config = function()
             require('lang.lsp')
         end,
-        event = "BufEnter",
+        event = { "BufReadPost", "BufNewFile", "ColorScheme" },
     },
     -- }}}
 

@@ -2,6 +2,7 @@
 pgrep -x sxhkd > /dev/null || sxhkd &
 polybar -q bar &
 bspc monitor -d 1 2 3 4 5 6 7 8 9
+bspc config ignore_ewmh_focus true
 
 bspc config border_width         2
 bspc config window_gap           5
@@ -13,7 +14,8 @@ bspc config gapless_monocle      false
 bspc config remove_disabled_monitors true
 bspc config remove_unplugged_monitors true
 
-bspc rule -a spotify-launcher desktop='^3' state=tile follow=on
+bspc rule -a Spotify desktop='^3' state=tile follow=off
+bspc rule -a discord desktop='^5' state=tile follow=off
 bspc rule -a Zathura state=tiled
 
 bspc config normal_border_color	"#4c566a"

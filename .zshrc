@@ -1,5 +1,5 @@
 ### EXPORTS ###
-export PATH="/usr/lib/jvm/java-11-openjdk/bin/:/opt/cuda11.8/bin:$HOME/.cabal/bin:$HOME/.ghcup/bin:$HOME/go/bin:/home/kinshukphalke/.local/bin:$PATH:/opt:$HOME/.cargo/bin"
+export PATH="/usr/lib/jvm/java-11-openjdk/bin/:/opt/cuda11.8/bin:$HOME/.cabal/bin:$HOME/.ghcup/bin:$HOME/go/bin:/home/kinshukphalke/.local/bin:$PATH:/opt:$HOME/.cargo/bin:$HOME/.local/bin:$PATH"
 export ACLOCAL_PATH="/usr/local/share/aclocal:$ACLOCAL_PATH"
 export CUDA_HOME="opt/cuda"
 export NVM_DIR="$HOME/.nvm"
