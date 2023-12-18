@@ -29,7 +29,7 @@ local function theme_setup()
         bg1 = "#202020",
         bg2 = "#141414",
         bg3 = "#181818",
-        bg4 = "#272727",
+        bg4 = "#1e1e1e",
         bg5 = "#121212",
 
         foreground = "#dadada",
@@ -223,7 +223,7 @@ local function theme_setup()
         ["@include"] = { fg = p.color4 },
         ["@keyword"] = { fg = p.color14, style = { italic = true } },
         ["@keyword.function"] = { fg = p.color14 },
-        ["@keyword.operator"] = { fg = p.color14 },
+        ["@keyword.operator"] = { fg = p.color14, style = { italic = true } },
         ["@keyword.return"] = { fg = p.color14 },
         ["@label"] = { fg = p.color12 },
         ["@method"] = { fg = p.color12 },

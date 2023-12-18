@@ -1,5 +1,5 @@
 # interpreter for shell commands
-set shell sh
+set shell bash
 set hidden true
 set icons true
 set drawbox

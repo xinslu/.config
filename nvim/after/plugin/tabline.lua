@@ -12,7 +12,7 @@ local function tabline_setup()
                 goto next
             else
                 f_name = " ".. f_name .." " end
-            tabline = tabline.. "%#TabLine"..(current and "Sel" or "Inactive").."Count# " .. counter .. "%#TabLine"..(current and "Sel" or "Inactive").."#".. f_name .. edited
+            tabline = tabline.. "%#TabLine"..(current and "Sel" or "Inactive").."Count#┃ " .. counter .. "%#TabLine"..(current and "Sel" or "Inactive").."#".. f_name .. edited
             counter = counter + 1
         end
         ::next::

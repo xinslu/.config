@@ -1,7 +1,7 @@
 ### EXPORTS ###
-export PATH="/usr/lib/jvm/java-11-openjdk/bin/:/opt/cuda11.8/bin:$HOME/.cabal/bin:$HOME/.ghcup/bin:$HOME/go/bin:/home/kinshukphalke/.local/bin:$PATH:/opt:$HOME/.cargo/bin:$HOME/.local/bin:$PATH"
+export PATH="/usr/lib/jvm/java-11-openjdk/bin/:$HOME/.cabal/bin:$HOME/.ghcup/bin:$HOME/go/bin:/home/kinshukphalke/.local/bin:$PATH:/opt:$HOME/.cargo/bin:$HOME/.local/bin:$PATH"
 export ACLOCAL_PATH="/usr/local/share/aclocal:$ACLOCAL_PATH"
-export CUDA_HOME="opt/cuda"
+# export CUDA_HOME="/opt/cuda"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
@@ -33,6 +33,7 @@ alias weather="curl 'wttr.in/Atlanta?m'"
 alias ncspot="/home/kinshukphalke/ncspot/target/release/ncspot"
 alias money="/home/kinshukphalke/pittcsc.sh"
 alias rip="shutdown \"now\""
+alias fuckingpip="pip install --break-system-packages"
 [ -f /opt/miniconda3/etc/profile.d/conda.sh ] && source /opt/miniconda3/etc/profile.d/conda.sh
 
 

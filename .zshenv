@@ -1,12 +1,13 @@
 export EDITOR="nvim"
 export VISUAL="nvim"
-export TERMINAL="st"
+export TERMINAL="alacritty"
 export BROWSER="brave"
 export VIDEO="mpv"
 export IMAGE="sxiv"
 export COLORTERM="truecolor"
 export WM="bspwm"
 export PAGER="moar"
+export OPENER="nvim"
 
 
 export LF_ICONS="\
