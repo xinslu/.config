@@ -476,6 +476,7 @@ bpress(XEvent *e)
 {
 	int btn = e->xbutton.button;
 	struct timespec now;
+    MouseKey *mk;
 	int snap;
 
 	if (1 <= btn && btn <= 11)
@@ -484,6 +485,14 @@ bpress(XEvent *e)
 	if (IS_SET(MODE_MOUSE) && !(e->xbutton.state & forcemousemod)) {
 		mousereport(e);
 		return;
+	}
+
+    for (mk = mkeys; mk < mkeys + LEN(mkeys); mk++) {
+		if (e->xbutton.button == mk->b
+				&& match(mk->mask, e->xbutton.state)) {
+			mk->func(&mk->arg);
+			return;
+		}
 	}
 
 	if (mouseaction(e, 0))
