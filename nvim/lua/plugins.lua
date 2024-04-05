@@ -16,13 +16,6 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 
-    -- Status and Buffer Line
-    'tamton-aquib/staline.nvim',
-
-    -- Theme
-    'nvim-tree/nvim-web-devicons',
-    'sainnhe/sonokai',
-
     -- AutoCompletion {{{
     {
         "hrsh7th/nvim-cmp",
@@ -42,21 +35,15 @@ require("lazy").setup({
         config = function()
             require('lang.lsp')
         end,
-        event = "BufEnter",
+        event =  { "BufReadPost", "BufNewFile", "ColorScheme" },
     },
     { "williamboman/mason.nvim",  config = true },
-    -- }}}
-
-    -- Git {{{
-    {'lewis6991/gitsigns.nvim', config = true },
-    { 'akinsho/git-conflict.nvim', config = true },
     -- }}}
 
     -- Language Specific {{{
     { 'lervag/vimtex',             ft = "tex" },
     { 'vimwiki/vimwiki',           ft = "vimwiki" },
     { 'wuelnerdotexe/vim-astro',   ft = "astro" },
-    { 'folke/neodev.nvim',         config = true,         ft = "lua", event = "LspAttach" },
     {
         'simrat39/rust-tools.nvim',
         config = function()
@@ -89,15 +76,16 @@ require("lazy").setup({
     -- treesitter {{{
     {
         'nvim-treesitter/nvim-treesitter',
+        -- dependencies = {'nvim-treesitter/playground'},
         build = ":TSUpdate",
         config = function()
             require('lang.treesitter')
         end,
-        event = "BufAdd"
     },
     -- }}}
 
     -- Better Workflow {{{
+    {"norcalli/nvim-colorizer.lua", setup = true},
     {
         'nvim-telescope/telescope.nvim',
         dependencies = {

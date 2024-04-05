@@ -37,10 +37,10 @@ function M.openTerm()
         cmd = cmd .. " python " .. file
     end
     if vim.bo.filetype == 'rust' then
-        cmd = cmd .. " rustc " .. file 
+        cmd = cmd .. " rustc " .. file
     end
     if vim.bo.filetype == 'haskell' then
-        cmd = cmd .. " ghc " .. file 
+        cmd = cmd .. " ghc " .. file
     end
     vim.cmd(cmd)
 end
@@ -51,7 +51,7 @@ function M.changeBuffer(code)
     local count = 0
     for idx, buf in pairs(buffers) do
         if vim.api.nvim_buf_get_name(buf) ~= "" and vim.api.nvim_buf_get_name(buf) ~= "[Scratch]" and
-            vim.api.nvim_buf_get_name(buf) ~= "[No Name]" and vim.api.nvim_buf_is_valid(buf) and
+            vim.api.nvim_buf_get_name(buf) ~= "[No Name]" and vim.api.nvim_buf_get_name(buf) ~= "NetrwTreeListing" and vim.api.nvim_buf_is_valid(buf) and
             vim.api.nvim_buf_is_loaded(buf) then
             loaded_buffer[count] = buf
             count = count + 1

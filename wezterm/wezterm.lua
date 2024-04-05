@@ -11,15 +11,19 @@ if wezterm.config_builder then
 end
 
 -- This is where you actually apply your config choices
+config.font = wezterm.font 'JetBrainsMono Nerd Font'
 
 -- For example, changing the color scheme:
 config.color_scheme = 'Afterglow'
+config.use_fancy_tab_bar = false
+config.tab_bar_at_bottom = true
+config.window_decorations = "RESIZE"
 config.colors = {
   -- The default text color
   foreground = 'silver',
-  -- The default background color
   background = 'black',
 }
+config.window_background_opacity = 0.8
 
 -- and finally, return the configuration to wezterm
 return config

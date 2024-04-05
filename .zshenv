@@ -6,7 +6,6 @@ export VIDEO="mpv"
 export IMAGE="sxiv"
 export COLORTERM="truecolor"
 export WM="bspwm"
-export PAGER="moar"
 
 
 export LF_ICONS="\

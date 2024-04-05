@@ -23,7 +23,6 @@ local custom_attach = function(client, bufnr)
     vim.keymap.set('n', '<space>f', vim.lsp.buf.format, opts)
     vim.keymap.set('n', '<space>fd', function() require("telescope.builtin").diagnostics({ bufnr = 0 }) end, opts)
     vim.keymap.set('n', '<space>wd', require("telescope.builtin").diagnostics, opts)
-    -- client.server_capabilities.semanticTokensProvider = nil
 end
 
 M.custom_attach = custom_attach
