@@ -1,7 +1,7 @@
 local function theme_setup()
     local p = {
         lightred = "#e57474",
-        dullgreen = "#84a98c",
+        dullgreen = "#7bf7b9",
         lightyellow = "#e5c76b",
         lightblue = "#8ecae6",
         purple = "#bdb2ff",

@@ -118,6 +118,7 @@ vim.api.nvim_create_autocmd("FileType", {
     pattern = "qf",
     group = qf,
 })
+
 local ft = vim.api.nvim_create_augroup("netrw", { clear = false })
 vim.api.nvim_create_autocmd("FileType", {
     callback = function()

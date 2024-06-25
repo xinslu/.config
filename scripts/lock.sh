@@ -1,1 +1,1 @@
-betterlockscreen -l dimblur --span --off 5
+betterlockscreen -l dim --span --off 5
