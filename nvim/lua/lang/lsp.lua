@@ -2,12 +2,13 @@ local configs = require("lang.lsp_configs")
 
 local lspconfig = require("lspconfig")
 
-local lsps = { "pyright", "bashls", "eslint", "jdtls", "gopls", "texlab", "dockerls", "html", "hls", "tsserver", "clangd", "zls", "astro" }
+local lsps = { "pyright", "bashls", "eslint", "jdtls", "gopls", "texlab", "dockerls", "html", "hls", "clangd", "zls", "astro" }
 
 for _, lsp_name in ipairs(lsps) do
+    local capabilities = require('blink.cmp').get_lsp_capabilities()
     lspconfig[lsp_name].setup {
         on_attach = configs.custom_attach,
-        capabilities = configs.capabilities,
+        capabilities = capabilities,
         single_file_support = true,
     }
 end

@@ -1,5 +1,7 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 local configs = require("lang.lsp_configs")
+local cong
+
 
 if not vim.loop.fs_stat(lazypath) then
     vim.fn.system({
@@ -11,27 +13,33 @@ if not vim.loop.fs_stat(lazypath) then
         lazypath,
     })
 end
-
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 
     -- AutoCompletion {{{
     {
-        "hrsh7th/nvim-cmp",
-        dependencies = {
-            { "L3MON4D3/LuaSnip", 'hrsh7th/cmp-buffer', 'hrsh7th/cmp-cmdline', "hrsh7th/cmp-path",
-                "saadparwaiz1/cmp_luasnip", "rafamadriz/friendly-snippets" } },
-        config = function() require('lang.cmp') end,
-        event = { "InsertEnter", "CmdlineEnter" },
+        'saghen/blink.cmp',
+        dependencies = 'rafamadriz/friendly-snippets',
+        version = 'v0.*',
+        opts = {
+            keymap = { preset = 'default' },
+            appearance = {
+                use_nvim_cmp_as_default = true,
+                nerd_font_variant = 'mono'
+            },
+            sources = {
+                default = { 'lsp', 'path', 'snippets', 'buffer' },
+            },
+        },
+        opts_extend = { "sources.default" }
     },
-    { "hrsh7th/cmp-nvim-lsp", dependencies = "nvim-cmp", event = "LspAttach" },
-    { "hrsh7th/cmp-nvim-lua", dependencies = "nvim-cmp", ft = "lua",         event = "InsertCharPre" },
     -- }}}
 
     -- lsp {{{
     {
         "neovim/nvim-lspconfig",
+        dependencies = { 'saghen/blink.cmp' },
         config = function()
             require('lang.lsp')
         end,
@@ -76,8 +84,6 @@ require("lazy").setup({
     -- treesitter {{{
     {
         'nvim-treesitter/nvim-treesitter',
-        -- dependencies = {'nvim-treesitter/playground'},
-        build = ":TSUpdate",
         config = function()
             require('lang.treesitter')
         end,
@@ -85,7 +91,6 @@ require("lazy").setup({
     -- }}}
 
     -- Better Workflow {{{
-    {"norcalli/nvim-colorizer.lua", setup = true},
     {
         'nvim-telescope/telescope.nvim',
         dependencies = {
