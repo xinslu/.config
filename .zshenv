@@ -7,7 +7,7 @@ export IMAGE="sxiv"
 export COLORTERM="truecolor"
 export WM="bspwm"
 export PAGER="moar"
-export OPENER="nvim"
+export OPENER="xdg-open"
 
 
 export LF_ICONS="\

@@ -84,7 +84,12 @@ utils.map('n', 'gr', require('telescope.builtin').lsp_references)
 utils.map('n', '<C-b>', require("utils").openTerm)
 utils.map('n', '<C-f>',
     function()
-        require('telescope.builtin').grep_string({ search = vim.fn.input('Grep For > ') })
+        require('telescope.builtin').grep_string({ search = vim.fn.input('Grep For -> ') })
+    end)
+
+utils.map('n', '<C-l>',
+    function()
+        require('telescope.builtin').lsp_document_symbols({ symbols = vim.fn.input('LSP Document Symbol -> ') })
     end)
 
 utils.map('n', '<C-g>',

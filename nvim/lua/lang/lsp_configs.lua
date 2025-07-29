@@ -27,26 +27,19 @@ end
 
 M.custom_attach = custom_attach
 
-local capabilities = lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-M.capabilities = capabilities
-
 vim.diagnostic.config({
     underline = false,
-    signs = true,
-    virtual_text = {
-        prefix = '●',
-        severity = { min = vim.diagnostic.severity.WARN }
-    },
+    virtual_text = true,
+    virtual_lines = false,
     severity_sort = true,
-    float = {
-        source = "always",
-    },
+    signs = {
+        text = {
+            [vim.diagnostic.severity.ERROR] = "",
+            [vim.diagnostic.severity.WARN] = "",
+            [vim.diagnostic.severity.INFO] = "",
+            [vim.diagnostic.severity.HINT] = "",
+        }
+    }
 })
-
-fn.sign_define("DiagnosticSignError", { text = "x", texthl = "DiagnosticSignError", })
-fn.sign_define("DiagnosticSignWarn", { text = "!", texthl = "DiagnosticSignWarn" })
-fn.sign_define("DiagnosticSignInformation", { text = "i", texthl = "DiagnosticSignInfo" })
-fn.sign_define("DiagnosticSignHint", { text = "?", texthl = "DiagnosticSignHint" })
 
 return M

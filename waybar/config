@@ -1,0 +1,53 @@
+{
+    "layer": "top",
+    "spacing": 0, // Gaps between modules (4px)
+    "modules-left": ["hyprland/workspaces"],
+    "modules-right": ["pulseaudio", "network", "backlight", "battery", "clock"],
+    "hyprland/workspaces": {
+         "disable-scroll": true,
+         "all-outputs": true,
+         "warp-on-scroll": false,
+         "format": "{name}",
+     },
+    "clock": {
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format": " {:%a, %d %b %y  %I:%M}",
+    },
+    "backlight": {
+        "format": "{icon} {percent}%",
+        "format-icons": ["", "", "", "", "", "", "", "", ""]
+    },
+    "battery": {
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": "{icon} {capacity}%",
+        "format-plugged": "{icon} {capacity}%",
+        "format-alt": "{time} {icon}",
+        "format-icons": {
+            "plugged": ["󰢜","󰂆","󰂇","󰂈","󰢝","󰂉","󰢞","󰂊","󰂋","󰂅"],
+            "charging": ["󰢜","󰂆","󰂇","󰂈","󰢝","󰂉","󰢞","󰂊","󰂋","󰂅"],
+            "default": ["󰁺","󰁻","󰁼","󰁽","󰁾","󰁿","󰂀","󰂁","󰂂", "󰁹"]
+        }
+    },
+    "network": {
+        "format-wifi": " {essid}",
+        "format-ethernet": "󰈁 {ipaddr}/{cidr}",
+        "tooltip-format": "{ifname} via {gwaddr}",
+        "format-linked": "{ifname} (No IP)",
+        "format-disconnected": "⚠ Disconnected",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    },
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "{icon}  Muted",
+        "format-icons": {
+            "muted": "󰝟",
+            "default": ["", "", "󰕾", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+}

@@ -2,12 +2,13 @@ local configs = require("lang.lsp_configs")
 
 local lspconfig = require("lspconfig")
 
-local lsps = { "pyright", "bashls", "eslint", "gopls", "texlab", "dockerls", "html", "tsserver", "clangd", "zls" }
+local lsps = { "pyright", "bashls", "eslint", "jdtls", "gopls", "texlab", "dockerls", "html", "hls", "clangd", "zls", "astro", "glslls" }
 
 for _, lsp_name in ipairs(lsps) do
+    local capabilities = require('blink.cmp').get_lsp_capabilities()
     lspconfig[lsp_name].setup {
         on_attach = configs.custom_attach,
-        capabilities = configs.capabilities,
+        capabilities = capabilities,
         single_file_support = true,
     }
 end
@@ -54,42 +55,41 @@ lspconfig.eslint.setup {
 lspconfig.jsonls.setup {
     on_attach = configs.custom_attach,
     capabilities = configs.capabilities,
-    settings = {
-        json = {
-            schemas = {
-                {
-                    fileMatch = { "package.json" },
-                    url = "https://json.schemastore.org/package.json"
-                },
-                {
-                    fileMatch = { "tsconfig*.json" },
-                    url = "https://json.schemastore.org/tsconfig.json"
-                },
-                {
-                    fileMatch = { ".prettierrc", ".prettierrc.json", "prettier.config.json" },
-                    url = "https://json.schemastore.org/prettierrc.json"
-                },
-                {
-                    fileMatch = { ".eslintrc", ".eslintrc.json" },
-                    url = "https://json.schemastore.org/eslintrc.json"
-                },
-                {
-                    fileMatch = { ".babelrc", ".babelrc.json", "babel.config.json" },
-                    url = "https://json.schemastore.org/babelrc.json"
-                },
-                {
-                    fileMatch = { "lerna.json" },
-                    url = "https://json.schemastore.org/lerna.json"
-                },
-                {
-                    fileMatch = { "now.json", "vercel.json" },
-                    url = "https://json.schemastore.org/now.json"
-                },
-                {
-                    fileMatch = { "ecosystem.json" },
-                    url = "https://json.schemastore.org/pm2-ecosystem.json"
-                },
-            }
+    settings = { json = {
+        schemas = {
+            {
+                fileMatch = { "package.json" },
+                url = "https://json.schemastore.org/package.json"
+            },
+            {
+                fileMatch = { "tsconfig*.json" },
+                url = "https://json.schemastore.org/tsconfig.json"
+            },
+            {
+                fileMatch = { ".prettierrc", ".prettierrc.json", "prettier.config.json" },
+                url = "https://json.schemastore.org/prettierrc.json"
+            },
+            {
+                fileMatch = { ".eslintrc", ".eslintrc.json" },
+                url = "https://json.schemastore.org/eslintrc.json"
+            },
+            {
+                fileMatch = { ".babelrc", ".babelrc.json", "babel.config.json" },
+                url = "https://json.schemastore.org/babelrc.json"
+            },
+            {
+                fileMatch = { "lerna.json" },
+                url = "https://json.schemastore.org/lerna.json"
+            },
+            {
+                fileMatch = { "now.json", "vercel.json" },
+                url = "https://json.schemastore.org/now.json"
+            },
+            {
+                fileMatch = { "ecosystem.json" },
+                url = "https://json.schemastore.org/pm2-ecosystem.json"
+            },
         }
-    },
+    } },
 }
+

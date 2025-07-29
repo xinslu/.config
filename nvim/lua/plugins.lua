@@ -1,6 +1,7 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 local configs = require("lang.lsp_configs")
 
+
 if not vim.loop.fs_stat(lazypath) then
     vim.fn.system({
         "git",
@@ -11,33 +12,40 @@ if not vim.loop.fs_stat(lazypath) then
         lazypath,
     })
 end
-
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 
     -- AutoCompletion {{{
     {
-        "hrsh7th/nvim-cmp",
-        dependencies = {
-            { "L3MON4D3/LuaSnip", "hrsh7th/cmp-path",
-                "saadparwaiz1/cmp_luasnip", "rafamadriz/friendly-snippets" } },
-        config = function() require('lang.cmp') end,
-        lazy = true,
-        event = { "InsertEnter", "CmdlineEnter" },
+        'saghen/blink.cmp',
+        dependencies = 'rafamadriz/friendly-snippets',
+        version = '*',
+        opts = {
+            keymap = { preset = 'default' },
+            appearance = {
+                use_nvim_cmp_as_default = true,
+                nerd_font_variant = 'mono'
+            },
+            sources = {
+                default = { 'lsp', 'path', 'snippets', 'buffer' },
+            },
+            signature = { enabled = true },
+        },
+        opts_extend = { "sources.default" }
     },
-    { "hrsh7th/cmp-nvim-lsp", dependencies = "nvim-cmp", event = "LspAttach" },
-    { "hrsh7th/cmp-nvim-lua", dependencies = "nvim-cmp", ft = "lua",         event = "InsertCharPre" },
     -- }}}
 
     -- lsp {{{
     {
         "neovim/nvim-lspconfig",
+        dependencies = { 'saghen/blink.cmp' },
         config = function()
             require('lang.lsp')
         end,
-        event = { "BufReadPost", "BufNewFile", "ColorScheme" },
+        event =  { "BufReadPost", "BufNewFile", "ColorScheme" },
     },
+    { "williamboman/mason.nvim",  config = true },
     -- }}}
 
     -- Language Specific {{{
@@ -76,7 +84,6 @@ require("lazy").setup({
     -- treesitter {{{
     {
         'nvim-treesitter/nvim-treesitter',
-        build = ":TSUpdate",
         config = function()
             require('lang.treesitter')
         end,
@@ -94,7 +101,6 @@ require("lazy").setup({
                     prompt_prefix = "   ",
                     selection_caret = "   ",
                     entry_prefix = "    ",
-                    initial_mode = "normal",
                 },
             })
             require("telescope").load_extension("undo")
@@ -106,6 +112,7 @@ require("lazy").setup({
             require('nvim_comment').setup({ comment_empty = false })
         end
     },
+    { 'lukas-reineke/indent-blankline.nvim', event = "BufAdd" },
 -- }}}
 
 })

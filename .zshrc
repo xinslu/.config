@@ -76,3 +76,4 @@ bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
 [ -f "/home/kinshukphalke/.ghcup/env" ] && source "/home/kinshukphalke/.ghcup/env" # ghcup-env
+[ -f /opt/miniconda3/etc/profile.d/conda.sh ] && source /opt/miniconda3/etc/profile.d/conda.sh

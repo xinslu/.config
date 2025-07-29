@@ -40,6 +40,11 @@ builtin_box_drawing = true
 
 [font.bold]
 family = "JetBrainsMono Nerd Font"
+style = "Bold"
+
+[font.bold_italic]
+family = "JetBrainsMono Nerd Font"
+style = "Bold Italic"
 
 [font.glyph_offset]
 x = 0
@@ -47,9 +52,11 @@ y = 0
 
 [font.italic]
 family = "JetBrainsMono Nerd Font"
+style = "Italic"
 
 [font.normal]
 family = "JetBrainsMono Nerd Font"
+style = "Regular"
 
 [font.offset]
 x = -1
@@ -64,10 +71,8 @@ mods = "Control|Shift"
 save_to_clipboard = true
 
 [window]
-decorations = "none"
 dynamic_padding = false
 opacity = 0.8
-startup_mode = "Maximized"
 
 [window.padding]
 x = 0
